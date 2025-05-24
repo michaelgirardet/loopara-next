@@ -78,12 +78,9 @@ function Navbar() {
             </a>
 
             {/* Bouton demo/CTA */}
-            <a
-              href="#generate-grid"
-              className="rounded-full bg-[#E2768A] px-5 py-2 font-semibold text-black transition-all duration-300 hover:bg-[#E6899A] hover:shadow-lg hover:shadow-pink-500/20"
-            >
+            <Link href="/control" className="rounded-full bg-[#E2768A] px-5 py-2 font-semibold text-black transition-all duration-300 hover:bg-[#E6899A] hover:shadow-lg hover:shadow-pink-500/20">
               Essayer maintenant
-            </a>
+            </Link>
           </nav>
 
           {/* Bouton menu mobile */}

@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
-import type { ControlProps } from "@/types/types";
+import type { ControlProps, GenerateProps } from "@/types/types";
 import { WandSparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Toast from "@/components/Toast";
@@ -10,18 +10,21 @@ import ModeSelect from "@/components/select/ModeSelect";
 import RhythmMultiSelect from "@/components/select/RhythmMultiSelect";
 import MusicGenreSelect from "@/components/select/MusicGenreSelect";
 import TempoSelect from "@/components/select/TempoSelect";
+import MidiPlayerPreview from "@/components/MidiPlayerPreview";
 
-const Page: React.FC<ControlProps> = ({ onGenerate }) => {
+const Page = () => {
   const [rootNote, setRootNote] = useState("Do");
   const [scaleType, setScaleType] = useState<"major" | "minor">("major");
-  const [mode, setMode] = useState<"arpeggios" | "chords" | "melody">(
-    "arpeggios",
-  );
+  const [mode, setMode] = useState<"arpeggios" | "chords" | "melody" | "drums">(
+      "arpeggios",
+    );
   const [genre, setGenre] = useState("pop");
   const [rhythms, setRhythms] = useState(["4"]);
   const [tempo, setTempo] = useState(120);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+    const [midiData, setMidiData] = useState<Uint8Array | null>(null);
+    const [midiBlob, setMidiBlob] = useState<Blob | null>(null);
 
   // Appliquer des valeurs recommandées selon le genre musical
   useEffect(() => {
@@ -63,17 +66,51 @@ const Page: React.FC<ControlProps> = ({ onGenerate }) => {
     setIsLoading(true);
     setIsSuccess(false);
 
+
+
+    const handleGenerate = async (params: GenerateProps) => {
+        setMode(params.mode);
+        setGenre(params.genre);
+      
+        const response = await fetch("/api/generate-midi", {
+          method: "POST",
+          body: JSON.stringify(params),
+          headers: { "Content-Type": "application/json" },
+        });
+      
+        const midiBuffer = await response.arrayBuffer();
+        const blob = new Blob([midiBuffer], { type: "audio/midi" });
+        const byteArray = new Uint8Array(midiBuffer);
+      
+        setMidiBlob(blob);
+        setMidiData(byteArray);
+      };
+
     // Simulation d'un délai pour montrer l'animation de chargement
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    onGenerate({
-      rootNote,
-      scaleType,
-      mode,
-      rhythms,
-      tempo,
-      genre,
-    });
+    const params: GenerateProps = {
+        rootNote,
+        scaleType,
+        mode,
+        rhythms,
+        tempo,
+        genre,
+      };
+      
+      const response = await fetch("/api/generate-midi", {
+        method: "POST",
+        body: JSON.stringify(params),
+        headers: { "Content-Type": "application/json" },
+      });
+      
+      const midiBuffer = await response.arrayBuffer();
+      const blob = new Blob([midiBuffer], { type: "audio/midi" });
+      const byteArray = new Uint8Array(midiBuffer);
+      
+      setMidiBlob(blob);
+      setMidiData(byteArray);
+      
 
     setIsLoading(false);
     setIsSuccess(true);
@@ -258,6 +295,19 @@ const Page: React.FC<ControlProps> = ({ onGenerate }) => {
 
           <AnimatePresence>
             {isSuccess && <Toast message="Fichier généré avec succès !" />}
+            {midiData && midiBlob && (
+  <div className="mt-6 flex flex-col items-center justify-center gap-4">
+    <MidiPlayerPreview midiData={midiData} mode={mode} genre={genre} />
+
+    <a
+      href={URL.createObjectURL(midiBlob)}
+      download={`loopara-${mode}-${Date.now()}.mid`}
+      className="flex items-center gap-2 rounded-md border px-6 py-3 text-center font-medium text-[#E2768A] shadow-md transition-all duration-300 hover:bg-[#E2768A] hover:text-black"
+    >
+      Télécharger le fichier MIDI
+    </a>
+  </div>
+)}
           </AnimatePresence>
         </div>
       </div>

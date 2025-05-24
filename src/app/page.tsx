@@ -26,31 +26,8 @@ const fadeInUp = {
 };
 
 function page() {
-  const [midiData, setMidiData] = useState<Uint8Array | null>(null);
-  const [midiBlob, setMidiBlob] = useState<Blob | null>(null);
-  const [mode, setMode] = useState<"arpeggios" | "chords" | "melody" | "drums">(
-    "arpeggios",
-  );
-  const [genre, setGenre] = useState<string>("pop");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const handleGenerate = async (params: GenerateProps) => {
-    setMode(params.mode);
-    setGenre(params.genre);
-  
-    const response = await fetch("/api/generate-midi", {
-      method: "POST",
-      body: JSON.stringify(params),
-      headers: { "Content-Type": "application/json" },
-    });
-  
-    const midiBuffer = await response.arrayBuffer();
-    const blob = new Blob([midiBuffer], { type: "audio/midi" });
-    const byteArray = new Uint8Array(midiBuffer);
-  
-    setMidiBlob(blob);
-    setMidiData(byteArray);
-  };
 
   // Ouvrir accordéon faq
   const toggle = (index: number) => {
@@ -80,12 +57,6 @@ function page() {
           tempo, et télécharge un fichier prêt à l'emploi pour Ableton, FL
           Studio ou Logic.
         </p>
-      </div>
-
-      {/* Generator Section */}
-      <div className="mb-16 sm:mt-16">
-        <h3 className="sr-only">Formulaire de génération de motifs MIDI</h3>
-        {/* <Control onGenerate={handleGenerate} /> */}
       </div>
 
       {/* Preview Section
