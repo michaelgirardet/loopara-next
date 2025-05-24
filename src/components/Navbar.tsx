@@ -1,9 +1,8 @@
 'use client'
-
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu, Music, Info, Mail, Home, Github } from "lucide-react";
+import Link from "next/link";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -47,7 +46,7 @@ function Navbar() {
         <div className="container mx-auto flex items-center justify-between px-6">
           {/* Logo */}
           <Link
-            to="/"
+            href="/"
             className="flex items-center gap-2"
             onClick={() => setMenuOpen(false)}
           >
@@ -62,7 +61,7 @@ function Navbar() {
             {navLinks.map((link) => (
               <Link
                 key={link.name}
-                to={link.to}
+                href={link.to}
                 className="flex items-center gap-2 font-semibold text-[#FEFEFE] underline-offset-4 transition-colors hover:underline"
               >
                 {link.name}
@@ -150,7 +149,7 @@ function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              to={link.to}
+              href={link.to}
               className="flex items-center gap-4 text-xl font-medium text-gray-200 transition-colors hover:text-pink-500"
               onClick={toggleMenu}
             >

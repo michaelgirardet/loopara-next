@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { BookOpen, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const articles = [
   {
@@ -92,7 +92,7 @@ export default function Blog() {
             <footer className="mt-4 flex items-center justify-between text-sm text-gray-500">
               <time>{new Date(article.date).toLocaleDateString("fr-FR")}</time>
               <Link
-                to={`/blog/${article.slug}`}
+                href={`/blog/${article.slug}`}
                 className="flex items-center gap-1 text-[#E2546E] hover:underline"
               >
                 Lire <ArrowRight size={16} />

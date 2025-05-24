@@ -1,12 +1,12 @@
 import MidiWriter from "midi-writer-js";
 import { chordProgressions } from "@/lib/music/progressions";
-import { generateChordsTrack } from "@/lib/music/buildChord";
-import { generateMelodyTrack } from "../modes/melody";
-import { generateArpeggioTrack } from "../modes/arpeggios";
-import { generateDrumsTrack } from "../modes/drums";
-import { genrePresets } from "../config/genre-presets.ts";
-import type { GenerateProps } from "../types/types";
-import { getScale } from "../music/scale";
+import { genrePresets } from "@/lib/config/genre-presets";
+import type { GenerateProps } from "@/types/types";
+import { getScale } from "@/lib/music/getScale";
+import { generateArpeggio } from "@/lib/music/generateArpeggio";
+import { generateDrumsTrack } from "../../../lib/music/generateDrums";
+import { generateMelody } from "../../../lib/music/generateMelody";
+import { generateChords } from "../../../lib/music/generateChords";
 
 type WriterEvent = InstanceType<typeof MidiWriter.NoteEvent>;
 
@@ -43,13 +43,13 @@ export const generateTrack = ({
 
   switch (mode) {
     case "chords":
-      events = generateChordsTrack(scale, noteCount, rhythms, progression);
+      events = generateChords(scale, noteCount, rhythms, progression);
       break;
     case "melody":
-      events = generateMelodyTrack(scale, noteCount, rhythms);
+      events = generateMelody(scale, noteCount, rhythms);
       break;
     case "arpeggios":
-      events = generateArpeggioTrack(scale, progression, rhythms, pattern);
+      events = generateArpeggio(scale, progression, rhythms, pattern);
       break;
     case "drums":
       events = generateDrumsTrack(genre, rhythms);

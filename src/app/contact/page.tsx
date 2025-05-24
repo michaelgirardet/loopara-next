@@ -1,8 +1,9 @@
+'use client'
 import { motion } from "framer-motion";
 import { Mail, MessageSquareHeart } from "lucide-react";
 import { useState } from "react";
 
-export default function Contact() {
+export default function Page() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -52,7 +53,7 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/contact", {
+      const response = await fetch("api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
