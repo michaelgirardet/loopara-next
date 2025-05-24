@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import MidiWriter from "midi-writer-js";
-import { generateTrack } from "@/lib/generators/generateTrack";
+import { generateTrack } from "@/app/api/generators/generateTrack";
 
 export async function POST(req: Request) {
   const params = await req.json();

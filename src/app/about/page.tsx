@@ -1,16 +1,15 @@
+'use client'
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
-  Sparkles,
   Music,
   Clock,
   Download,
-  Command,
   Heart,
   ArrowRight,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 
-export default function About() {
+export default function Page() {
   const fadeUp = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -32,16 +31,16 @@ export default function About() {
       icon: <Music size={20} />,
       text: "Motifs MIDI cohérents et musicaux",
     },
-    {
-      id: 2,
-      icon: <Command size={20} />,
-      text: "Contrôle total du tempo, style, instruments",
-    },
-    {
-      id: 3,
-      icon: <Sparkles size={20} />,
-      text: "Génération intuitive d'accords, arpèges, mélodies",
-    },
+    // {
+    //   id: 2,
+    //   icon: <Command size={20} />,
+    //   text: "Contrôle total du tempo, style, instruments",
+    // },
+    // {
+    //   id: 3,
+    //   icon: <Sparkles size={20} />,
+    //   text: "Génération intuitive d'accords, arpèges, mélodies",
+    // },
     {
       id: 4,
       icon: <Clock size={20} />,
@@ -137,7 +136,7 @@ export default function About() {
             nous intéresse !
           </p>
           <Link
-            to="/contact"
+            href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-[#E2768A] px-5 py-3 font-semibold text-[#030504] transition-all hover:bg-[#E6899A]"
           >
             <Heart size={20} />
@@ -152,7 +151,7 @@ export default function About() {
         custom={features.length + 5}
       >
         <Link
-          to="/"
+          href="/"
           className="inline-flex items-center gap-3 rounded-full border border-[#E2768A] px-6 py-3 text-lg font-semibold text-[#E2768A] transition-all hover:bg-[#E2768A] hover:text-black"
         >
           Retour à l'accueil <ArrowRight size={18} />
@@ -161,3 +160,4 @@ export default function About() {
     </motion.main>
   );
 }
+

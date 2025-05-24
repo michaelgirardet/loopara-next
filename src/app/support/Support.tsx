@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { HelpCircle, BookOpen, Mail, AlertCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function Support() {
   return (
@@ -41,7 +41,7 @@ export default function Support() {
             La majorité des questions courantes sont déjà répondues ici.
           </p>
           <Link
-            to="/faq"
+            href="/faq"
             className="text-sm font-medium text-[#E2768A] hover:underline"
           >
             Lire la FAQ →
@@ -66,7 +66,7 @@ export default function Support() {
             Apprends à utiliser Loopara avec nos tutoriels pratiques.
           </p>
           <Link
-            to="/tutoriel"
+            href="/tutoriel"
             className="text-sm font-medium text-[#E2768A] hover:underline"
           >
             Accéder aux tutoriels →
@@ -92,7 +92,7 @@ export default function Support() {
             directement.
           </p>
           <Link
-            to="/contact"
+            href="/contact"
             className="text-sm font-medium text-[#E2768A] hover:underline"
           >
             Contacter l’équipe Loopara →

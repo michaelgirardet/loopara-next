@@ -1,7 +1,7 @@
 import MidiWriter from "midi-writer-js";
-import { noteToMidiNumber } from "../core/note";
-import { buildChord } from "../music/chords";
-import { applyHumanization } from "../utils/humanize";
+import { noteToMidiNumber } from "@/lib/music/noteToMidiNumber";
+import { buildChord } from "@/lib/modes/chords";
+import { applyHumanization } from "@/lib/music/applyHumanization";
 
 type NoteEvent = InstanceType<typeof MidiWriter.NoteEvent>;
 
@@ -18,7 +18,7 @@ const DURATION_TICKS: Record<string, number> = {
  * Génère une piste d’accords à partir d’une gamme et d’une progression.
  * Répète si besoin pour atteindre 2 mesures minimum.
  */
-export function generateChordsTrack(
+export function generateChords(
   scale: string[],
   noteCount: number,
   rhythms: string[],
