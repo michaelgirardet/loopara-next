@@ -1,0 +1,97 @@
+import { motion } from "framer-motion";
+import { ShieldCheck, Info, Mail } from "lucide-react";
+
+export default function Privacy() {
+  return (
+    <motion.main
+      className="font-hind mx-auto max-w-4xl px-6 pt-38 pb-20 text-white sm:pt-42 md:pt-48 md:pb-24 lg:pt-52 lg:pb-36"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
+      {/* Header */}
+      <header className="mb-12 flex items-center gap-3">
+        <ShieldCheck size={32} className="text-[#E2546E]" />
+        <h1 className="text-4xl font-bold text-[#E2546E]">
+          Politique de Confidentialité
+        </h1>
+      </header>
+
+      {/* Intro */}
+      <motion.section
+        className="mb-10 rounded-lg border border-[#E2546E]/20 bg-[#2A2D34]/40 p-6 shadow-sm"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        <p className="text-gray-300">
+          La confidentialité est au cœur de Loopara. Nous avons conçu notre
+          outil pour qu’il fonctionne sans pisteurs, ni collecte de données
+          inutiles.
+        </p>
+      </motion.section>
+
+      {/* Sections */}
+      <motion.section
+        className="space-y-8 text-sm leading-relaxed text-gray-300"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: { transition: { staggerChildren: 0.15 } },
+        }}
+      >
+        {[
+          {
+            id: 1,
+            icon: <Info size={18} />,
+            title: "1. Données collectées",
+            content:
+              "Loopara collecte uniquement des données techniques minimales (comme l’adresse IP) nécessaires au bon fonctionnement du site. Aucune donnée personnelle ou sensible n’est stockée.",
+          },
+          {
+            id: 2,
+            icon: <ShieldCheck size={18} />,
+            title: "2. Usage des données",
+            content:
+              "Ces données servent exclusivement à assurer la stabilité, la sécurité et la performance de l’expérience utilisateur. Elles ne sont jamais partagées avec des tiers.",
+          },
+          {
+            id: 3,
+            icon: <ShieldCheck size={18} />,
+            title: "3. Cookies",
+            content:
+              "Loopara n’utilise pas de cookies publicitaires ni de traceurs tiers. Aucun cookie n’est installé sans nécessité technique.",
+          },
+          {
+            id: 4,
+            icon: <ShieldCheck size={18} />,
+            title: "4. Stockage",
+            content:
+              "Toutes les données techniques sont hébergées en Europe et automatiquement supprimées après une courte période d’inactivité.",
+          },
+          {
+            id: 5,
+            icon: <Mail size={18} />,
+            title: "5. Contact",
+            content:
+              "Pour toute question concernant votre vie privée ou pour exercer vos droits, écrivez-nous à : contact@loopara.app",
+          },
+        ].map((item, index) => (
+          <motion.div
+            key={item.id}
+            className="rounded-lg border border-[#E2546E]/20 bg-[#1E1F24]/60 p-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.4 }}
+          >
+            <h2 className="mb-2 flex items-center gap-2 text-base font-semibold text-[#E2546E]">
+              {item.icon}
+              {item.title}
+            </h2>
+            <p className="text-gray-300">{item.content}</p>
+          </motion.div>
+        ))}
+      </motion.section>
+    </motion.main>
+  );
+}
