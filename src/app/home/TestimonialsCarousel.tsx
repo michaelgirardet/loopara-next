@@ -26,7 +26,7 @@ export default function TestimonialsCarousel() {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-lg font-light text-gray-200 italic">
+            <p className="text-lg font-light italic text-gray-200">
               “{homeTestimonials[index].quote}”
             </p>
             <div className="mt-4 flex items-center">
@@ -34,12 +34,8 @@ export default function TestimonialsCarousel() {
                 {homeTestimonials[index].initial}
               </div>
               <div className="ml-3">
-                <p className="font-semibold text-white">
-                  {homeTestimonials[index].name}
-                </p>
-                <p className="text-sm text-gray-300">
-                  {homeTestimonials[index].role}
-                </p>
+                <p className="font-semibold text-white">{homeTestimonials[index].name}</p>
+                <p className="text-sm text-gray-300">{homeTestimonials[index].role}</p>
               </div>
             </div>
           </motion.blockquote>

@@ -22,7 +22,7 @@ export function generateChords(
   scale: string[],
   noteCount: number,
   rhythms: string[],
-  progression: number[] | null,
+  progression: number[] | null
 ): NoteEvent[] {
   const MIN_OCTAVE = 3;
   const MAX_OCTAVE = 5;
@@ -47,9 +47,7 @@ export function generateChords(
   const events: NoteEvent[] = [];
   const baseProgression =
     progression ??
-    Array.from({ length: Math.floor(noteCount / 3) }, () =>
-      Math.floor(Math.random() * 7),
-    );
+    Array.from({ length: Math.floor(noteCount / 3) }, () => Math.floor(Math.random() * 7));
 
   let progressionIndex = 0;
 
@@ -70,7 +68,7 @@ export function generateChords(
         pitch: chord,
         duration,
         velocity: Math.floor(Math.random() * 20 + 70),
-      }),
+      })
     );
 
     totalTicks += ticks;

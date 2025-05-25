@@ -1,12 +1,7 @@
+'use client'
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  MessageCircle,
-  HelpCircle,
-  ShieldCheck,
-  FileText,
-  ChevronDown,
-} from "lucide-react";
+import { MessageCircle, HelpCircle, ShieldCheck, FileText, ChevronDown } from "lucide-react";
 
 const faqItems = [
   {
@@ -46,7 +41,7 @@ const faqItems = [
   },
 ];
 
-export default function FAQ() {
+export default function Page() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (i: number) => {
@@ -54,7 +49,7 @@ export default function FAQ() {
   };
 
   return (
-    <motion.main className="font-hind mx-auto max-w-3xl px-6 pt-36 pb-24 text-white">
+    <motion.main className="font-hind mx-auto max-w-3xl px-6 pb-24 pt-36 text-white">
       <motion.header
         className="mb-10 flex items-center gap-3"
         initial={{ opacity: 0, y: -20 }}
@@ -62,9 +57,7 @@ export default function FAQ() {
         transition={{ duration: 0.5 }}
       >
         <MessageCircle size={32} className="text-[#E2768A]" />
-        <h1 className="text-5xl font-bold text-[#E2768A]">
-          FAQ – Questions fréquentes
-        </h1>
+        <h1 className="text-5xl font-bold text-[#E2768A]">FAQ – Questions fréquentes</h1>
       </motion.header>
 
       <section className="space-y-4">

@@ -33,10 +33,7 @@ export const generateTrack = ({
   let progression: number[] | null = null;
   if (mode === "chords" || mode === "arpeggios") {
     const availableProgressions = chordProgressions[scaleType];
-    progression =
-      availableProgressions[
-        Math.floor(Math.random() * availableProgressions.length)
-      ];
+    progression = availableProgressions[Math.floor(Math.random() * availableProgressions.length)];
   }
 
   let events: WriterEvent[] = [];

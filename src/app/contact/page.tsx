@@ -1,50 +1,14 @@
-'use client'
+"use client";
+
 import { motion } from "framer-motion";
 import { Mail, MessageSquareHeart } from "lucide-react";
 import { useState } from "react";
 
 export default function Page() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 24,
-      },
-    },
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 20,
-      },
-    },
-  };
-
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -53,17 +17,15 @@ export default function Page() {
     e.preventDefault();
 
     try {
-      const response = await fetch("api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        alert(`❌ Erreur : ${errorData.error || "Envoi impossible"}`);
+        const { error } = await response.json();
+        alert(`❌ Erreur : ${error || "Envoi impossible"}`);
         return;
       }
 
@@ -75,69 +37,85 @@ export default function Page() {
     }
   };
 
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.15,
+        type: "spring",
+        stiffness: 300,
+        damping: 24,
+      },
+    }),
+  };
+
   return (
     <motion.div
-      className="font-hind bg-purple text-powder sm:px flex min-h-screen flex-col items-center justify-center px-5 pt-28 pb-16 sm:pt-42 md:pt-48 md:pb-18 lg:pt-40 lg:pb-36"
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
+      variants={{
+        visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
+      }}
+      className="font-hind flex min-h-screen w-full flex-col items-center justify-center bg-purple px-5 pb-16 pt-28 text-powder sm:px-8 md:pt-48 lg:pt-40"
     >
       <motion.h1
-        className="max-w-[700px] text-center text-5xl font-bold text-[#E2768A] capitalize sm:text-5xl lg:text-6xl"
-        variants={titleVariants}
+        variants={fadeIn}
+        custom={0}
+        className="text-center text-5xl font-bold text-[#E2768A] sm:text-5xl lg:text-6xl"
       >
         Contacte-nous
       </motion.h1>
 
       <motion.p
-        className="mt-6 max-w-2xl text-center text-lg font-bold text-[#FEFEFE]"
-        variants={itemVariants}
+        variants={fadeIn}
+        custom={1}
+        className="mt-6 max-w-2xl text-center text-lg font-semibold text-[#FEFEFE]"
       >
-        Une idée, une suggestion ou juste envie de dire bonjour ?
-        <br />
+        Une idée, une suggestion ou juste envie de dire bonjour ?<br />
         Laisse-nous un message — on te répond vite !
       </motion.p>
 
       <motion.form
         onSubmit={handleSubmit}
+        variants={fadeIn}
+        custom={2}
         className="mt-10 w-full max-w-2xl space-y-6 rounded-2xl bg-[#2A2D34]/30 p-8 shadow-xl"
-        variants={itemVariants}
       >
-        <div className="flex flex-col space-y-2">
-          <label
-            htmlFor="name"
-            className="text-sm font-semibold text-[#fefefe]"
-          >
-            Ton prénom
-          </label>
-          <input
-            type="text"
-            name="name"
-            required
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Ex: Sarah"
-            className="rounded-md border border-[#2C2F31] bg-[#030504] px-4 py-3 text-[#FEFEFE] placeholder-[#888] outline-none focus:border-[#E2768A] focus:ring-2 focus:ring-[#E2768A]"
-          />
-        </div>
-
-        <div className="flex flex-col space-y-2">
-          <label
-            htmlFor="email"
-            className="text-sm font-semibold text-[#fefefe]"
-          >
-            Ton email
-          </label>
-          <input
-            type="email"
-            name="email"
-            required
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Ex: sarah@loopara.com"
-            className="rounded-md border border-[#2C2F31] bg-[#030504] px-4 py-3 text-[#FEFEFE] placeholder-[#888] outline-none focus:border-[#E2768A] focus:ring-2 focus:ring-[#E2768A]"
-          />
-        </div>
+        {[
+          {
+            label: "Ton prénom",
+            name: "name",
+            type: "text",
+            placeholder: "Ex: Sarah",
+          },
+          {
+            label: "Ton email",
+            name: "email",
+            type: "email",
+            placeholder: "Ex: sarah@loopara.com",
+          },
+        ].map(({ label, name, type, placeholder }, i) => (
+          <div key={name} className="flex flex-col space-y-2">
+            <label
+              htmlFor={name}
+              className="text-sm font-semibold text-[#fefefe]"
+            >
+              {label}
+            </label>
+            <input
+              id={name}
+              type={type}
+              name={name}
+              required
+              value={form[name as keyof typeof form]}
+              onChange={handleChange}
+              placeholder={placeholder}
+              className="rounded-md border border-[#2C2F31] bg-[#030504] px-4 py-3 text-[#FEFEFE] placeholder-[#888] outline-none focus:border-[#E2768A] focus:ring-2 focus:ring-[#E2768A]"
+            />
+          </div>
+        ))}
 
         <div className="flex flex-col space-y-2">
           <label
@@ -147,6 +125,7 @@ export default function Page() {
             Ton message
           </label>
           <textarea
+            id="message"
             name="message"
             rows={5}
             required
@@ -156,10 +135,11 @@ export default function Page() {
             className="rounded-md border border-[#2C2F31] bg-[#030504] px-4 py-3 text-[#FEFEFE] placeholder-[#888] outline-none focus:border-[#E2768A] focus:ring-2 focus:ring-[#E2768A]"
           />
         </div>
-        <div className="flex w-full cursor-pointer items-center justify-center">
+
+        <div className="flex justify-center">
           <motion.button
             type="submit"
-            className="mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-full border border-[#E2768A] px-6 py-3 text-sm font-medium text-[#E2768A] hover:bg-[#E2768A] hover:text-[#030504] focus:ring-4 focus:ring-purple-300 focus:outline-none"
+            className="mt-4 flex items-center gap-2 rounded-full border border-[#E2768A] px-6 py-3 text-sm font-medium text-[#E2768A] transition-all hover:bg-[#E2768A] hover:text-[#030504] focus:outline-none focus:ring-4 focus:ring-purple-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -170,8 +150,9 @@ export default function Page() {
       </motion.form>
 
       <motion.div
-        className="text-md mt-12 flex flex-col items-center gap-2 text-white sm:flex-row"
-        variants={itemVariants}
+        variants={fadeIn}
+        custom={3}
+        className="mt-12 flex flex-col items-center gap-2 text-sm text-white sm:flex-row"
       >
         <Mail size={16} className="text-[#fefefe]" />
         <span>Votre message peut faire groover la prochaine version.</span>

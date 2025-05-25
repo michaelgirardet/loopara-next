@@ -14,9 +14,8 @@ export default function Footer() {
               <h3 className="text-xl font-bold text-[#D43552]">Loopara</h3>
             </div>
             <p className="max-w-xs text-start text-sm text-gray-300">
-              Générez rapidement des patterns MIDI inspirants pour votre
-              prochain projet musical. Un outil gratuit et intuitif pour tous
-              les compositeurs.
+              Générez rapidement des patterns MIDI inspirants pour votre prochain projet musical. Un
+              outil gratuit et intuitif pour tous les compositeurs.
             </p>
             <div className="flex items-center justify-center gap-4 pt-2 sm:justify-start">
               <a
@@ -40,7 +39,7 @@ export default function Footer() {
 
           {/* Links column */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               Navigation
             </h4>
             <ul className="ml-4 space-y-3">
@@ -73,7 +72,7 @@ export default function Footer() {
 
           {/* Resources column */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold tracking-wider text-white uppercase underline-offset-4">
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white underline-offset-4">
               Ressources
             </h4>
             <ul className="space-y-3">
