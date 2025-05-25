@@ -57,10 +57,12 @@ export default function SelectorGrid({
       className="mx-auto mt-24 w-full max-w-7xl scroll-mt-28 px-4 sm:px-8 lg:px-12"
       id="generate-grid"
     >
-      <h1 className="text-center text-5xl font-bold text-[#E2768A]">Loopette</h1>
+      <h1 className="text-center text-5xl font-bold text-[#E2768A]">LoopMint</h1>
+
       <h2 className="mt-6 text-center text-xl text-gray-300">
-        Le fameux générateur de midi par loopara
-      </h2>
+  Frais, unique, prêt à jouer — chaque boucle est ta signature.
+</h2>
+
       <div className="grid grid-cols-1 gap-6 rounded-2xl border border-[#E2768A]/20 bg-gradient-to-br from-[#121317] to-[#1b1d21] p-8 shadow-2xl sm:grid-cols-2 lg:grid-cols-3">
         {selectors.map((child) => (
           <motion.div

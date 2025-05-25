@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Mail, Music } from "lucide-react";
+import { Mail, Music } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -18,22 +18,15 @@ export default function Footer() {
               outil gratuit et intuitif pour tous les compositeurs.
             </p>
             <div className="flex items-center justify-center gap-4 pt-2 sm:justify-start">
-              <a
-                href="mailto:contact@loopara.io"
-                aria-label="Email"
+              <Link href={"/contact"}>
+              <button
+         type="button"
                 className="rounded-full bg-[#E2768A] p-2 transition-colors hover:bg-[#E6899A]"
-              >
+                >
                 <Mail size={18} className="text-[#030504]" />
-              </a>
-              <a
-                href="https://github.com/michaelgirardet/loopara"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="rounded-full bg-[#E2768A] p-2 transition-colors hover:bg-[#E6899A]"
-              >
-                <Github size={18} className="text-[#030504]" />
-              </a>
+              </button>
+                </Link>
+      
             </div>
           </div>
 

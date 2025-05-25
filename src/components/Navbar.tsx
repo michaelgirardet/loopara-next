@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Menu, Music, Info, Mail, Home, Github } from "lucide-react";
+import { X, Menu, Music, Info, Mail, Home } from "lucide-react";
 import Link from "next/link";
 
 function Navbar() {
@@ -62,15 +62,6 @@ function Navbar() {
               </Link>
             ))}
 
-            <a
-              href="https://github.com/michaelgirardet/loopara"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#E2768A] transition-colors hover:bg-[#E6899A]"
-            >
-              <Github size={20} className="text-[#030504]" />
-            </a>
-
             {/* Bouton demo/CTA */}
             <Link
               href="/control"
@@ -96,22 +87,10 @@ function Navbar() {
         </div>
       </header>
 
-      {/* Overlay pour mobile */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 bg-[#030504]/70 backdrop-blur-sm md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={toggleMenu}
-          />
-        )}
-      </AnimatePresence>
 
       {/* Menu mobile */}
       <motion.div
-        className="font-hind fixed right-0 top-0 z-50 h-full w-[95vw] max-w-lg bg-[#0F1012] p-8 shadow-xl md:hidden"
+        className="font-hind fixed right-0 top-0 z-50 h-full w-full bg-[#0F1012] p-8 shadow-xl md:hidden"
         variants={menuVariants}
         initial="closed"
         animate={menuOpen ? "open" : "closed"}
@@ -146,18 +125,18 @@ function Navbar() {
               className="flex items-center gap-4 text-xl font-medium text-gray-200 transition-colors hover:text-pink-500"
               onClick={toggleMenu}
             >
-              <div className="text- flex h-10 w-10 items-center justify-center rounded-full border bg-[#fefefe] text-[#030504]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E2768A] text-[#030504]">
                 {link.icon}
               </div>
               {link.name}
             </Link>
           ))}
 
-          <div className="mt-6 border-t border-pink-500/20 pt-6">
+          <div className="mt-6 w-full flex justify-center items-center border-pink-500/20 pt-6">
           <Link href={"/control"} onClick={toggleMenu}>
             <button
               type="button"
-              className="flex w-full items-center justify-center rounded-lg bg-[#E2768A] px-5 py-3 font-medium text-[#030504] transition-all duration-300 hover:shadow-lg"
+              className="flex w-full max-w-xs self-center items-center justify-center rounded-lg bg-[#E2768A] px-5 py-3 font-medium text-[#030504] transition-all duration-300 hover:shadow-lg"
               >
               Essayer maintenant
             </button>
