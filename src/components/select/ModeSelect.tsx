@@ -1,6 +1,16 @@
-import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Portal } from "@headlessui/react";
 import { Music3, Piano } from "lucide-react";
-import { useRef } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+interface ModeSelectProps {
+  value: "arpeggios" | "chords" | "melody" | "drums";
+  onChange: (value: "arpeggios" | "chords" | "melody" | "drums") => void;
+}
 
 const MODES = [
   { label: "Arpèges", value: "arpeggios" },
@@ -9,67 +19,37 @@ const MODES = [
   { label: "Batterie", value: "drums" },
 ];
 
-interface ModeSelectProps {
-  value: "arpeggios" | "chords" | "melody" | "drums";
-  onChange: (value: "arpeggios" | "chords" | "melody" | "drums") => void;
-}
-
 export default function ModeSelect({ value, onChange }: ModeSelectProps) {
-  const selected = MODES.find((m) => m.value === value)?.label ?? value;
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const selectedLabel = MODES.find((m) => m.value === value)?.label ?? value;
+  const icon = value === "chords" ? <Piano className="h-5 w-5" /> : <Music3 className="h-5 w-5" />;
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 font-bold">
-      <div className="flex items-center justify-center gap-5 text-center text-[#FEFEFE]">
-        {selected === "Accords" ? <Piano /> : <Music3 />}
-        <label htmlFor="mode-select" className="text-[#FEFEFE]">
-          Mode :
+    <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-xl bg-[#121417] p-6 text-sm shadow-lg sm:text-base">
+      <div className="flex items-center gap-2 text-white">
+        {icon}
+        <label htmlFor="mode-select" className="text-base font-semibold">
+          Mode
         </label>
       </div>
-      <Listbox value={value} onChange={onChange}>
-        {({ open }) => (
-          <div className="relative block text-center">
-            <ListboxButton
-              id="mode-select"
-              ref={buttonRef}
-              className="h-14 w-60 cursor-pointer rounded-md bg-[#030504]/90 text-center font-medium text-[#FEFEFE] transition duration-300 ease-in hover:bg-zinc-800"
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger
+          id="mode-select"
+          className="w-full rounded-md border border-zinc-700 bg-[#1c1d21] px-4 py-3 text-white focus:ring-2 focus:ring-[#E2768A]"
+        >
+          <SelectValue placeholder="Choisir un mode..." />
+        </SelectTrigger>
+        <SelectContent className="z-50 w-full rounded-md border border-zinc-700 bg-[#1c1d21] text-white">
+          {MODES.map((mode) => (
+            <SelectItem
+              key={mode.value}
+              value={mode.value}
+              className="cursor-pointer px-4 py-2 text-sm hover:bg-[#E2768A]/20"
             >
-              {selected}
-            </ListboxButton>
-            {open && (
-              <Portal>
-                <ListboxOptions
-                  className="fixed z-[1000] mt-1 max-h-80 w-60 overflow-y-scroll rounded-md border border-zinc-600 bg-[#030504] shadow-xl"
-                  style={{
-                    top: buttonRef.current
-                      ? `${buttonRef.current.getBoundingClientRect().bottom}px`
-                      : "0px",
-                    left: buttonRef.current
-                      ? `${buttonRef.current.getBoundingClientRect().left}px`
-                      : "0px",
-                  }}
-                >
-                  {MODES.map((mode) => (
-                    <ListboxOption
-                      key={mode.value}
-                      value={mode.value}
-                      className={({ active }) =>
-                        `flex cursor-pointer select-none rounded-md px-4 py-2 text-center text-xl hover:bg-[#E2768A] ${
-                          active
-                            ? "bg-[#030504]/50 text-[#FEFEFE] backdrop-blur-3xl"
-                            : "text-[#FEFEFE]"
-                        }`
-                      }
-                    >
-                      {mode.label}
-                    </ListboxOption>
-                  ))}
-                </ListboxOptions>
-              </Portal>
-            )}
-          </div>
-        )}
-      </Listbox>
+              {mode.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }

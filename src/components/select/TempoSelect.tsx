@@ -1,58 +1,46 @@
-import { motion } from "framer-motion";
 import { Drum } from "lucide-react";
+import { motion } from "framer-motion";
 
 type TempoSelectProps = {
   value: number;
   onChange: (value: number) => void;
 };
 
-function TempoSelect({ value, onChange }: TempoSelectProps) {
+export default function TempoSelect({ value, onChange }: TempoSelectProps) {
   return (
-    <div key="tempo-controls" className="flex flex-col gap-2 font-bold text-[#ff7e73]">
-      <div className="mx-5 items-center justify-center gap-4 md:flex-row">
-        <div>
-          <div className="flex items-center justify-center gap-2 text-center text-[#FEFEFE]">
-            <Drum />
-            <label htmlFor="tempo-input" className="mb-1 block text-[#FEFEFE]">
-              Tempo (BPM)
-            </label>
-          </div>
-          <div className="flex w-full justify-end">
-            <motion.input
-              id="tempo-input"
-              type="number"
-              min={40}
-              max={240}
-              step={1}
-              value={value}
-              onChange={(e) => onChange(Number(e.target.value))}
-              className="h-10 rounded-md bg-[#030504] text-center font-medium text-[#FEFEFE] shadow-sm transition-all duration-200"
-              whileFocus={{
-                scale: 1.05,
-                boxShadow: "0px 0px 8px rgba(226, 84, 110, 1)",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="tempo-range" className="sr-only">
-              Contrôle du tempo (curseur)
-            </label>
-            <motion.input
-              id="tempo-range"
-              type="range"
-              min={40}
-              max={240}
-              value={value}
-              onChange={(e) => onChange(Number(e.target.value))}
-              className="flex w-full cursor-grab accent-[#E2768A]"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ cursor: "grabbing" }}
-            />
-          </div>
-        </div>
+    <div className="flex w-full max-w-sm flex-col items-center gap-4 rounded-xl bg-[#121417] p-6 text-white shadow-lg">
+      <div className="flex items-center gap-2 text-white">
+        <Drum className="h-5 w-5" />
+        <label htmlFor="tempo-input" className="text-base font-semibold">
+          Tempo (BPM)
+        </label>
       </div>
+
+      <motion.input
+        id="tempo-input"
+        type="number"
+        min={40}
+        max={240}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="w-full rounded-md border border-zinc-700 bg-[#1c1d21] px-3 py-2 text-center text-lg font-medium text-white focus:outline-none focus:ring-2 focus:ring-[#E2768A]"
+        whileFocus={{
+          scale: 1.02,
+          boxShadow: "0px 0px 8px rgba(226, 118, 138, 0.7)",
+        }}
+      />
+
+      <motion.input
+        id="tempo-range"
+        type="range"
+        min={40}
+        max={240}
+        value={value}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="w-full accent-[#E2768A]"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
+      />
     </div>
   );
 }
-
-export default TempoSelect;
