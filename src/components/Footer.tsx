@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Github, Mail, Music } from "lucide-react";
 
 export default function Footer() {
@@ -46,7 +46,7 @@ export default function Footer() {
             <ul className="ml-4 space-y-3">
               <li>
                 <Link
-                  to="/"
+                  href="/"
                   className="flex items-center gap-2 text-gray-300 underline-offset-4 transition-colors hover:underline"
                 >
                   Accueil
@@ -54,7 +54,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  href="/about"
                   className="flex items-center gap-2 text-gray-300 underline-offset-4 transition-colors hover:underline"
                 >
                   À Propos
@@ -62,7 +62,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="flex items-center gap-2 text-gray-300 underline-offset-4 transition-colors hover:underline"
                 >
                   Contact
@@ -79,7 +79,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  to="/tutorial"
+                  href="/tutorial"
                   className="flex items-center gap-2 text-gray-300 underline-offset-4 transition-colors hover:underline"
                 >
                   Tutoriels
@@ -87,7 +87,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  to="/faq"
+                  href="/faq"
                   className="flex items-center gap-2 text-gray-300 underline-offset-4 transition-colors hover:underline"
                 >
                   FAQ
@@ -95,14 +95,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  to={"/support"}
+                  href={"/support"}
                   className="flex items-center gap-2 text-gray-300 underline-offset-4 transition-colors hover:underline"
                 >
                   Support
                 </Link>
               </li>
               <Link
-                to={"/blog"}
+                href={"/blog"}
                 className="flex items-center gap-2 text-gray-300 underline-offset-4 transition-colors hover:underline"
               >
                 <li>Blog</li>
@@ -122,14 +122,14 @@ export default function Footer() {
 
           <div className="flex items-center gap-3">
             <Link
-              to="/legal"
+              href="/legal"
               className="text-xs text-gray-400 transition-colors hover:text-gray-300"
             >
               Mentions légales
             </Link>
             <span className="text-gray-600">•</span>
             <Link
-              to="/privacy"
+              href="/privacy"
               className="text-xs text-gray-400 transition-colors hover:text-gray-300"
             >
               Confidentialité

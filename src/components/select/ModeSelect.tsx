@@ -16,8 +16,8 @@ const MODES = [
 ];
 
 interface ModeSelectProps {
-  value: string;
-  onChange: (value: string) => void;
+  value: "arpeggios" | "chords" | "melody" | "drums";
+  onChange: (value: "arpeggios" | "chords" | "melody" | "drums") => void;
 }
 
 export default function ModeSelect({ value, onChange }: ModeSelectProps) {
@@ -25,7 +25,7 @@ export default function ModeSelect({ value, onChange }: ModeSelectProps) {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-    <div className="flex flex-col gap-2 font-bold">
+    <div className="flex flex-col gap-2 font-bold items-center justify-center">
       <div className="flex items-center justify-center gap-5 text-center text-[#FEFEFE]">
         {selected === "Accords" ? <Piano /> : <Music3 />}
         <label htmlFor="mode-select" className="text-[#FEFEFE]">

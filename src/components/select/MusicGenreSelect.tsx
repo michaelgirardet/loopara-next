@@ -31,7 +31,7 @@ export default function MusicGenreSelect({
   const selected = GENRES.find((g) => g.value === value)?.label ?? value;
 
   return (
-    <div className="flex flex-col gap-2 font-bold">
+    <div className="flex flex-col gap-2 items-center justify-center font-bold">
       <div className="flex items-center justify-center gap-5 text-center text-[#FEFEFE]">
         <Music3 />
         <label htmlFor="music-genre" className="text-[#FEFEFE]">

@@ -15,7 +15,7 @@ const SCALE_TYPES = [
 
 interface ScaleTypeSelectProps {
   value: string;
-  onChange: (value: string) => void;
+  onChange: (value: "major" | "minor") => void;
 }
 
 export default function ScaleTypeSelect({
