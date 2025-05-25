@@ -28,4 +28,34 @@ export const articles = [
       excerpt:
         "Ce dossier t’aide à choisir le bon format pour chaque étape de ta production musicale.",
     },
+    {
+      id: 4,
+      title: "Comprendre les gammes et modes pour booster ta créativité",
+      description:
+        "Apprends comment les gammes majeures, mineures et les modes peuvent transformer tes idées musicales.",
+      slug: "gammes-et-modes-musique",
+      date: "2025-05-05",
+      excerpt:
+        "Tu te demandes comment rendre tes mélodies plus expressives ? Les gammes et les modes sont la clé.",
+    },
+    {
+      id: 5,
+      title: "Construire une batterie cohérente avec le MIDI",
+      description:
+        "Crée des patterns de batterie dynamiques et crédibles à partir de simples notes MIDI.",
+      slug: "batterie-midi-realiste",
+      date: "2025-04-30",
+      excerpt:
+        "Les drums MIDI peuvent groover fort ! Voici nos astuces pour une rythmique percutante.",
+    },
+    {
+      id: 6,
+      title: "Exporter et utiliser tes fichiers MIDI dans ton DAW",
+      description:
+        "Un guide pratique pour importer, éditer et arranger tes fichiers Loopara dans Ableton, FL Studio, Logic, etc.",
+      slug: "utiliser-midi-daw",
+      date: "2025-04-25",
+      excerpt:
+        "Tu as généré un motif MIDI ? On t’explique comment en tirer le meilleur dans ton logiciel de production.",
+    },
   ];
