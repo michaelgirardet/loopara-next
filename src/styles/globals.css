@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 #root {
   margin: 0;
   padding: 0;
@@ -13,7 +12,7 @@
 }
 
 /* Styles for the scrollbar  */
- ::-webkit-scrollbar {
+::-webkit-scrollbar {
   background-color: #030504;
   width: 7px;
 }
@@ -21,4 +20,4 @@
 ::-webkit-scrollbar-thumb {
   background-color: #fefefe;
   border-radius: 8px;
-} 
+}

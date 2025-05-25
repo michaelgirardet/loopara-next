@@ -11,16 +11,12 @@ export const metadata: Metadata = {
   description: "Crée instantanément des fichiers MIDI personnalisés. Simple, rapide, musical.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body className={`${hind.className} bg-[#030504] text-white`}>
+    <html lang="fr" className="h-full">
+      <body className={`${hind.className} flex min-h-screen flex-col bg-[#030504] text-white`}>
         <Navbar />
-        <main>{children}</main>
+        <main className="flex flex-1">{children}</main>
         <Footer />
       </body>
     </html>

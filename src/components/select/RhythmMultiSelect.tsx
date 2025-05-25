@@ -1,10 +1,4 @@
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-  Portal,
-} from "@headlessui/react";
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Portal } from "@headlessui/react";
 import { Guitar } from "lucide-react";
 import { Fragment, useRef, useState, useEffect } from "react";
 import { useCallback } from "react";
@@ -20,10 +14,7 @@ interface RhythmMultiSelectProps {
   onChange: (selected: string[]) => void;
 }
 
-export default function RhythmMultiSelect({
-  value,
-  onChange,
-}: RhythmMultiSelectProps) {
+export default function RhythmMultiSelect({ value, onChange }: RhythmMultiSelectProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [dropdownPos, setDropdownPos] = useState<{
     top: number;
@@ -90,11 +81,7 @@ export default function RhythmMultiSelect({
             >
               {value.length > 0
                 ? value
-                    .map(
-                      (v) =>
-                        RHYTHM_OPTIONS.find((opt) => opt.value === v)?.label ||
-                        v,
-                    )
+                    .map((v) => RHYTHM_OPTIONS.find((opt) => opt.value === v)?.label || v)
                     .join(", ")
                 : "Choisir des durées..."}
             </ListboxButton>
@@ -110,16 +97,12 @@ export default function RhythmMultiSelect({
                   }}
                 >
                   {RHYTHM_OPTIONS.map((option) => (
-                    <ListboxOption
-                      key={option.value}
-                      value={option.value}
-                      as={Fragment}
-                    >
+                    <ListboxOption key={option.value} value={option.value} as={Fragment}>
                       {({ active }) => (
                         <li
                           onClick={() => toggleValue(option.value)}
                           onKeyDown={() => toggleValue(option.value)}
-                          className={`flex cursor-pointer list-none gap-2 rounded-md px-4 py-2 text-center text-xl select-none hover:bg-[#E2768A] ${
+                          className={`flex cursor-pointer select-none list-none gap-2 rounded-md px-4 py-2 text-center text-xl hover:bg-[#E2768A] ${
                             active
                               ? "bg-[#030504]/50 text-[#FEFEFE] backdrop-blur-3xl"
                               : "text-[#FEFEFE]"

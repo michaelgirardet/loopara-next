@@ -1,13 +1,7 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import {
-  Music,
-  Clock,
-  Download,
-  Heart,
-  ArrowRight,
-} from "lucide-react";
+import { Music, Clock, Download, Heart, ArrowRight } from "lucide-react";
 
 export default function Page() {
   const fadeUp = {
@@ -55,7 +49,7 @@ export default function Page() {
 
   return (
     <motion.main
-      className="font-hind mx-auto max-w-4xl px-6 pt-36 pb-24 text-white"
+      className="font-hind mx-auto flex w-screen max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-36 text-white"
       initial="hidden"
       animate="visible"
       variants={{
@@ -67,28 +61,17 @@ export default function Page() {
         },
       }}
     >
-      <motion.h1
-        className="text-5xl font-bold text-[#E2768A]"
-        variants={fadeUp}
-        custom={0}
-      >
+      <motion.h1 className="text-5xl font-bold text-[#E2768A]" variants={fadeUp} custom={0}>
         À propos de Loopara
       </motion.h1>
 
-      <motion.p
-        className="mt-6 text-xl text-gray-300"
-        variants={fadeUp}
-        custom={1}
-      >
-        Loopara est un générateur de motifs MIDI rapide et créatif. Conçu pour
-        les producteurs, beatmakers, enseignants et curieux, il rend la
-        composition ludique, intuitive et musicale.
+      <motion.p className="mt-6 text-xl text-gray-300" variants={fadeUp} custom={1}>
+        Loopara est un générateur de motifs MIDI rapide et créatif. Conçu pour les producteurs,
+        beatmakers, enseignants et curieux, il rend la composition ludique, intuitive et musicale.
       </motion.p>
 
       <motion.section className="mt-14 space-y-6" variants={fadeUp} custom={2}>
-        <h2 className="text-3xl font-bold text-[#E2768A]">
-          Fonctionnalités clés
-        </h2>
+        <h2 className="text-3xl font-bold text-[#E2768A]">Fonctionnalités clés</h2>
         <ul className="space-y-4">
           {features.map((item, i) => (
             <motion.li
@@ -106,34 +89,22 @@ export default function Page() {
         </ul>
       </motion.section>
 
-      <motion.section
-        className="mt-20"
-        variants={fadeUp}
-        custom={features.length + 3}
-      >
+      <motion.section className="mt-20" variants={fadeUp} custom={features.length + 3}>
         <h2 className="text-3xl font-bold text-[#E2768A]">Notre vision</h2>
         <div className="mt-4 rounded-lg bg-[#2A2D34]/40 p-6 shadow-lg">
           <p className="text-xl text-gray-300">
-            Notre mission est simple : rendre la composition musicale
-            instantanée, accessible et inspirante. Grâce à des algorithmes
-            intelligents, Loopara te permet de créer, tester et exporter des
-            idées en quelques clics.
+            Notre mission est simple : rendre la composition musicale instantanée, accessible et
+            inspirante. Grâce à des algorithmes intelligents, Loopara te permet de créer, tester et
+            exporter des idées en quelques clics.
           </p>
         </div>
       </motion.section>
 
-      <motion.section
-        className="mt-20"
-        variants={fadeUp}
-        custom={features.length + 4}
-      >
-        <h2 className="text-3xl font-bold text-[#E2768A]">
-          Contribue à Loopara
-        </h2>
+      <motion.section className="mt-20" variants={fadeUp} custom={features.length + 4}>
+        <h2 className="text-3xl font-bold text-[#E2768A]">Contribue à Loopara</h2>
         <div className="mt-4 flex flex-col items-start gap-4 rounded-lg bg-[#2A2D34]/40 p-6 shadow-md sm:flex-row sm:items-center sm:justify-between">
           <p className="text-lg text-gray-300">
-            Tu veux proposer une fonctionnalité ou faire un retour ? Ton avis
-            nous intéresse !
+            Tu veux proposer une fonctionnalité ou faire un retour ? Ton avis nous intéresse !
           </p>
           <Link
             href="/contact"
@@ -145,11 +116,7 @@ export default function Page() {
         </div>
       </motion.section>
 
-      <motion.section
-        className="mt-28 text-center"
-        variants={fadeUp}
-        custom={features.length + 5}
-      >
+      <motion.section className="mt-28 text-center" variants={fadeUp} custom={features.length + 5}>
         <Link
           href="/"
           className="inline-flex items-center gap-3 rounded-full border border-[#E2768A] px-6 py-3 text-lg font-semibold text-[#E2768A] transition-all hover:bg-[#E2768A] hover:text-black"
@@ -160,4 +127,3 @@ export default function Page() {
     </motion.main>
   );
 }
-

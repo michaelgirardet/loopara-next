@@ -27,7 +27,7 @@ export function generateMelody(
   scale: string[],
   _noteCount: number, // Ignoré ici
   rhythms: string[],
-  progression?: number[],
+  progression?: number[]
 ): NoteEvent[] {
   const MIN_OCTAVE = 4;
   const MAX_OCTAVE = 5;
@@ -47,8 +47,7 @@ export function generateMelody(
       const note = chordNotes[Math.floor(Math.random() * chordNotes.length)];
       const octaveNote = note.replace(
         /\d/,
-        () =>
-          `${Math.floor(Math.random() * (MAX_OCTAVE - MIN_OCTAVE + 1)) + MIN_OCTAVE}`,
+        () => `${Math.floor(Math.random() * (MAX_OCTAVE - MIN_OCTAVE + 1)) + MIN_OCTAVE}`
       );
       motif.push(octaveNote);
     }
@@ -56,8 +55,7 @@ export function generateMelody(
   };
 
   const baseProgression =
-    progression ??
-    Array.from({ length: 4 }, () => Math.floor(Math.random() * scale.length));
+    progression ?? Array.from({ length: 4 }, () => Math.floor(Math.random() * scale.length));
 
   const events: NoteEvent[] = [];
 
@@ -76,7 +74,7 @@ export function generateMelody(
             pitch: [note],
             duration,
             velocity: Math.floor(Math.random() * 20 + 70),
-          }),
+          })
         );
 
         if (totalTicks >= MIN_TICKS) break;

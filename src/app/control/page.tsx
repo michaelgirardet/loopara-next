@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 import type { GenerateProps } from "@/types/types";
 import { WandSparkles } from "lucide-react";
@@ -10,16 +10,14 @@ import SelectorGrid from "@/components/SelectorGrid";
 const Page = () => {
   const [rootNote, setRootNote] = useState("Do");
   const [scaleType, setScaleType] = useState<"major" | "minor">("major");
-  const [mode, setMode] = useState<"arpeggios" | "chords" | "melody" | "drums">(
-      "arpeggios",
-    );
+  const [mode, setMode] = useState<"arpeggios" | "chords" | "melody" | "drums">("arpeggios");
   const [genre, setGenre] = useState("pop");
   const [rhythms, setRhythms] = useState(["4"]);
   const [tempo, setTempo] = useState(120);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-    const [midiData, setMidiData] = useState<Uint8Array | null>(null);
-    const [midiBlob, setMidiBlob] = useState<Blob | null>(null);
+  const [midiData, setMidiData] = useState<Uint8Array | null>(null);
+  const [midiBlob, setMidiBlob] = useState<Blob | null>(null);
 
   // Appliquer des valeurs recommandées selon le genre musical
   useEffect(() => {
@@ -65,27 +63,26 @@ const Page = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const params: GenerateProps = {
-        rootNote,
-        scaleType,
-        mode,
-        rhythms,
-        tempo,
-        genre,
-      };
-      
-      const response = await fetch("/api/generate-midi", {
-        method: "POST",
-        body: JSON.stringify(params),
-        headers: { "Content-Type": "application/json" },
-      });
-      
-      const midiBuffer = await response.arrayBuffer();
-      const blob = new Blob([midiBuffer], { type: "audio/midi" });
-      const byteArray = new Uint8Array(midiBuffer);
-      
-      setMidiBlob(blob);
-      setMidiData(byteArray);
-      
+      rootNote,
+      scaleType,
+      mode,
+      rhythms,
+      tempo,
+      genre,
+    };
+
+    const response = await fetch("/api/generate-midi", {
+      method: "POST",
+      body: JSON.stringify(params),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const midiBuffer = await response.arrayBuffer();
+    const blob = new Blob([midiBuffer], { type: "audio/midi" });
+    const byteArray = new Uint8Array(midiBuffer);
+
+    setMidiBlob(blob);
+    setMidiData(byteArray);
 
     setIsLoading(false);
     setIsSuccess(true);
@@ -149,114 +146,121 @@ const Page = () => {
   };
 
   return (
-    <>
-<SelectorGrid
-  genre={genre}
-  setGenre={setGenre}
-  mode={mode}
-  setMode={setMode}
-  rootNote={rootNote}
-  setRootNote={setRootNote}
-  scaleType={scaleType}
-  setScaleType={setScaleType}
-  rhythms={rhythms}
-  setRhythms={setRhythms}
-  tempo={tempo}
-  setTempo={setTempo}
-  containerVariants={containerVariants}
-  itemVariants={itemVariants}
-  onChange={() => {}}
-/>
-
-
-      <div className="flex flex-col items-center text-2xl">
-        <div className="my-14">
-          <AnimatePresence mode="wait">
-            {isLoading ? (
-              <motion.button
-                key="loading-button"
-                disabled
-                type="button"
-                className="text-clack inline-flex items-center rounded-full bg-[#E2768A] px-8 py-4 text-center text-lg font-semibold"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.2 }}
+  
+    <div className="flex w-full flex-col items-center justify-center text-2xl">
+      <SelectorGrid
+        genre={genre}
+        setGenre={setGenre}
+        mode={mode}
+        setMode={setMode}
+        rootNote={rootNote}
+        setRootNote={setRootNote}
+        scaleType={scaleType}
+        setScaleType={setScaleType}
+        rhythms={rhythms}
+        setRhythms={setRhythms}
+        tempo={tempo}
+        setTempo={setTempo}
+        containerVariants={containerVariants}
+        itemVariants={itemVariants}
+        onChange={() => {}}
+      />
+  
+      <div className="my-14">
+        <AnimatePresence mode="wait">
+          {isLoading ? (
+            <motion.button
+              key="loading-button"
+              disabled
+              type="button"
+              className="inline-flex items-center rounded-full bg-[#E2768A] px-8 py-4 text-lg font-semibold text-clack text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+            >
+              <motion.svg
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 1,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
+                aria-hidden="true"
+                className="me-3 inline h-6 w-6 text-clacke"
+                viewBox="0 0 100 101"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <motion.svg
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 1,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                  }}
-                  aria-hidden="true"
-                  className="text-clacke me-3 inline h-6 w-6"
-                  viewBox="0 0 100 101"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                    fill="#E5E7EB"
-                  />
-                  <path
-                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                    fill="currentColor"
-                  />
-                </motion.svg>
-                Génération en cours...
-              </motion.button>
-            ) : (
-              <motion.button
-                key="generate-button"
-                type="button"
-                onClick={handleClick}
-                variants={buttonVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover="hover"
-                whileTap="tap"
-                className="text-md mx-5 flex cursor-pointer items-center justify-center gap-4 rounded-full border bg-[#e2768a] px-12 py-6 text-lg font-semibold text-[#030504] shadow-lg hover:bg-[#E6899A]"
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="#E5E7EB"
+                />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentColor"
+                />
+              </motion.svg>
+              Génération en cours...
+            </motion.button>
+          ) : (
+            <motion.button
+              key="generate-button"
+              type="button"
+              onClick={handleClick}
+              variants={buttonVariants}
+              initial="hidden"
+              animate="visible"
+              whileHover="hover"
+              whileTap="tap"
+              className="text-md mx-5 flex cursor-pointer items-center justify-center gap-4 rounded-full border bg-[#e2768a] px-12 py-6 text-lg font-semibold text-[#030504] shadow-lg hover:bg-[#E6899A]"
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 10, -10, 10, 0],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatDelay: 2,
+                }}
               >
-                <motion.div
-                  animate={{
-                    rotate: [0, 10, -10, 10, 0],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatDelay: 2,
-                  }}
-                >
-                  <WandSparkles size={24} />
-                </motion.div>
-                Générer un fichier MIDI
-              </motion.button>
-            )}
-          </AnimatePresence>
-
-          <AnimatePresence>
-            {isSuccess && <Toast key="toast-success" message="Fichier généré avec succès !" />}
-            {midiData && midiBlob && (
-  <div className="mt-6 flex flex-col items-center justify-center gap-4">
-    <MidiPlayerPreview key="midi-player" midiData={midiData} mode={mode} genre={genre} />
-
-    <a
-      href={URL.createObjectURL(midiBlob)}
-      download={`loopara-${mode}-${Date.now()}.mid`}
-      className="flex items-center gap-2 rounded-md border px-6 py-3 text-center font-medium text-[#E2768A] shadow-md transition-all duration-300 hover:bg-[#E2768A] hover:text-black"
-    >
-      Télécharger le fichier MIDI
-    </a>
-  </div>
-)}
-          </AnimatePresence>
-        </div>
+                <WandSparkles size={24} />
+              </motion.div>
+              Générer un fichier MIDI
+            </motion.button>
+          )}
+        </AnimatePresence>
+  
+        <AnimatePresence>
+          {isSuccess && (
+            <Toast key="toast-success" message="Fichier généré avec succès !" />
+          )}
+  
+          {midiData && midiBlob && (
+            <div className="mt-6 flex flex-col items-center justify-center gap-4">
+              <MidiPlayerPreview
+                key="midi-player"
+                midiData={midiData}
+                mode={mode}
+                genre={genre}
+              />
+              <a
+                href={URL.createObjectURL(midiBlob)}
+                download={`loopara-${mode}-${Date.now()}.mid`}
+                className="flex items-center gap-2 rounded-md border px-6 py-3 text-center font-medium text-[#E2768A] shadow-md transition-all duration-300 hover:bg-[#E2768A] hover:text-black"
+              >
+                Télécharger le fichier MIDI
+              </a>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
-    </>
+    </div>
+
   );
+  
 };
 
 export default Page;

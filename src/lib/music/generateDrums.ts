@@ -17,7 +17,7 @@ const DURATION_TICKS: Record<string, number> = {
  */
 export function generateDrumsTrack(
   style: keyof typeof drumPresets = "pop",
-  rhythms: string[] = ["8"],
+  rhythms: string[] = ["8"]
 ): NoteEvent[] {
   const events: NoteEvent[] = [];
   const baseGrid = drumPresets[style];
@@ -55,7 +55,7 @@ export function generateDrumsTrack(
           duration,
           velocity,
           channel: 10,
-        }),
+        })
       );
     }
 

@@ -1,9 +1,4 @@
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-} from "@headlessui/react";
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from "@headlessui/react";
 import { Portal } from "@headlessui/react";
 import { Music2 } from "lucide-react";
 
@@ -14,10 +9,7 @@ interface RootNoteSelectProps {
   onChange: (note: string) => void;
 }
 
-export default function RootNoteSelect({
-  value,
-  onChange,
-}: RootNoteSelectProps) {
+export default function RootNoteSelect({ value, onChange }: RootNoteSelectProps) {
   return (
     <div className="flex flex-col gap-2 font-bold">
       <div className="flex items-center justify-center gap-5 text-center text-[#FEFEFE]">
@@ -50,7 +42,7 @@ export default function RootNoteSelect({
                       key={note}
                       value={note}
                       className={({ active }) =>
-                        `flex cursor-pointer rounded-md px-4 py-2 text-center text-xl uppercase select-none hover:bg-[#E2768A] ${
+                        `flex cursor-pointer select-none rounded-md px-4 py-2 text-center text-xl uppercase hover:bg-[#E2768A] ${
                           active
                             ? "bg-[#030504]/50 text-[#FEFEFE] backdrop-blur-3xl"
                             : "text-[#FEFEFE]"

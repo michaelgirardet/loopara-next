@@ -1,10 +1,4 @@
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-  Portal,
-} from "@headlessui/react";
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Portal } from "@headlessui/react";
 import { Meh, Smile } from "lucide-react";
 import { useRef } from "react";
 
@@ -18,10 +12,7 @@ interface ScaleTypeSelectProps {
   onChange: (value: "major" | "minor") => void;
 }
 
-export default function ScaleTypeSelect({
-  value,
-  onChange,
-}: ScaleTypeSelectProps) {
+export default function ScaleTypeSelect({ value, onChange }: ScaleTypeSelectProps) {
   const selected = SCALE_TYPES.find((s) => s.value === value)?.label ?? value;
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
@@ -62,7 +53,7 @@ export default function ScaleTypeSelect({
                       key={type.value}
                       value={type.value}
                       className={({ active }) =>
-                        `flex cursor-pointer rounded-md px-4 py-2 text-center text-xl select-none hover:bg-[#E2768A] ${
+                        `flex cursor-pointer select-none rounded-md px-4 py-2 text-center text-xl hover:bg-[#E2768A] ${
                           active
                             ? "bg-[#030504]/50 text-[#FEFEFE] backdrop-blur-3xl"
                             : "text-[#FEFEFE]"

@@ -7,14 +7,12 @@ export const homeFaq = [
   {
     id: 2,
     question: "Quels logiciels sont compatibles ?",
-    answer:
-      "Tous les DAWs acceptant les fichiers MIDI : Ableton, Logic, FL Studio, Cubase...",
+    answer: "Tous les DAWs acceptant les fichiers MIDI : Ableton, Logic, FL Studio, Cubase...",
   },
   {
     id: 3,
     question: "Puis-je créer plusieurs pistes à la fois ?",
-    answer:
-      "Oui, chaque instrument génère une piste distincte dans le même fichier MIDI.",
+    answer: "Oui, chaque instrument génère une piste distincte dans le même fichier MIDI.",
   },
 ];
 

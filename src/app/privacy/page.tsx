@@ -1,10 +1,11 @@
+'use client'
 import { motion } from "framer-motion";
 import { ShieldCheck, Info, Mail } from "lucide-react";
 
-export default function Privacy() {
+export default function Page() {
   return (
     <motion.main
-      className="font-hind mx-auto max-w-4xl px-6 pt-38 pb-20 text-white sm:pt-42 md:pt-48 md:pb-24 lg:pt-52 lg:pb-36"
+      className="font-hind pt-38 sm:pt-42 mx-auto max-w-4xl px-6 pb-20 text-white md:pb-24 md:pt-48 lg:pb-36 lg:pt-52"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -12,9 +13,7 @@ export default function Privacy() {
       {/* Header */}
       <header className="mb-12 flex items-center gap-3">
         <ShieldCheck size={32} className="text-[#E2546E]" />
-        <h1 className="text-4xl font-bold text-[#E2546E]">
-          Politique de Confidentialité
-        </h1>
+        <h1 className="text-4xl font-bold text-[#E2546E]">Politique de Confidentialité</h1>
       </header>
 
       {/* Intro */}
@@ -25,9 +24,8 @@ export default function Privacy() {
         transition={{ delay: 0.2, duration: 0.5 }}
       >
         <p className="text-gray-300">
-          La confidentialité est au cœur de Loopara. Nous avons conçu notre
-          outil pour qu’il fonctionne sans pisteurs, ni collecte de données
-          inutiles.
+          La confidentialité est au cœur de Loopara. Nous avons conçu notre outil pour qu’il
+          fonctionne sans pisteurs, ni collecte de données inutiles.
         </p>
       </motion.section>
 

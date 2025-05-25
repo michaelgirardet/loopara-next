@@ -8,10 +8,7 @@ type TempoSelectProps = {
 
 function TempoSelect({ value, onChange }: TempoSelectProps) {
   return (
-    <div
-      key="tempo-controls"
-      className="flex flex-col gap-2 font-bold text-[#ff7e73]"
-    >
+    <div key="tempo-controls" className="flex flex-col gap-2 font-bold text-[#ff7e73]">
       <div className="mx-5 items-center justify-center gap-4 md:flex-row">
         <div>
           <div className="flex items-center justify-center gap-2 text-center text-[#FEFEFE]">

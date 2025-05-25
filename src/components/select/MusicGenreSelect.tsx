@@ -1,10 +1,4 @@
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-  Portal,
-} from "@headlessui/react";
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Portal } from "@headlessui/react";
 import { Music3 } from "lucide-react";
 
 const GENRES = [
@@ -24,14 +18,11 @@ interface MusicGenreSelectProps {
   onChange: (genre: string) => void;
 }
 
-export default function MusicGenreSelect({
-  value,
-  onChange,
-}: MusicGenreSelectProps) {
+export default function MusicGenreSelect({ value, onChange }: MusicGenreSelectProps) {
   const selected = GENRES.find((g) => g.value === value)?.label ?? value;
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center font-bold">
+    <div className="flex flex-col items-center justify-center gap-2 font-bold">
       <div className="flex items-center justify-center gap-5 text-center text-[#FEFEFE]">
         <Music3 />
         <label htmlFor="music-genre" className="text-[#FEFEFE]">
@@ -62,7 +53,7 @@ export default function MusicGenreSelect({
                       key={genre.value}
                       value={genre.value}
                       className={({ active }) =>
-                        `flex cursor-pointer rounded-md px-4 py-2 text-center text-xl select-none hover:bg-[#E2768A] ${
+                        `flex cursor-pointer select-none rounded-md px-4 py-2 text-center text-xl hover:bg-[#E2768A] ${
                           active
                             ? "bg-[#030504]/50 text-[#FEFEFE] backdrop-blur-3xl"
                             : "text-[#FEFEFE]"

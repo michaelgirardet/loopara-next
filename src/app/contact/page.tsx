@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import { Mail, MessageSquareHeart } from "lucide-react";
 import { useState } from "react";
@@ -43,9 +43,7 @@ export default function Page() {
 
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -77,13 +75,13 @@ export default function Page() {
 
   return (
     <motion.div
-      className="font-hind bg-purple text-powder sm:px flex min-h-screen flex-col items-center justify-center px-5 pt-28 pb-16 sm:pt-42 md:pt-48 md:pb-18 lg:pt-40 lg:pb-36"
+      className="font-hind bg-purple text-powder sm:px sm:pt-42 md:pb-18 flex min-h-screen w-screen flex-col items-center justify-center px-5 pb-16 pt-28 md:pt-48 lg:pb-36 lg:pt-40"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
       <motion.h1
-        className="max-w-[700px] text-center text-5xl font-bold text-[#E2768A] capitalize sm:text-5xl lg:text-6xl"
+        className="max-w-[700px] text-center text-5xl font-bold capitalize text-[#E2768A] sm:text-5xl lg:text-6xl"
         variants={titleVariants}
       >
         Contacte-nous
@@ -104,10 +102,7 @@ export default function Page() {
         variants={itemVariants}
       >
         <div className="flex flex-col space-y-2">
-          <label
-            htmlFor="name"
-            className="text-sm font-semibold text-[#fefefe]"
-          >
+          <label htmlFor="name" className="text-sm font-semibold text-[#fefefe]">
             Ton prénom
           </label>
           <input
@@ -122,10 +117,7 @@ export default function Page() {
         </div>
 
         <div className="flex flex-col space-y-2">
-          <label
-            htmlFor="email"
-            className="text-sm font-semibold text-[#fefefe]"
-          >
+          <label htmlFor="email" className="text-sm font-semibold text-[#fefefe]">
             Ton email
           </label>
           <input
@@ -140,10 +132,7 @@ export default function Page() {
         </div>
 
         <div className="flex flex-col space-y-2">
-          <label
-            htmlFor="message"
-            className="text-sm font-semibold text-[#fefefe]"
-          >
+          <label htmlFor="message" className="text-sm font-semibold text-[#fefefe]">
             Ton message
           </label>
           <textarea
@@ -159,7 +148,7 @@ export default function Page() {
         <div className="flex w-full cursor-pointer items-center justify-center">
           <motion.button
             type="submit"
-            className="mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-full border border-[#E2768A] px-6 py-3 text-sm font-medium text-[#E2768A] hover:bg-[#E2768A] hover:text-[#030504] focus:ring-4 focus:ring-purple-300 focus:outline-none"
+            className="mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-full border border-[#E2768A] px-6 py-3 text-sm font-medium text-[#E2768A] hover:bg-[#E2768A] hover:text-[#030504] focus:outline-none focus:ring-4 focus:ring-purple-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -1,10 +1,4 @@
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-  Portal,
-} from "@headlessui/react";
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption, Portal } from "@headlessui/react";
 import { Music3, Piano } from "lucide-react";
 import { useRef } from "react";
 
@@ -25,7 +19,7 @@ export default function ModeSelect({ value, onChange }: ModeSelectProps) {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-    <div className="flex flex-col gap-2 font-bold items-center justify-center">
+    <div className="flex flex-col items-center justify-center gap-2 font-bold">
       <div className="flex items-center justify-center gap-5 text-center text-[#FEFEFE]">
         {selected === "Accords" ? <Piano /> : <Music3 />}
         <label htmlFor="mode-select" className="text-[#FEFEFE]">
@@ -60,7 +54,7 @@ export default function ModeSelect({ value, onChange }: ModeSelectProps) {
                       key={mode.value}
                       value={mode.value}
                       className={({ active }) =>
-                        `flex cursor-pointer rounded-md px-4 py-2 text-center text-xl select-none hover:bg-[#E2768A] ${
+                        `flex cursor-pointer select-none rounded-md px-4 py-2 text-center text-xl hover:bg-[#E2768A] ${
                           active
                             ? "bg-[#030504]/50 text-[#FEFEFE] backdrop-blur-3xl"
                             : "text-[#FEFEFE]"

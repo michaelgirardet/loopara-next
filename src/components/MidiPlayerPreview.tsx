@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { Midi } from "@tonejs/midi";
 import Soundfont from "soundfont-player";
