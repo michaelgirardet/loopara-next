@@ -1,16 +1,11 @@
 'use client'
 import { useEffect, useState } from "react";
-import type { ControlProps, GenerateProps } from "@/types/types";
+import type { GenerateProps } from "@/types/types";
 import { WandSparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Toast from "@/components/Toast";
-import RootNoteSelect from "@/components/select/RootNoteSelect";
-import ScaleTypeSelect from "@/components/select/ScaleTypeSelect";
-import ModeSelect from "@/components/select/ModeSelect";
-import RhythmMultiSelect from "@/components/select/RhythmMultiSelect";
-import MusicGenreSelect from "@/components/select/MusicGenreSelect";
-import TempoSelect from "@/components/select/TempoSelect";
 import MidiPlayerPreview from "@/components/MidiPlayerPreview";
+import SelectorGrid from "@/components/SelectorGrid";
 
 const Page = () => {
   const [rootNote, setRootNote] = useState("Do");
@@ -65,26 +60,6 @@ const Page = () => {
   const handleClick = async () => {
     setIsLoading(true);
     setIsSuccess(false);
-
-
-
-    const handleGenerate = async (params: GenerateProps) => {
-        setMode(params.mode);
-        setGenre(params.genre);
-      
-        const response = await fetch("/api/generate-midi", {
-          method: "POST",
-          body: JSON.stringify(params),
-          headers: { "Content-Type": "application/json" },
-        });
-      
-        const midiBuffer = await response.arrayBuffer();
-        const blob = new Blob([midiBuffer], { type: "audio/midi" });
-        const byteArray = new Uint8Array(midiBuffer);
-      
-        setMidiBlob(blob);
-        setMidiData(byteArray);
-      };
 
     // Simulation d'un délai pour montrer l'animation de chargement
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -175,57 +150,26 @@ const Page = () => {
 
   return (
     <>
-      <motion.section
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="mx-5 mt-24 grid scroll-mt-28 grid-cols-1 justify-items-center gap-10 text-xl text-[#ff7e73] sm:mx-10 sm:grid-cols-2 md:mx-15 lg:mx-20 lg:grid-cols-3"
-        id="generate-grid"
-      >
-        {[
-          <MusicGenreSelect
-            key="select-genre"
-            value={genre}
-            onChange={setGenre}
-          />,
-          <ModeSelect
-            key="select-mode"
-            value={mode}
-            onChange={(value) =>
-              setMode(value as "arpeggios" | "chords" | "melody")
-            }
-          />,
-          <RootNoteSelect
-            key="select-root"
-            value={rootNote}
-            onChange={setRootNote}
-          />,
-          <ScaleTypeSelect
-            key="select-scale"
-            value={scaleType}
-            onChange={(value) => setScaleType(value as "major" | "minor")}
-          />,
-          <RhythmMultiSelect
-            key="select-rhythm"
-            value={rhythms}
-            onChange={setRhythms}
-          />,
-          <TempoSelect key="select-tempo" value={tempo} onChange={setTempo} />,
-        ].map((child, index) => (
-          <motion.div
-            key={child.key}
-            variants={itemVariants}
-            whileHover="hover"
-            whileTap="tap"
-            custom={index}
-            className="z-0 flex w-2xs flex-col rounded-lg bg-[#0F1012] py-10 font-bold backdrop-blur-sm md:w-xs lg:w-2xs xl:w-sm"
-          >
-            {child}
-          </motion.div>
-        ))}
-      </motion.section>
+<SelectorGrid
+  genre={genre}
+  setGenre={setGenre}
+  mode={mode}
+  setMode={setMode}
+  rootNote={rootNote}
+  setRootNote={setRootNote}
+  scaleType={scaleType}
+  setScaleType={setScaleType}
+  rhythms={rhythms}
+  setRhythms={setRhythms}
+  tempo={tempo}
+  setTempo={setTempo}
+  containerVariants={containerVariants}
+  itemVariants={itemVariants}
+  onChange={() => {}}
+/>
 
-      <div className="mt-16 flex flex-col items-center text-2xl">
+
+      <div className="flex flex-col items-center text-2xl">
         <div className="my-14">
           <AnimatePresence mode="wait">
             {isLoading ? (
@@ -294,10 +238,10 @@ const Page = () => {
           </AnimatePresence>
 
           <AnimatePresence>
-            {isSuccess && <Toast message="Fichier généré avec succès !" />}
+            {isSuccess && <Toast key="toast-success" message="Fichier généré avec succès !" />}
             {midiData && midiBlob && (
   <div className="mt-6 flex flex-col items-center justify-center gap-4">
-    <MidiPlayerPreview midiData={midiData} mode={mode} genre={genre} />
+    <MidiPlayerPreview key="midi-player" midiData={midiData} mode={mode} genre={genre} />
 
     <a
       href={URL.createObjectURL(midiBlob)}
