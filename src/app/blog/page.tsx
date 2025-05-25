@@ -19,7 +19,7 @@ export default function Blog() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#E2546E] bg-[#E2546E]/10 px-4 py-2 text-sm font-semibold text-[#E2546E]">
+        <span className="mb-3 inline-flex items-center self-start gap-2 rounded-full border border-[#E2546E] bg-[#E2546E]/10 px-4 py-2 text-sm font-semibold text-[#E2546E]">
           <BookOpen size={18} /> Blog officiel
         </span>
         <h1 className="text-5xl font-bold text-[#E2546E]">Le Blog Loopara</h1>
