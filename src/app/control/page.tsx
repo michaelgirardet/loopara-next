@@ -12,7 +12,8 @@ const Page = () => {
   const [scaleType, setScaleType] = useState<"major" | "minor">("major");
   const [mode, setMode] = useState<"arpeggios" | "chords" | "melody" | "drums">("arpeggios");
   const [genre, setGenre] = useState("pop");
-  const [rhythms, setRhythms] = useState(["4"]);
+  const [emotion, setEmotion] = useState("");
+  const [rhythm, setRhythms] = useState([""])
   const [tempo, setTempo] = useState(120);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -65,8 +66,8 @@ const Page = () => {
     const params: GenerateProps = {
       rootNote,
       scaleType,
+      rhythm,
       mode,
-      rhythms,
       tempo,
       genre,
     };
@@ -155,10 +156,10 @@ const Page = () => {
         setRootNote={setRootNote}
         scaleType={scaleType}
         setScaleType={setScaleType}
-        rhythms={rhythms}
-        setRhythms={setRhythms}
         tempo={tempo}
         setTempo={setTempo}
+        emotion={emotion}
+        setEmotion={setEmotion}
         containerVariants={containerVariants}
         itemVariants={itemVariants}
         onChange={() => {}}

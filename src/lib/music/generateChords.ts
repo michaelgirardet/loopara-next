@@ -2,6 +2,8 @@ import MidiWriter from "midi-writer-js";
 import { noteToMidiNumber } from "@/lib/music/noteToMidiNumber";
 import { buildChord } from "@/lib/modes/chords";
 import { applyHumanization } from "@/lib/music/applyHumanization";
+import { midiNumberToNoteName } from "./midiNumberToNoteName";
+import { humanizationPresets } from "../config/humanization-presets";
 
 type NoteEvent = InstanceType<typeof MidiWriter.NoteEvent>;
 
@@ -14,66 +16,86 @@ const DURATION_TICKS: Record<string, number> = {
   "32": 60,
 };
 
-/**
- * Génère une piste d’accords à partir d’une gamme et d’une progression.
- * Répète si besoin pour atteindre 2 mesures minimum.
- */
+const MIN_TICKS = 1920 * 2;
+const MIN_OCTAVE = 3;
+const MAX_OCTAVE = 5;
+
 export function generateChords(
   scale: string[],
   noteCount: number,
   rhythms: string[],
-  progression: number[] | null
+  progression: number[] | null,
+  genre: string
 ): NoteEvent[] {
-  const MIN_OCTAVE = 3;
-  const MAX_OCTAVE = 5;
-  const MIN_TICKS = 1920 * 2; // 🎯 Objectif : 2 mesures
+  const events: NoteEvent[] = [];
+  const safeRhythms = rhythms && rhythms.length > 0 ? rhythms : ["4"];
   let totalTicks = 0;
 
+  // Étendre la gamme
   const shiftedScale: string[] = [];
-
-  // Étend la gamme
   for (let octave = MIN_OCTAVE; octave <= MAX_OCTAVE; octave++) {
     for (const note of scale) {
-      shiftedScale.push(note.replace(/\d$/, octave.toString()));
+      shiftedScale.push(note.replace(/\d$/, `${octave}`));
     }
   }
 
-  // Filtre les notes jouables
   const playableScale = shiftedScale.filter((note) => {
     const midi = noteToMidiNumber(note);
-    return midi !== null && midi >= 21 && midi <= 108;
+    return midi !== null && midi >= 36 && midi <= 84;
   });
 
-  const events: NoteEvent[] = [];
   const baseProgression =
     progression ??
     Array.from({ length: Math.floor(noteCount / 3) }, () => Math.floor(Math.random() * 7));
 
   let progressionIndex = 0;
+  let previousChord: string[] | null = null;
 
   while (totalTicks < MIN_TICKS) {
     const degree = baseProgression[progressionIndex % baseProgression.length];
 
+    const inversion = Math.floor(Math.random() * 3);
     const chord = buildChord(playableScale, degree, {
       extensions: ["7"],
-      octaveShift: 0,
-      inversion: 0,
+      inversion,
+      voicing: "drop2",
     });
 
-    const duration = rhythms[progressionIndex % rhythms.length];
+    // Transposition pour adoucir les sauts
+    if (previousChord) {
+      const lastNote = noteToMidiNumber(previousChord[0]) ?? 60;
+      const firstNote = noteToMidiNumber(chord[0]) ?? 60;
+      const diff = firstNote - lastNote;
+      if (Math.abs(diff) > 7) {
+        const shift = diff > 0 ? -12 : 12;
+        for (let i = 0; i < chord.length; i++) {
+          const midi = noteToMidiNumber(chord[i]);
+          if (midi !== null) {
+            const shiftedMidi = midi + shift;
+            if (shiftedMidi >= 36 && shiftedMidi <= 84) {
+              chord[i] = midiNumberToNoteName(shiftedMidi);
+            }
+          }
+        }
+      }
+    }
+
+    const duration = safeRhythms[progressionIndex % safeRhythms.length];
     const ticks = DURATION_TICKS[duration] ?? 480;
 
     events.push(
       new MidiWriter.NoteEvent({
         pitch: chord,
         duration,
-        velocity: Math.floor(Math.random() * 20 + 70),
+        velocity: Math.floor(Math.random() * 15 + 75),
       })
     );
 
+    previousChord = chord;
     totalTicks += ticks;
     progressionIndex++;
   }
 
-  return applyHumanization(events);
+  // ✅ Humaniser les événements une fois tous ajoutés
+  return applyHumanization(events, humanizationPresets[genre] ?? {});
 }

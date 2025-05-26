@@ -33,9 +33,9 @@ function Page() {
   };
 
   return (
-    <div className=" z-20 sm:pt-42 lg:pt-58 bg-noirfont-hind flex min-h-screen w-screen flex-col pt-36 md:pb-24 lg:pb-36">
+    <div className="sm:pt-42 lg:pt-58 bg-noirfont-hind z-20 flex min-h-screen w-screen flex-col pt-36 md:pb-24 lg:pb-36">
       {/* Hero Section */}
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex h-screen flex-col items-center justify-center">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-4 text-center xl:mb-36">
           <h1 className="mb-4 text-5xl font-bold md:text-6xl lg:text-7xl">
             Inspire ta prochaine boucle.
@@ -52,15 +52,15 @@ function Page() {
           <Link href={"/control"}>
             <button
               type="button"
-              className="mt-6 rounded-full border border-keppel px-10 py-5 text-keppel transition-all hover:bg-keppel hover:text-noir cursor-pointer font-semibold"
-              >
+              className="mt-6 cursor-pointer rounded-full border bg-misty px-10 py-5 font-semibold text-keppel text-noir transition-all hover:bg-keppel hover:text-noir"
+            >
               Démarrer
             </button>
-           </Link>
+          </Link>
         </div>
 
         {/* WAVE */}
-        <div className="absolute z-0 bottom-0 left-0 right-0 hidden sm:block">
+        <div className="absolute bottom-0 left-0 right-0 z-0 hidden sm:block">
           <svg
             className="block w-full"
             xmlns="http://www.w3.org/2000/svg"

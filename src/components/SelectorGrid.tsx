@@ -3,9 +3,9 @@ import MusicGenreSelect from "@/components/select/MusicGenreSelect";
 import ModeSelect from "@/components/select/ModeSelect";
 import RootNoteSelect from "@/components/select/RootNoteSelect";
 import ScaleTypeSelect from "@/components/select/ScaleTypeSelect";
-import RhythmMultiSelect from "@/components/select/RhythmMultiSelect";
 import TempoSelect from "@/components/select/TempoSelect";
 import { Gem } from "lucide-react";
+import EmotionSelect from "./select/EmotionSelect";
 
 interface SelectorGridProps {
   genre: string;
@@ -16,8 +16,8 @@ interface SelectorGridProps {
   setRootNote: (value: string) => void;
   scaleType: "major" | "minor";
   setScaleType: (value: "major" | "minor") => void;
-  rhythms: string[];
-  setRhythms: (value: string[]) => void;
+  emotion: string,
+  setEmotion: (value: string) => void;
   tempo: number;
   setTempo: (value: number) => void;
   containerVariants: import("framer-motion").Variants;
@@ -34,8 +34,8 @@ export default function SelectorGrid({
   setRootNote,
   scaleType,
   setScaleType,
-  rhythms,
-  setRhythms,
+  emotion,
+  setEmotion,
   tempo,
   setTempo,
   containerVariants,
@@ -46,7 +46,11 @@ export default function SelectorGrid({
     <ModeSelect key="mode" value={mode} onChange={setMode} />,
     <RootNoteSelect key="root" value={rootNote} onChange={setRootNote} />,
     <ScaleTypeSelect key="scale" value={scaleType} onChange={setScaleType} />,
-    <RhythmMultiSelect key="rhythm" value={rhythms} onChange={setRhythms} />,
+    <EmotionSelect
+      key="emotion"
+      value={emotion}
+      onChange={(value) => setEmotion(value as "dreamy")}
+    />,
     <TempoSelect key="tempo" value={tempo} onChange={setTempo} />,
   ];
 

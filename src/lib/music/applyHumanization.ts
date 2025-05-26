@@ -1,22 +1,43 @@
 import MidiWriter from "midi-writer-js";
+import type { HumanizationOptions } from "@/types/types";
 
-type NoteEvent = InstanceType<typeof MidiWriter.NoteEvent>;
-/**
- * Applique une humanisation simple aux événements MIDI :
- * de légères variations de vélocité pour rendre l'interprétation plus naturelle.
- *
- * @param events Liste d’événements MIDI (typiquement des NoteEvent)
- * @returns Nouvelle liste d’événements avec vélocités légèrement modifiées
- */
-export function applyHumanization(events: NoteEvent[]): NoteEvent[] {
-  return events.map((event) => {
-    // Applique une variation aléatoire entre -4 et +3 à la vélocité d’origine
-    const newVelocity = event.velocity + Math.floor(Math.random() * 8 - 4);
+type NoteEvent = InstanceType<typeof MidiWriter.NoteEvent> & {
+  startTick?: number;
+};
 
-    // Crée un nouvel événement MIDI avec la vélocité ajustée
+export function applyHumanization(
+  events: NoteEvent[],
+  options: HumanizationOptions = {}
+): NoteEvent[] {
+  const {
+    velocityRange = [50, 100],
+    velocityVariation = 6,
+    timingVariationTicks = 10,
+    accentPattern = [],
+  } = options;
+
+  return events.map((event, i) => {
+    const baseVelocity = event.velocity ?? 80;
+
+    // 🎚 Accentuation (si fournie)
+    const accentVelocity = accentPattern.length > 0
+      ? accentPattern[i % accentPattern.length]
+      : baseVelocity;
+
+    // 🎛 Vélocité ajustée
+    const variedVelocity = accentVelocity + Math.floor(Math.random() * (2 * velocityVariation + 1) - velocityVariation);
+    const clampedVelocity = Math.max(velocityRange[0], Math.min(velocityRange[1], variedVelocity));
+
+    // ⏱ Décalage aléatoire du startTick
+    const offset = Math.floor(Math.random() * (2 * timingVariationTicks + 1) - timingVariationTicks);
+    const adjustedStartTick = event.startTick !== undefined
+      ? Math.max(0, event.startTick + offset)
+      : undefined;
+
     return new MidiWriter.NoteEvent({
-      ...event, // Recopie tous les autres paramètres (note, durée, etc.)
-      velocity: Math.max(50, Math.min(100, newVelocity)), // Contraint la vélocité entre 50 et 100
+      ...event,
+      velocity: clampedVelocity,
+      ...(adjustedStartTick !== undefined && { startTick: adjustedStartTick }),
     });
   });
 }

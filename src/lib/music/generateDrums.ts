@@ -1,5 +1,7 @@
 import MidiWriter from "midi-writer-js";
 import { drumPresets } from "@/lib/modes/drums";
+import { humanizationPresets } from "@/lib/config/humanization-presets";
+import { applyHumanization } from "./applyHumanization";
 
 type NoteEvent = InstanceType<typeof MidiWriter.NoteEvent>;
 
@@ -12,42 +14,71 @@ const DURATION_TICKS: Record<string, number> = {
   "32": 60,
 };
 
-/**
- * Génère un pattern de batterie avec répétitions dynamiques jusqu’à 2 mesures minimum.
- */
 export function generateDrumsTrack(
   style: keyof typeof drumPresets = "pop",
-  rhythms: string[] = ["8"]
+  rhythms: string[] = ["16"]
 ): NoteEvent[] {
   const events: NoteEvent[] = [];
-  const baseGrid = drumPresets[style];
-  if (!baseGrid) return [];
+  const preset = drumPresets[style];
+  if (!preset || !preset.grid) return [];
 
-  const MIN_TICKS = 1920 * 2; // 🎯 Objectif = 2 mesures
+  const {
+    grid,
+    swing = 0.5,
+    ghostNotes = false,
+    hatVariation = false,
+    velocityRange = [70, 100],
+    fillFrequency = 0,
+  } = preset;
+
+  const MIN_TICKS = 1920 * 2;
   let totalTicks = 0;
   let stepIndex = 0;
+  const stepLength = DURATION_TICKS[rhythms[0]] ?? 120;
 
   while (totalTicks < MIN_TICKS) {
-    const step = baseGrid[stepIndex % baseGrid.length];
+    const step = grid[stepIndex % grid.length];
     const modified = [...step];
 
-    // 🎛️ Variation sur le hi-hat (note MIDI F#2)
-    if (Math.random() < 0.1 && modified.includes("F#2")) {
-      modified.splice(modified.indexOf("F#2"), 1);
-    }
-    if (Math.random() < 0.1) {
-      modified.push("F#2");
+    // 🎛️ Hi-hat variation
+    if (hatVariation) {
+      if (Math.random() < 0.1) {
+        const index = modified.indexOf("F#2");
+        if (index !== -1) modified.splice(index, 1);
+      }
+      if (Math.random() < 0.1) {
+        modified.push("F#2");
+      }
     }
 
-    const notes = modified.filter(Boolean) as string[];
+    // 🥁 Ghost notes
+    if (ghostNotes && stepIndex % 2 === 1 && Math.random() < 0.3) {
+      modified.push("D1");
+    }
+
+    // 🌀 Fills
+    if (fillFrequency > 0 && stepIndex > 0 && stepIndex % 8 === 7) {
+      if (Math.random() < fillFrequency) {
+        modified.push("F3");
+      }
+    }
+
     const duration = rhythms[stepIndex % rhythms.length];
     const ticks = DURATION_TICKS[duration] ?? 240;
 
-    for (const note of notes) {
-      const velocity =
-        note === "F#2"
-          ? Math.floor(Math.random() * 10 + 40) // hat doux
-          : Math.floor(Math.random() * 20 + 70); // kick/snare plus fort
+    for (const note of modified.filter(Boolean) as string[]) {
+      let velocity = Math.floor(Math.random() * (velocityRange[1] - velocityRange[0]) + velocityRange[0]);
+
+      if (note === "F#2") {
+        velocity = Math.floor(Math.random() * 10 + 40);
+      }
+
+      if (note === "D1") {
+        velocity = Math.floor(Math.random() * 10 + 30); // ghost snare
+      }
+
+      const isSwung = rhythms[0] === "16" && stepIndex % 2 === 1;
+      const swingOffset = isSwung ? stepLength * (swing - 0.5) : 0;
 
       events.push(
         new MidiWriter.NoteEvent({
@@ -55,13 +86,15 @@ export function generateDrumsTrack(
           duration,
           velocity,
           channel: 10,
+          startTick: totalTicks + swingOffset,
         })
       );
     }
 
-    totalTicks += ticks;
+    totalTicks += stepLength;
     stepIndex++;
   }
 
-  return events;
+  // ✅ Humanisation après génération complète
+  return applyHumanization(events, humanizationPresets[style] ?? {});
 }
