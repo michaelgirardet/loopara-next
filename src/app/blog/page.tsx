@@ -1,43 +1,13 @@
+'use client'
 import { motion } from "framer-motion";
 import { BookOpen, ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-const articles = [
-  {
-    id: 1,
-    title: "Comment générer des boucles MIDI créatives en 3 étapes",
-    description:
-      "Découvre une méthode simple et rapide pour créer des motifs inspirants avec Loopara.",
-    slug: "boucles-midi-creatives",
-    date: "2025-05-20",
-    excerpt:
-      "Créer des boucles MIDI originales n’a jamais été aussi simple. Suis notre guide pas à pas...",
-  },
-  {
-    id: 2,
-    title: "Top 5 des plugins pour enrichir tes productions MIDI",
-    description:
-      "Une sélection de plugins essentiels pour améliorer le rendu de tes fichiers générés.",
-    slug: "plugins-midi-recommandes",
-    date: "2025-05-15",
-    excerpt:
-      "Les bons outils font la différence ! Voici notre sélection des plugins incontournables.",
-  },
-  {
-    id: 3,
-    title: "MIDI vs Audio : comprendre les différences",
-    description: "Pourquoi le MIDI est si puissant en production musicale ?",
-    slug: "difference-midi-audio",
-    date: "2025-05-10",
-    excerpt:
-      "Ce dossier t’aide à choisir le bon format pour chaque étape de ta production musicale.",
-  },
-];
+import { articles } from "./blog.data";
 
 export default function Blog() {
   return (
     <motion.div
-      className="font-hind mx-auto max-w-6xl px-6 pt-40 pb-32 text-white"
+      className="font-hind mx-auto max-w-6xl px-6 pb-32 pt-40 text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -49,13 +19,12 @@ export default function Blog() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#E2546E] bg-[#E2546E]/10 px-4 py-2 text-sm font-semibold text-[#E2546E]">
+        <span className="mb-3 inline-flex items-center self-start gap-2 rounded-full border border-keppel bg-keppel/10 px-4 py-2 text-sm font-semibold text-keppel">
           <BookOpen size={18} /> Blog officiel
         </span>
-        <h1 className="text-5xl font-bold text-[#E2546E]">Le Blog Loopara</h1>
-        <p className="mt-4 max-w-xl text-gray-300">
-          Conseils créatifs, tutoriels MAO, et actus autour de la génération
-          MIDI.
+        <h1 className="text-5xl font-bold text-misty">Le Blog Loopara</h1>
+        <p className="mt-4 max-w-xl text-white">
+          Conseils créatifs, tutoriels MAO, et actus autour de la génération MIDI.
         </p>
       </motion.header>
 
@@ -75,25 +44,23 @@ export default function Blog() {
         {articles.map((article) => (
           <motion.article
             key={article.id}
-            className="group relative flex flex-col justify-between rounded-xl border border-[#E2546E]/20 bg-gradient-to-br from-[#1d1f24] to-[#2a2d34] p-6 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+            className="group relative flex flex-col justify-between rounded-xl border border-keppel/20 bg-gradient-to-br from-eerie/20 to-eerie p-6 shadow-md transition duration-300 hover:-trankeppel-y-1 hover:shadow-lg"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
           >
             <div className="mb-4">
-              <h2 className="text-xl font-semibold text-[#E2546E] group-hover:underline">
+              <h2 className="text-xl font-semibold text-keppel group-hover:underline">
                 {article.title}
               </h2>
-              <p className="mt-2 text-sm text-gray-400">
-                {article.description}
-              </p>
+              <p className="mt-2 text-sm text-misty">{article.description}</p>
             </div>
             <footer className="mt-4 flex items-center justify-between text-sm text-gray-500">
               <time>{new Date(article.date).toLocaleDateString("fr-FR")}</time>
               <Link
                 href={`/blog/${article.slug}`}
-                className="flex items-center gap-1 text-[#E2546E] hover:underline"
+                className="flex items-center gap-1 text-keppel hover:underline"
               >
                 Lire <ArrowRight size={16} />
               </Link>

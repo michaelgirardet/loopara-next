@@ -1,83 +1,49 @@
+import { Smile, Meh } from "lucide-react";
 import {
-  Listbox,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-  Portal,
-} from "@headlessui/react";
-import { Meh, Smile } from "lucide-react";
-import { useRef } from "react";
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+
+interface ScaleTypeSelectProps {
+  value: "major" | "minor";
+  onChange: (value: "major" | "minor") => void;
+}
 
 const SCALE_TYPES = [
   { label: "Majeure", value: "major" },
   { label: "Mineure", value: "minor" },
 ];
 
-interface ScaleTypeSelectProps {
-  value: string;
-  onChange: (value: "major" | "minor") => void;
-}
-
-export default function ScaleTypeSelect({
-  value,
-  onChange,
-}: ScaleTypeSelectProps) {
-  const selected = SCALE_TYPES.find((s) => s.value === value)?.label ?? value;
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+export default function ScaleTypeSelect({ value, onChange }: ScaleTypeSelectProps) {
+  const selectedLabel = SCALE_TYPES.find((s) => s.value === value)?.label ?? value;
 
   return (
-    <div className="flex flex-col gap-2 font-bold">
-      <div className="flex items-center justify-center gap-5 text-center text-[#FEFEFE]">
-        {" "}
-        {selected === "Majeure" ? <Smile /> : <Meh />}
-        <label htmlFor="scale-type" className="text-[#FEFEFE]">
-          Type de gamme :
+    <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-xl bg-eerie/80 p-6 shadow-xl backdrop-blur-xl">
+      <div className="flex items-center gap-2 text-misty">
+        {value === "major" ? <Smile className="h-5 w-5" /> : <Meh className="h-5 w-5" />}
+        <label htmlFor="scale-type-select" className="text-base font-semibold tracking-wide">
+          Type de gamme
         </label>
       </div>
-      <Listbox value={value} onChange={onChange}>
-        {({ open }) => (
-          <div className="relative block text-center">
-            <ListboxButton
-              id="scale-type"
-              ref={buttonRef}
-              className="h-14 w-60 cursor-pointer rounded-md bg-[#030504] text-center font-medium text-[#FEFEFE] transition duration-300 ease-in hover:bg-zinc-800"
-            >
-              {selected}
-            </ListboxButton>
-            {open && (
-              <Portal>
-                <ListboxOptions
-                  className="fixed z-[1000] mt-1 max-h-80 w-60 overflow-y-scroll rounded-md border border-zinc-600 bg-[#030504] shadow-xl"
-                  style={{
-                    top: buttonRef.current
-                      ? `${buttonRef.current.getBoundingClientRect().bottom}px`
-                      : "0px",
-                    left: buttonRef.current
-                      ? `${buttonRef.current.getBoundingClientRect().left}px`
-                      : "0px",
-                  }}
-                >
-                  {SCALE_TYPES.map((type) => (
-                    <ListboxOption
-                      key={type.value}
-                      value={type.value}
-                      className={({ active }) =>
-                        `flex cursor-pointer rounded-md px-4 py-2 text-center text-xl select-none hover:bg-[#E2768A] ${
-                          active
-                            ? "bg-[#030504]/50 text-[#FEFEFE] backdrop-blur-3xl"
-                            : "text-[#FEFEFE]"
-                        }`
-                      }
-                    >
-                      {type.label}
-                    </ListboxOption>
-                  ))}
-                </ListboxOptions>
-              </Portal>
-            )}
-          </div>
-        )}
-      </Listbox>
+
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger
+          id="scale-type-select"
+             className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
+        >
+          <SelectValue placeholder="Choisir un type" />
+        </SelectTrigger>
+        <SelectContent className="z-50 w-full rounded-md border border-misty/20 bg-eerie/60 backdrop-blur-xl text-white shadow-lg">
+          {SCALE_TYPES.map((type) => (
+            <SelectItem key={type.value} value={type.value} className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-misty">
+              {type.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }

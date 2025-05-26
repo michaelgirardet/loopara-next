@@ -1,8 +1,8 @@
-'use client'
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { Midi } from "@tonejs/midi";
 import Soundfont from "soundfont-player";
-import { Pause, Play } from "lucide-react";
+import { Pause, CirclePlay } from "lucide-react";
 
 interface MidiPlayerPreviewProps {
   midiData: Uint8Array;
@@ -72,7 +72,7 @@ function MidiPlayerPreview({ midiData }: MidiPlayerPreviewProps) {
       <button
         type="button"
         onClick={handlePlayPause}
-        className="flex cursor-pointer items-center gap-2 rounded-md border border-[#fefefe] px-6 py-3 text-center text-sm font-semibold text-[#fefefe] hover:bg-[#fefefe] hover:text-[#030504]"
+        className="flex cursor-pointer items-center gap-2 rounded-full border border-misty px-6 py-3 text-center text-base font-semibold text-misty hover:bg-misty hover:text-noir"
       >
         {isPlaying ? (
           <>
@@ -81,7 +81,7 @@ function MidiPlayerPreview({ midiData }: MidiPlayerPreviewProps) {
           </>
         ) : (
           <>
-            <Play />
+          <CirclePlay />
             <span>Écouter</span>
           </>
         )}

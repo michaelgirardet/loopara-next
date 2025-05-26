@@ -4,4 +4,4 @@ const exports = {
     autoprefixer: {},
   },
 };
-export default exports
+export default exports;

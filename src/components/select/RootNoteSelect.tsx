@@ -1,71 +1,44 @@
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOptions,
-  ListboxOption,
-} from "@headlessui/react";
-import { Portal } from "@headlessui/react";
 import { Music2 } from "lucide-react";
-
-const NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 interface RootNoteSelectProps {
   value: string;
   onChange: (note: string) => void;
 }
 
-export default function RootNoteSelect({
-  value,
-  onChange,
-}: RootNoteSelectProps) {
+const NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+
+export default function RootNoteSelect({ value, onChange }: RootNoteSelectProps) {
   return (
-    <div className="flex flex-col gap-2 font-bold">
-      <div className="flex items-center justify-center gap-5 text-center text-[#FEFEFE]">
-        <Music2 />
-        <label htmlFor="note-select" className="text-[#FEFEFE]">
+    <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-xl bg-eerie/80 p-6 shadow-xl backdrop-blur-xl">
+      <div className="flex items-center gap-2 text-misty">
+        <Music2 className="h-5 w-5" />
+        <label htmlFor="note-select" className="text-base font-semibold tracking-wide">
           Note racine
         </label>
       </div>
-      <Listbox value={value} onChange={onChange}>
-        {({ open }) => (
-          <div className="relative block text-center">
-            <ListboxButton
-              id="note-select"
-              className="h-14 w-60 cursor-pointer rounded-md bg-[#030504]/90 text-center font-medium text-[#FEFEFE] transition duration-300 ease-in hover:bg-zinc-800"
-            >
-              {value}
-            </ListboxButton>
 
-            {open && (
-              <Portal>
-                <ListboxOptions
-                  className="fixed z-[1000] mt-1 max-h-80 w-60 overflow-y-scroll rounded-md border border-zinc-600 bg-[#030504] shadow-xl"
-                  style={{
-                    top: `${document.getElementById("note-select")?.getBoundingClientRect().bottom}px`,
-                    left: `${document.getElementById("note-select")?.getBoundingClientRect().left}px`,
-                  }}
-                >
-                  {NOTES.map((note) => (
-                    <ListboxOption
-                      key={note}
-                      value={note}
-                      className={({ active }) =>
-                        `flex cursor-pointer rounded-md px-4 py-2 text-center text-xl uppercase select-none hover:bg-[#E2768A] ${
-                          active
-                            ? "bg-[#030504]/50 text-[#FEFEFE] backdrop-blur-3xl"
-                            : "text-[#FEFEFE]"
-                        }`
-                      }
-                    >
-                      {note}
-                    </ListboxOption>
-                  ))}
-                </ListboxOptions>
-              </Portal>
-            )}
-          </div>
-        )}
-      </Listbox>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger
+          id="note-select"
+          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
+        >
+          <SelectValue placeholder="Sélectionner une note" />
+        </SelectTrigger>
+        <SelectContent className="z-50 w-full rounded-md border border-misty/20 bg-eerie/60 backdrop-blur-xl text-white shadow-lg placeholder:white">
+          {NOTES.map((note) => (
+            <SelectItem key={note} value={note} className="uppercase cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-misty">
+              {note}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }

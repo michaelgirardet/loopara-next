@@ -18,9 +18,7 @@ export async function loadDrumSamples(style: string, ctx: AudioContext) {
       const response = await fetch(path);
 
       if (!response.ok) {
-        console.warn(
-          `❌ Échec du chargement du fichier : ${path} (HTTP ${response.status})`,
-        );
+        console.warn(`❌ Échec du chargement du fichier : ${path} (HTTP ${response.status})`);
         continue;
       }
 
@@ -32,9 +30,7 @@ export async function loadDrumSamples(style: string, ctx: AudioContext) {
     }
   }
 
-  console.log(
-    `✅ ${Object.keys(drumBuffers).length} samples chargés pour ${style}`,
-  );
+  console.log(`✅ ${Object.keys(drumBuffers).length} samples chargés pour ${style}`);
 }
 
 /**

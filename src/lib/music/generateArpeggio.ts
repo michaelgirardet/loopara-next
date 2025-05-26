@@ -21,7 +21,7 @@ export const generateArpeggio = (
   scale: string[],
   progression: number[] | null,
   rhythms: string[],
-  pattern: "up" | "down" | "updown" | "broken" = "up",
+  pattern: "up" | "down" | "updown" | "broken" = "up"
 ): NoteEvent[] => {
   if (!progression) return [];
 
@@ -47,7 +47,7 @@ export const generateArpeggio = (
           pitch: [note],
           duration,
           velocity,
-        }),
+        })
       );
 
       totalTicks += ticks;
