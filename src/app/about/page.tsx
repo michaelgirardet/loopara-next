@@ -61,7 +61,7 @@ export default function Page() {
         },
       }}
     >
-      <motion.h1 className="text-5xl font-bold text-white" variants={fadeUp} custom={0}>
+      <motion.h1 className="text-5xl font-bold text-keppel" variants={fadeUp} custom={0}>
         À propos de Loopara
       </motion.h1>
 

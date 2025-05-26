@@ -33,10 +33,10 @@ function Page() {
   };
 
   return (
-    <div className="sm:pt-42 lg:pt-58 bg-noirfont-hind flex min-h-screen w-screen flex-col pt-36 md:pb-24 lg:pb-36">
+    <div className=" z-20 sm:pt-42 lg:pt-58 bg-noirfont-hind flex min-h-screen w-screen flex-col pt-36 md:pb-24 lg:pb-36">
       {/* Hero Section */}
-      <div className="relative flex min-h-[calc(100vh_-_20vh)] flex-col justify-between bg-noir text-white">
-        <div className="mx-auto flex max-w-4xl flex-col items-center justify-start px-4 text-center">
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center px-4 text-center xl:mb-36">
           <h1 className="mb-4 text-5xl font-bold md:text-6xl lg:text-7xl">
             Inspire ta prochaine boucle.
           </h1>
@@ -48,16 +48,19 @@ function Page() {
             des motifs personnalisés, choisis ta gamme, ton tempo, et télécharge un fichier prêt à
             l&apos;emploi pour Ableton, FL Studio ou Logic.
           </p>
-          <button
-            type="button"
-            className="mt-6 rounded-full border border-keppel px-10 py-5 text-keppel transition-all hover:bg-keppel hover:text-noir"
-          >
-            Démarrer
-          </button>
+
+          <Link href={"/control"}>
+            <button
+              type="button"
+              className="mt-6 rounded-full border border-keppel px-10 py-5 text-keppel transition-all hover:bg-keppel hover:text-noir cursor-pointer font-semibold"
+              >
+              Démarrer
+            </button>
+           </Link>
         </div>
 
         {/* WAVE */}
-        <div className="absolute bottom-0 left-0 right-0 hidden sm:block">
+        <div className="absolute z-0 bottom-0 left-0 right-0 hidden sm:block">
           <svg
             className="block w-full"
             xmlns="http://www.w3.org/2000/svg"

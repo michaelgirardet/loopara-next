@@ -46,7 +46,7 @@ function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-5" onClick={() => setMenuOpen(false)}>
             <Music className="text-keppel" size={28} />
-            <span className="bg-misty bg-clip-text font-manrope text-2xl font-semibold">
+            <span className="bg-misty bg-clip-text font-manrope text-2xl font-semibold hover:brightness-150">
               Loopara
             </span>
           </Link>
@@ -110,7 +110,7 @@ function Navbar() {
         <div className="mb-6 border-b border-keppelhover/20 pb-6">
           <div className="mb-4 flex items-center gap-2">
             <Music className="text-keppel" size={24} />
-            <span className="text-3xl font-bold text-white">Loopara</span>
+            <span className="text-3xl font-bold text-white font-manrope">Loopara</span>
           </div>
           <p className="text-lg text-white">
             Générateur de motifs MIDI rapide et intuitif pour votre créativité musicale
