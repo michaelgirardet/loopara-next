@@ -20,7 +20,7 @@ export default function TestimonialsCarousel() {
         <AnimatePresence mode="wait">
           <motion.blockquote
             key={homeTestimonials[index].id}
-            className="rounded-xl border border-emerald/30 bg-gradient-to-br from-eerie/10 to-eerie p-8 shadow-lg"
+            className="rounded-xl border border-keppel/30 bg-gradient-to-br from-eerie/10 to-eerie p-8 shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
@@ -46,7 +46,7 @@ export default function TestimonialsCarousel() {
           <button
             type="button"
             onClick={handlePrev}
-            className="rounded-full border border-emerald/30 p-2 text-white transition hover:bg-emeraldhover/20"
+            className="rounded-full border border-keppel/30 p-2 text-white transition hover:bg-keppelhover/20"
             aria-label="Témoignage précédent"
           >
             <ArrowLeft size={20} />
@@ -54,7 +54,7 @@ export default function TestimonialsCarousel() {
           <button
             type="button"
             onClick={handleNext}
-            className="rounded-full border border-emerald/30 p-2 text-white transition hover:bg-emeraldhover/20"
+            className="rounded-full border border-keppel/30 p-2 text-white transition hover:bg-keppelhover/20"
             aria-label="Témoignage suivant"
           >
             <ArrowRight size={20} />

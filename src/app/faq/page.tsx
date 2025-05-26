@@ -49,29 +49,29 @@ export default function Page() {
   };
 
   return (
-    <motion.main className="font-hind mx-auto max-w-3xl px-6 pb-24 pt-36 text-white">
+    <motion.main className="font-hind mx-auto max-w-3xl px-6 pb-24 pt-36 text-white flex flex-col justify-start items-center">
       <motion.header
         className="mb-10 flex items-center gap-3"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <MessageCircle size={32} className="text-emerald" />
-        <h1 className="text-5xl font-bold text-emerald">FAQ – Questions fréquentes</h1>
+        <MessageCircle size={32} className="text-misty" />
+        <h1 className="text-5xl font-bold text-misty">FAQ – Questions fréquentes</h1>
       </motion.header>
 
-      <section className="space-y-4">
+      <section>
         {faqItems.map((item, i) => (
           <motion.div
             key={item.id}
-            className="cursor-pointer rounded-lg border border-[#E2768A]/30 bg-[#2A2D34]/40 p-4 shadow-md"
+            className="cursor-pointer rounded-lg border border-keppel/30 bg-eerie p-4 shadow-md"
             onClick={() => toggle(i)}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
           >
             <div className="flex items-center justify-between">
-              <h2 className="flex items-center gap-2 text-lg font-semibold text-emerald">
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-misty">
                 {item.icon}
                 {item.question}
               </h2>

@@ -30,7 +30,7 @@ export default function RhythmMultiSelect({ value, onChange }: RhythmMultiSelect
       <MultiSelect value={value} onValueChange={onChange}>
         <MultiSelectTrigger
           id="rhythm-select"
-          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald"
+          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
         >
           <MultiSelectValue placeholder="Choisir des durées..." />
         </MultiSelectTrigger>
@@ -39,7 +39,7 @@ export default function RhythmMultiSelect({ value, onChange }: RhythmMultiSelect
             <MultiSelectItem
               key={option.label}
               value={option.value}
-                  className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-emerald/20 hover:text-misty"
+                  className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-misty"
             >
               {option.label}
             </MultiSelectItem>

@@ -70,8 +70,9 @@ export default function Page() {
         beatmakers, enseignants et curieux, il rend la composition ludique, intuitive et musicale.
       </motion.p>
 
+
       <motion.section className="mt-14 space-y-6" variants={fadeUp} custom={2}>
-        <h2 className="text-3xl font-bold text-emerald">Fonctionnalités clés</h2>
+        <h2 className="text-3xl font-bold text-misty/80 text-center">Fonctionnalités clés</h2>
         <ul className="space-y-4">
           {features.map((item, i) => (
             <motion.li
@@ -90,7 +91,7 @@ export default function Page() {
       </motion.section>
 
       <motion.section className="mt-20" variants={fadeUp} custom={features.length + 3}>
-        <h2 className="text-3xl font-bold text-emerald">Notre vision</h2>
+        <h2 className="text-3xl font-bold text-center text-misty/80">Notre vision</h2>
         <div className="mt-4 rounded-lg bg-eerie p-6 shadow-lg">
           <p className="text-xl text-white">
             Notre mission est simple : rendre la composition musicale instantanée, accessible et
@@ -101,14 +102,14 @@ export default function Page() {
       </motion.section>
 
       <motion.section className="mt-20" variants={fadeUp} custom={features.length + 4}>
-        <h2 className="text-3xl font-bold text-emerald">Contribue à Loopara</h2>
+        <h2 className="text-3xl font-bold text-center text-misty/80">Contribue à Loopara</h2>
         <div className="mt-4 flex flex-col items-start gap-4 rounded-lg bg-eerie p-6 shadow-md sm:flex-row sm:items-center sm:justify-between">
           <p className="text-lg text-white">
             Tu veux proposer une fonctionnalité ou faire un retour ? Ton avis nous intéresse !
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-emerald px-5 py-3 font-semibold text-noir transition-all hover:bg-emeraldhover hover:shadow-lg hover:shadow-emerald/10"
+            className="inline-flex items-center gap-2 rounded-full bg-keppel px-5 py-3 font-semibold text-noir transition-all hover:bg-keppelhover hover:shadow-lg hover:shadow-keppel/10"
           >
             <Heart size={20} />
             Nous contacter
@@ -119,7 +120,7 @@ export default function Page() {
       <motion.section className="mt-28 text-center" variants={fadeUp} custom={features.length + 5}>
         <Link
           href="/"
-          className="inline-flex items-center gap-3 rounded-full border border-emerald px-6 py-3 text-lg font-semibold text-emerald transition-all hover:bg-emerald hover:shadow-lg hover:shadow-emerald/10 hover:text-noir"
+          className="inline-flex items-center gap-3 rounded-full border border-keppel px-6 py-3 text-lg font-semibold text-keppel transition-all hover:bg-keppel hover:shadow-lg hover:shadow-keppel/10 hover:text-noir"
         >
           Retour à l'accueil <Home size={18} />
         </Link>

@@ -11,8 +11,8 @@ export default {
   	extend: {
 		colors: {
 			misty: "#FFD9DA",      
-			emerald: "#33CA7F",
-			emeraldhover: "#4BD28F",
+			keppel: "#44BBA4",
+			keppelhover: "#78CEBD",
 			payne: "#606980",
 			eerie: "#1B2021",
 			noir: "#090B0B",        

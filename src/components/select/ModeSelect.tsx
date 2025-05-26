@@ -34,7 +34,7 @@ export default function ModeSelect({ value, onChange }: ModeSelectProps) {
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger
           id="mode-select"
-          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald"
+          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
         >
           <SelectValue placeholder="Choisir un mode..." />
         </SelectTrigger>
@@ -43,7 +43,7 @@ export default function ModeSelect({ value, onChange }: ModeSelectProps) {
             <SelectItem
               key={mode.value}
               value={mode.value}
-              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-emerald/20 hover:text-misty"
+              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-misty"
             >
               {mode.label}
             </SelectItem>

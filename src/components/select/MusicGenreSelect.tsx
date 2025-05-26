@@ -40,7 +40,7 @@ export default function MusicGenreSelect({ value, onChange }: MusicGenreSelectPr
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger
           id="music-genre"
-          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald"
+          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-slate"
         >
           <SelectValue placeholder="Choisir un genre..." />
         </SelectTrigger>
@@ -50,7 +50,7 @@ export default function MusicGenreSelect({ value, onChange }: MusicGenreSelectPr
             <SelectItem
               key={genre.value}
               value={genre.value}
-              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-emerald/20 hover:text-misty"
+              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-slate/20 hover:text-misty"
             >
               {genre.label}
             </SelectItem>

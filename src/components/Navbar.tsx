@@ -45,8 +45,8 @@ function Navbar() {
       <header className={navbarClasses}>
         <div className="container mx-auto flex items-center justify-between px-6">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-            <Music className="text-emerald" size={28} />
+          <Link href="/" className="flex items-center gap-5" onClick={() => setMenuOpen(false)}>
+            <Music className="text-keppel" size={28} />
             <span className="bg-misty bg-clip-text font-manrope text-2xl font-semibold">
               Loopara
             </span>
@@ -58,7 +58,7 @@ function Navbar() {
               <Link
                 key={link.name}
                 href={link.to}
-                className="flex items-center gap-2 font-semibold text-white transition-colors hover:text-emeraldhover"
+                className="flex items-center  gap-2 font-semibold text-white transition-colors hover:text-keppelhover"
               >
                 {link.name}
               </Link>
@@ -67,7 +67,7 @@ function Navbar() {
             {/* Bouton demo/CTA */}
             <Link
               href="/control"
-              className="rounded-full bg-emerald px-5 py-2 font-semibold text-noir transition-all duration-300 hover:bg-emeraldhover hover:shadow-lg hover:shadow-emerald/10"
+              className="rounded-full bg-keppel px-5 py-2 font-semibold text-noir transition-all duration-300 hover:bg-keppelhover hover:shadow-lg hover:shadow-keppel/10"
             >
               Essayer maintenant
             </Link>
@@ -109,9 +109,9 @@ function Navbar() {
           </button>
         </div>
 
-        <div className="mb-6 border-b border-pink-500/20 pb-6">
+        <div className="mb-6 border-b border-keppelhover/20 pb-6">
           <div className="mb-4 flex items-center gap-2">
-            <Music className="text-emerald" size={24} />
+            <Music className="text-keppel" size={24} />
             <span className="text-3xl font-bold text-white">Loopara</span>
           </div>
           <p className="text-lg text-misty">
@@ -127,7 +127,7 @@ function Navbar() {
               className="flex items-center gap-4 text-xl font-medium text-white transition-colors hover:text-misty"
               onClick={toggleMenu}
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-payne text-noir">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/70 text-noir">
                 {link.icon}
               </div>
               {link.name}
@@ -138,7 +138,7 @@ function Navbar() {
           <Link href={"/control"} onClick={toggleMenu}>
             <button
               type="button"
-              className="flex w-full max-w-xs self-center items-center justify-center rounded-lg bg-emerald px-5 py-3 font-semibold text-noir transition-all duration-300 hover:shadow-lg hover:shadow-emerald hover:bg-emeraldhover"
+              className="flex w-full max-w-xs self-center items-center justify-center rounded-lg bg-keppel px-5 py-3 font-semibold text-noir transition-all duration-300 hover:shadow-lg hover:shadow-keppel hover:bg-keppelhover"
               >
               Essayer maintenant
             </button>

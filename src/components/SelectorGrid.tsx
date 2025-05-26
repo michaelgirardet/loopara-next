@@ -60,13 +60,13 @@ export default function SelectorGrid({
     >
       
       <div className="text-center text-5xl font-bold text-misty flex justify-center items-center gap-5"><Gem size={38} />
-        <h1>Loop<span className="text-emerald">Mint</span></h1></div>
+        <h1>Loop<span className="text-keppel">Mint</span></h1></div>
 
       <h2 className="mt-6 text-center text-xl text-misty/90">
   Frais, unique, prêt à jouer — chaque boucle est ta signature.
 </h2>
 
-      <div className="grid grid-cols-1 gap-6 rounded-2xl border border-emerald/20 bg-gradient-to-br from-eerie to-noir p-8 shadow-2xl sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 rounded-2xl border border-keppel/20 bg-gradient-to-br from-eerie to-noir p-8 shadow-2xl sm:grid-cols-2 lg:grid-cols-3">
         {selectors.map((child) => (
           <motion.div
             key={child.key}

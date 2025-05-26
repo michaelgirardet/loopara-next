@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Music className="text-emerald" size={24} />
+              <Music className="text-keppel" size={24} />
               <h3 className="text-xl font-bold text-misty">Loopara</h3>
             </div>
             <p className="max-w-xs text-start text-sm text-misty">
@@ -21,7 +21,7 @@ export default function Footer() {
               <Link href={"/contact"}>
               <button
          type="button"
-                className="rounded-full bg-emerald p-2 transition-colors hover:bg-emeraldhover"
+                className="rounded-full bg-keppel p-2 transition-colors hover:bg-keppelhover"
                 >
                 <Mail size={18} className="text-[#030504]" />
               </button>
@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="my-6 h-px bg-gradient-to-r from-transparent via-emerald/20 to-transparent" />
+        <div className="my-6 h-px bg-gradient-to-r from-transparent via-keppel/20 to-transparent" />
 
         {/* Bottom section with copyright */}
         <div className="flex flex-col items-center justify-between gap-4 pt-4 md:flex-row">
@@ -119,7 +119,7 @@ export default function Footer() {
             >
               Mentions légales
             </Link>
-            <span className="text-emerald ">•</span>
+            <span className="text-keppel ">•</span>
             <Link
               href="/privacy"
               className="text-xs text-misty/70  transition-colors hover:text-misty"

@@ -57,9 +57,9 @@ function page() {
       </div>
 
       {/* Grille de features */}
-      <div className="mx-10 grid w-[70%] grid-cols-1 self-center py-10 md:grid-cols-3 text-center">
-        <div className="mx-5 flex flex-col items-center">
-          <div className="mb-4 inline-block rounded-lg bg-emerald bg-opacity-20 p-3">
+      <div className="mx-10 grid w-[70%] grid-cols-1 self-center py-10 md:grid-cols-3 text-center gap-5">
+        <div className="mx-5 flex flex-col items-center justify-center">
+          <div className="mb-4 inline-block rounded-lg bg-keppel bg-opacity-20 p-3">
             <Zap className="text-white" size={24} />
           </div>
           <h2 className="mb-2 text-2xl font-bold text-misty">Rapide & Intuitif</h2>
@@ -68,7 +68,7 @@ function page() {
           </p>
         </div>
         <div className="mx-5 flex flex-col items-center">
-          <div className="mb-4 inline-block rounded-lg bg-emerald bg-opacity-20 p-3">
+          <div className="mb-4 inline-block rounded-lg bg-keppel bg-opacity-20 p-3">
             <Music className="text-white" size={24} />
           </div>
           <h2 className="mb-2 text-2xl font-bold text-misty">Musicalement pertinent</h2>
@@ -78,7 +78,7 @@ function page() {
           </p>
         </div>
         <div className="mx-5 flex flex-col items-center">
-          <div className="mb-4 inline-block rounded-lg bg-emerald bg-opacity-20 p-3">
+          <div className="mb-4 inline-block rounded-lg bg-keppel bg-opacity-20 p-3">
             <Download className="text-white" size={24} />
           </div>
           <h2 className="mb-2 text-2xl font-bold text-misty">Compatible</h2>
@@ -112,7 +112,7 @@ function page() {
             {homeHowItWorks.map((item, index) => (
               <motion.li
                 key={item.id}
-                className="flex items-start gap-4 rounded-lg border border-emerald/30 bg-eerie p-6 shadow-lg"
+                className="flex items-center justify-center gap-4 rounded-lg border border-keppel/30 bg-eerie p-6 shadow-lg"
                 variants={fadeInUp}
               >
                 <span className="flex w-8 h-8 items-center justify-center rounded-full bg-noir font-bold text-white">
@@ -139,7 +139,7 @@ function page() {
             <h3 className="text-4xl font-bold text-misty">À propos de Loopara</h3>
           </motion.div>
           <motion.div
-            className="rounded-xl border border-emerald/30 bg-eerie p-6 text-lg leading-relaxed text-gray-200 shadow-lg"
+            className="rounded-xl border border-keppel/30 bg-eerie p-6 text-lg leading-relaxed text-gray-200 shadow-lg"
             variants={fadeInUp}
           >
             Loopara est né de la passion pour la MAO et du désir de simplifier la phase de création
@@ -164,7 +164,7 @@ function page() {
             <h3 className="text-4xl font-bold text-misty">Pourquoi choisir Loopara ?</h3>
           </motion.div>
           <motion.div
-            className="space-y-4 rounded-xl border border-emerald/30 bg-eerie p-6 text-lg text-white shadow-lg"
+            className="space-y-4 rounded-xl border border-keppel/30 bg-eerie p-6 text-lg text-white shadow-lg"
             variants={fadeInUp}
           >
             <p>
@@ -205,12 +205,12 @@ function page() {
             <h3 className="text-4xl font-bold text-misty">FAQ – Questions fréquentes</h3>
           </motion.div>
 
-          <div className="space-y-4 rounded-xl border border-emerald/30 bg-eerie p-6 shadow-lg">
+          <div className="space-y-4 rounded-xl border border-keppel/30 bg-eerie p-6 shadow-lg">
             {homeFaq.map((item, index) => (
               <motion.div
                 key={item.id}
                 onClick={() => toggle(index)}
-                className="cursor-pointer border-b border-emerald/10 pb-4"
+                className="cursor-pointer border-b border-keppel/10 pb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -261,7 +261,7 @@ function page() {
           <h4 className="text-3xl font-bold text-misty">À lire aussi</h4>
         </motion.div>
         <motion.div
-          className="rounded-xl border border-emerald/30 bg-eerie p-6 shadow-lg"
+          className="rounded-xl border border-keppel/30 bg-eerie p-6 shadow-lg"
           variants={fadeInUp}
         >
           <p className="text-lg font-medium text-white">
@@ -273,7 +273,7 @@ function page() {
           <Link href={"/control"}>
           <button
             type="button"
-            className="flex w-full items-center justify-center rounded-lg bg-emerald px-5 py-3 font-semibold text-noir transition-all duration-300 hover:shadow-lg hover:shadow-emerald/10 hover:bg-emeraldhover"
+            className="flex w-full items-center justify-center rounded-lg bg-keppel px-5 py-3 font-semibold text-noir transition-all duration-300 hover:shadow-lg hover:shadow-keppel/10 hover:bg-keppelhover"
             >
             Essayer maintenant
           </button>
