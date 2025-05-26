@@ -17,10 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className="h-full">
       <body className={`${hind.className} flex min-h-screen flex-col bg-noir text-white`}>
         <Popover>
-        <Navbar />
-        <main className="flex flex-1">{children}</main>
-        <Footer />
-          </Popover>
+          <Navbar />
+          <main className="flex flex-1">{children}</main>
+          <Footer />
+        </Popover>
       </body>
     </html>
   );

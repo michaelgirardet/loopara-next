@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import { GraduationCap, SlidersHorizontal, Wand2, Download, Music } from "lucide-react";
 import Link from "next/link";
@@ -40,18 +40,16 @@ const steps = [
 
 export default function Page() {
   return (
-    <div className="font-hind mx-auto max-w-5xl px-6 pb-24 pt-36 text-white">
+    <div className="mx-auto max-w-5xl px-6 pb-24 pt-36 font-hind text-white">
       <motion.header
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="mb-20 text-center"
       >
-        <GraduationCap className="mx-auto mb-3 text-misty" size={40} />
-        <h1 className="text-4xl font-bold text-misty">
-          Crée ta première boucle MIDI avec Loopara
-        </h1>
-        <p className="mt-4 text-lg italic text-misty/70">
+        <GraduationCap className="mx-auto mb-3 text-white" size={40} />
+        <h1 className="text-4xl font-bold text-white">Crée ta première boucle MIDI avec Loopara</h1>
+        <p className="mt-4 text-lg italic text-white/70">
           En 4 étapes simples, découvre comment générer ta première idée musicale !
         </p>
       </motion.header>
@@ -73,26 +71,26 @@ export default function Page() {
             </div>
             <div className="max-w-md">
               <h3 className="mb-2 text-2xl font-bold text-keppel">{step.title}</h3>
-              <p className="text-misty">{step.description}</p>
-              <p className="mt-1 text-sm italic text-misty/70">{step.hint}</p>
+              <p className="text-white">{step.description}</p>
+              <p className="mt-1 text-sm italic text-white/70">{step.hint}</p>
             </div>
           </motion.div>
         ))}
       </div>
 
-      <div className="mt-20 text-center text-misty">
+      <div className="mt-20 text-center text-white">
         <p className="mb-2 text-lg font-semibold">🎧 Prêt à essayer ?</p>
-        <p className="text-sm text-misty/70">
+        <p className="text-sm text-white/70">
           Lance Loopara et commence à générer tes premières idées musicales.
         </p>
         <Link href={"/control"}>
-        <button
-          type="button"
-          className="mt-6 rounded-full bg-keppel px-6 py-3 font-bold text-black hover:bg-keppelhover"
+          <button
+            type="button"
+            className="mt-6 rounded-full bg-keppel px-6 py-3 font-bold text-black hover:bg-keppelhover"
           >
-          Lancer Loopara
-        </button>
-          </Link>
+            Lancer Loopara
+          </button>
+        </Link>
       </div>
     </div>
   );

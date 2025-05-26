@@ -14,6 +14,18 @@ export const homeFaq = [
     question: "Puis-je créer plusieurs pistes à la fois ?",
     answer: "Oui, chaque instrument génère une piste distincte dans le même fichier MIDI.",
   },
+  {
+    id: 4,
+    question: "Est-ce que Loopara fonctionne sur mobile ou tablette ?",
+    answer:
+      "Oui, Loopara est responsive. Tu peux générer des idées où que tu sois, depuis ton smartphone ou ta tablette.",
+  },
+  {
+    id: 5,
+    question: "Je ne connais pas le solfège, puis-je quand même l'utiliser ?",
+    answer:
+      "Bien sûr ! Loopara est conçu pour tous. L'interface te guide dans chaque étape, même si tu n'as aucune base en théorie musicale.",
+  },
 ];
 
 export const homeHowItWorks = [

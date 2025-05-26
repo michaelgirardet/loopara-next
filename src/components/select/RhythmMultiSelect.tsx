@@ -21,7 +21,7 @@ const RHYTHM_OPTIONS = [
 export default function RhythmMultiSelect({ value, onChange }: RhythmMultiSelectProps) {
   return (
     <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-xl bg-eerie/80 p-6 shadow-xl backdrop-blur-xl">
-      <div className="flex items-center gap-2 text-misty">
+      <div className="flex items-center gap-2 text-white">
         <Guitar className="h-5 w-5" />
         <label htmlFor="rhythm-select" className="text-base font-semibold tracking-wide">
           Durées rythmiques
@@ -34,12 +34,12 @@ export default function RhythmMultiSelect({ value, onChange }: RhythmMultiSelect
         >
           <MultiSelectValue placeholder="Choisir des durées..." />
         </MultiSelectTrigger>
-        <MultiSelectContent className="z-50 w-full rounded-md border border-misty/20 bg-eerie/60 backdrop-blur-xl text-white shadow-lg">
+        <MultiSelectContent className="z-50 w-full rounded-md border border-misty/20 bg-eerie/60 text-white shadow-lg backdrop-blur-xl">
           {RHYTHM_OPTIONS.map((option) => (
             <MultiSelectItem
               key={option.label}
               value={option.value}
-                  className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-misty"
+              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-white"
             >
               {option.label}
             </MultiSelectItem>

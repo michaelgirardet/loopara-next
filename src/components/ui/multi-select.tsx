@@ -1,21 +1,21 @@
-import * as React from "react"
-import { Check, ChevronDown } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import * as React from "react";
+import { Check, ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface MultiSelectProps {
-  value: string[]
-  onValueChange: (selected: string[]) => void
-  children: React.ReactNode
+  value: string[];
+  onValueChange: (selected: string[]) => void;
+  children: React.ReactNode;
 }
 
-const MultiSelect = ({ value, onValueChange, children }: MultiSelectProps) => {
-  return <>{children}</>
-}
+const MultiSelect = ({ children }: MultiSelectProps) => {
+  return <>{children}</>;
+};
 
 const MultiSelectTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
+  React.ButtonHTMLAttributes<HTMLButtonElement> & { children: React.ReactNode }
 >(({ className, children, ...props }, ref) => {
   return (
     <Popover>
@@ -34,16 +34,16 @@ const MultiSelectTrigger = React.forwardRef<
       </PopoverTrigger>
       {props.children}
     </Popover>
-  )
-})
-MultiSelectTrigger.displayName = "MultiSelectTrigger"
+  );
+});
+MultiSelectTrigger.displayName = "MultiSelectTrigger";
 
 const MultiSelectContent = ({
   className,
   children,
 }: {
-  className?: string
-  children: React.ReactNode
+  className?: string;
+  children: React.ReactNode;
 }) => {
   return (
     <PopoverContent
@@ -55,8 +55,8 @@ const MultiSelectContent = ({
     >
       <div className="max-h-60 overflow-y-auto p-1 text-sm">{children}</div>
     </PopoverContent>
-  )
-}
+  );
+};
 
 const MultiSelectItem = ({
   value,
@@ -65,16 +65,15 @@ const MultiSelectItem = ({
   className,
   children,
 }: {
-  value: string
-  selected?: boolean
-  onSelect?: (val: string) => void
-  className?: string
-  children: React.ReactNode
+  value: string;
+  selected?: boolean;
+  onSelect?: (val: string) => void;
+  className?: string;
+  children: React.ReactNode;
 }) => {
   return (
     <button
-      role="option"
-      aria-selected={selected}
+      type="button"
       onClick={() => onSelect?.(value)}
       className={cn(
         "flex w-full cursor-pointer items-center justify-between rounded-md px-3 py-2 text-sm transition-colors hover:bg-[#E2768A]/20",
@@ -84,18 +83,12 @@ const MultiSelectItem = ({
       <span>{children}</span>
       {selected && <Check className="h-4 w-4 text-keppel" />}
     </button>
-  )
-}
+  );
+};
 
 const MultiSelectValue = ({ value, placeholder }: { value?: string[]; placeholder: string }) => {
-  if (!value || value.length === 0) return <span className="text-gray-400">{placeholder}</span>
-  return <span>{value.join(", ")}</span>
-}
+  if (!value || value.length === 0) return <span className="text-gray-400">{placeholder}</span>;
+  return <span>{value.join(", ")}</span>;
+};
 
-export {
-  MultiSelect,
-  MultiSelectTrigger,
-  MultiSelectContent,
-  MultiSelectItem,
-  MultiSelectValue,
-}
+export { MultiSelect, MultiSelectTrigger, MultiSelectContent, MultiSelectItem, MultiSelectValue };

@@ -5,7 +5,7 @@ import { BookOpen } from "lucide-react";
 export default function Page() {
   return (
     <motion.div
-      className="font-hind pt-38 sm:pt-42 lg:pt-50 mx-auto max-w-3xl px-6 pb-28 text-white md:pb-24 md:pt-48 lg:pb-36"
+      className="pt-38 sm:pt-42 lg:pt-50 mx-auto max-w-3xl px-6 pb-28 font-hind text-white md:pb-24 md:pt-48 lg:pb-36"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -17,47 +17,47 @@ export default function Page() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#E2546E] bg-[#E2546E]/10 px-4 py-2 text-sm font-medium text-[#E2546E]">
+        <div className="mb-4 inline-flex items-center gap-2 self-start rounded-full border border-keppel bg-keppel/10 px-4 py-2 text-sm font-medium text-keppel">
           <BookOpen size={18} />
           Mentions Légales
         </div>
-        <h1 className="text-4xl font-bold text-[#E2546E]">Informations légales et éditeur</h1>
-        <p className="mt-4 max-w-xl text-base text-gray-400">
+        <h1 className="text-4xl font-bold text-white">Informations légales et éditeur</h1>
+        <p className="mt-4 max-w-xl text-base text-white">
           Les mentions suivantes s’appliquent à l’utilisation du site Loopara.app.
         </p>
       </motion.header>
 
       {/* Card-style Legal Notice */}
       <motion.section
-        className="space-y-8 rounded-xl border border-[#E2546E]/20 bg-[#2A2D34]/40 p-8 text-sm leading-relaxed text-gray-300 shadow-md"
+        className="space-y-8 rounded-xl border border-keppel/20 bg-eerie p-8 text-sm leading-relaxed text-gray-300 shadow-md"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
         <div>
-          <h2 className="mb-1 font-semibold text-[#E2546E]">Éditeur du site</h2>
+          <h2 className="mb-1 font-semibold text-keppel">Éditeur du site</h2>
           <p>Ce site est édité par Michaël, créateur de Loopara.</p>
         </div>
 
         <div>
-          <h2 className="mb-1 font-semibold text-[#E2546E]">Responsable de la publication</h2>
+          <h2 className="mb-1 font-semibold text-keppel">Responsable de la publication</h2>
           <p>
             Michaël –{" "}
-            <a href="mailto:contact@loopara.app" className="text-[#E2546E] hover:underline">
+            <a href="mailto:contact@loopara.app" className="text-keppel hover:underline">
               contact@loopara.io
             </a>
           </p>
         </div>
 
         <div>
-          <h2 className="mb-1 font-semibold text-[#E2546E]">Hébergement</h2>
+          <h2 className="mb-1 font-semibold text-keppel">Hébergement</h2>
           <p>
             Le site est hébergé par <strong>Hostinger</strong>.
           </p>
         </div>
 
         <div>
-          <h2 className="mb-1 font-semibold text-[#E2546E]">Propriété intellectuelle</h2>
+          <h2 className="mb-1 font-semibold text-keppel">Propriété intellectuelle</h2>
           <p>
             Tous les éléments du site (textes, visuels, code) sont la propriété exclusive de
             Loopara, sauf indication contraire.
@@ -65,7 +65,7 @@ export default function Page() {
         </div>
 
         <div>
-          <h2 className="mb-1 font-semibold text-[#E2546E]">Conditions d’utilisation</h2>
+          <h2 className="mb-1 font-semibold text-keppel">Conditions d’utilisation</h2>
           <p>
             En naviguant sur ce site, tu acceptes les présentes conditions. Celles-ci peuvent
             évoluer à tout moment.

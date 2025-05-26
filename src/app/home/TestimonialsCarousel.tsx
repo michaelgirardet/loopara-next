@@ -13,7 +13,7 @@ export default function TestimonialsCarousel() {
   return (
     <section className="mx-auto my-24 max-w-3xl px-6">
       <div className="mb-6 flex items-center justify-center gap-3">
-        <p className="text-3xl font-bold text-misty">Témoignages</p>
+        <p className="text-3xl font-bold text-white">Témoignages</p>
       </div>
 
       <div className="relative">
@@ -26,9 +26,7 @@ export default function TestimonialsCarousel() {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-lg font-thin italic text-white">
-              “{homeTestimonials[index].quote}”
-            </p>
+            <p className="text-lg font-thin italic text-white">“{homeTestimonials[index].quote}”</p>
             <div className="mt-4 flex items-center">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-noir font-bold text-white">
                 {homeTestimonials[index].initial}

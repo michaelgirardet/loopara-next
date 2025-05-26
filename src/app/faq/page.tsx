@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MessageCircle, HelpCircle, ShieldCheck, FileText, ChevronDown } from "lucide-react";
@@ -49,15 +49,15 @@ export default function Page() {
   };
 
   return (
-    <motion.main className="font-hind mx-auto max-w-3xl px-6 pb-24 pt-36 text-white flex flex-col justify-start items-center">
+    <motion.main className="mx-auto flex max-w-3xl flex-col items-center justify-start px-6 pb-24 pt-36 font-hind text-white">
       <motion.header
         className="mb-10 flex items-center gap-3"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <MessageCircle size={32} className="text-misty" />
-        <h1 className="text-5xl font-bold text-misty">FAQ – Questions fréquentes</h1>
+        <MessageCircle size={32} className="text-white" />
+        <h1 className="text-5xl font-bold text-white">FAQ – Questions fréquentes</h1>
       </motion.header>
 
       <section>
@@ -71,7 +71,7 @@ export default function Page() {
             transition={{ delay: i * 0.1 }}
           >
             <div className="flex items-center justify-between">
-              <h2 className="flex items-center gap-2 text-lg font-semibold text-misty">
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-white">
                 {item.icon}
                 {item.question}
               </h2>

@@ -145,8 +145,7 @@ const Page = () => {
   };
 
   return (
-  
-    <div className="flex w-full flex-col items-center justify-center text-2xl gap-5">
+    <div className="flex w-full flex-col items-center justify-center gap-5 text-2xl">
       <SelectorGrid
         genre={genre}
         setGenre={setGenre}
@@ -164,7 +163,7 @@ const Page = () => {
         itemVariants={itemVariants}
         onChange={() => {}}
       />
-  
+
       <div className="my-14 flex flex-col gap-5">
         <AnimatePresence mode="wait">
           {isLoading ? (
@@ -172,7 +171,7 @@ const Page = () => {
               key="loading-button"
               disabled
               type="button"
-              className="inline-flex text-noir items-center rounded-full bg-keppel px-6 py-3 text-lg font-semibold text-clack text-center self-center"
+              className="text-clack inline-flex items-center self-center rounded-full bg-keppel px-6 py-3 text-center text-lg font-semibold text-noir"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
@@ -186,7 +185,7 @@ const Page = () => {
                   ease: "linear",
                 }}
                 aria-hidden="true"
-                className="me-3 inline h-6 w-6 text-clacke"
+                className="text-clacke me-3 inline h-6 w-6"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +211,7 @@ const Page = () => {
               animate="visible"
               whileHover="hover"
               whileTap="tap"
-              className="text-base mx-5 flex cursor-pointer items-center justify-center self-center gap-4 rounded-full bg-keppel px-8 py-4 font-semibold text-noir shadow-lg hover:bg-keppelhover"
+              className="mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full bg-keppel px-8 py-4 text-base font-semibold text-noir shadow-lg hover:bg-keppelhover"
             >
               <motion.div
                 animate={{
@@ -231,36 +230,27 @@ const Page = () => {
             </motion.button>
           )}
         </AnimatePresence>
-  
+
         <AnimatePresence>
-          {isSuccess && (
-            <Toast key="toast-success" message="Fichier généré avec succès !" />
+          {isSuccess && <Toast key="toast-success" message="Fichier généré avec succès !" />}
+
+          {midiData && midiBlob && (
+            <div className="mt-6 flex items-center justify-center gap-5">
+              <MidiPlayerPreview key="midi-player" midiData={midiData} mode={mode} genre={genre} />
+              <a
+                href={URL.createObjectURL(midiBlob)}
+                download={`loopara-${mode}-${Date.now()}.mid`}
+                className="flex items-center gap-2 rounded-md border border-keppel px-6 py-3 text-center text-base font-medium text-keppel shadow-md transition-all duration-300 hover:bg-keppelhover hover:text-noir"
+              >
+                <FileDown className="h-5 w-5" />
+                Télécharger
+              </a>
+            </div>
           )}
-  
-  {midiData && midiBlob && (
-  <div className="mt-6 flex items-center justify-center gap-5">
-    <MidiPlayerPreview
-      key="midi-player"
-      midiData={midiData}
-      mode={mode}
-      genre={genre}
-    />
-    <a
-      href={URL.createObjectURL(midiBlob)}
-      download={`loopara-${mode}-${Date.now()}.mid`}
-      className="flex items-center text-base gap-2 rounded-md border border-keppel px-6 py-3 text-center font-medium text-keppel shadow-md transition-all duration-300 hover:bg-keppelhover hover:text-noir"
-    >
-      <FileDown className="h-5 w-5" />
-      Télécharger
-    </a>
-  </div>
-)}
         </AnimatePresence>
       </div>
     </div>
-
   );
-  
 };
 
 export default Page;

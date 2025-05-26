@@ -55,16 +55,19 @@ export default function SelectorGrid({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="mx-auto mt-24 w-full max-w-7xl scroll-mt-28 px-4 sm:px-8 lg:px-12 flex flex-col gap-5"
+      className="mx-auto mt-24 flex w-full max-w-7xl scroll-mt-28 flex-col gap-5 px-4 sm:px-8 lg:px-12"
       id="generate-grid"
     >
-      
-      <div className="text-center text-5xl font-bold text-misty flex justify-center items-center gap-5"><Gem size={38} />
-        <h1>Loop<span className="text-keppel">Mint</span></h1></div>
+      <div className="flex items-center justify-center gap-5 text-center text-5xl font-bold text-white">
+        <Gem size={38} />
+        <h1>
+          Loop<span className="text-keppel">Mint</span>
+        </h1>
+      </div>
 
-      <h2 className="mt-6 text-center text-xl text-misty/90">
-  Frais, unique, prêt à jouer — chaque boucle est ta signature.
-</h2>
+      <h2 className="mt-6 text-center text-xl text-white/90">
+        Frais, unique, prêt à jouer — chaque boucle est ta signature.
+      </h2>
 
       <div className="grid grid-cols-1 gap-6 rounded-2xl border border-keppel/20 bg-gradient-to-br from-eerie to-noir p-8 shadow-2xl sm:grid-cols-2 lg:grid-cols-3">
         {selectors.map((child) => (
