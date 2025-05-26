@@ -63,7 +63,7 @@ export default function Page() {
       <motion.h1
         variants={fadeIn}
         custom={0}
-        className="text-center text-5xl font-bold text-[#E2768A] sm:text-5xl lg:text-6xl"
+        className="text-center text-5xl font-bold text-keppel sm:text-5xl lg:text-6xl"
       >
         Contacte-nous
       </motion.h1>
@@ -71,7 +71,7 @@ export default function Page() {
       <motion.p
         variants={fadeIn}
         custom={1}
-        className="mt-6 max-w-2xl text-center text-lg font-semibold text-[#FEFEFE]"
+        className="mt-6 max-w-2xl text-center text-lg font-semibold text-white"
       >
         Une idée, une suggestion ou juste envie de dire bonjour ?<br />
         Laisse-nous un message — on te répond vite !
@@ -81,7 +81,7 @@ export default function Page() {
         onSubmit={handleSubmit}
         variants={fadeIn}
         custom={2}
-        className="mt-10 w-full max-w-2xl space-y-6 rounded-2xl bg-[#2A2D34]/30 p-8 shadow-xl"
+        className="mt-10 w-full max-w-2xl space-y-6 rounded-2xl bg-eerie p-8 shadow-xl"
       >
         {[
           {
@@ -100,7 +100,7 @@ export default function Page() {
           <div key={name} className="flex flex-col space-y-2">
             <label
               htmlFor={name}
-              className="text-sm font-semibold text-[#fefefe]"
+              className="text-sm font-semibold text-white"
             >
               {label}
             </label>
@@ -112,7 +112,7 @@ export default function Page() {
               value={form[name as keyof typeof form]}
               onChange={handleChange}
               placeholder={placeholder}
-              className="rounded-md border border-[#2C2F31] bg-[#030504] px-4 py-3 text-[#FEFEFE] placeholder-[#888] outline-none focus:border-[#E2768A] focus:ring-2 focus:ring-[#E2768A]"
+              className="rounded-md border border-eerie bg-noir px-4 py-3 text-white placeholder-misty/70 outline-none focus:border-keppel focus:ring-2 focus:ring-keppelhover"
             />
           </div>
         ))}
@@ -120,7 +120,7 @@ export default function Page() {
         <div className="flex flex-col space-y-2">
           <label
             htmlFor="message"
-            className="text-sm font-semibold text-[#fefefe]"
+            className="text-sm font-semibold text-white"
           >
             Ton message
           </label>
@@ -132,14 +132,14 @@ export default function Page() {
             value={form.message}
             onChange={handleChange}
             placeholder="Dis-nous tout !"
-            className="rounded-md border border-[#2C2F31] bg-[#030504] px-4 py-3 text-[#FEFEFE] placeholder-[#888] outline-none focus:border-[#E2768A] focus:ring-2 focus:ring-[#E2768A]"
+            className="rounded-md border border-eerie bg-noir px-4 py-3 text-white placeholder-misty/70 outline-none focus:border-keppel focus:ring-2 focus:ring-keppel"
           />
         </div>
 
         <div className="flex justify-center">
           <motion.button
             type="submit"
-            className="mt-4 flex items-center gap-2 rounded-full border border-[#E2768A] px-6 py-3 text-sm font-medium text-[#E2768A] transition-all hover:bg-[#E2768A] hover:text-[#030504] focus:outline-none focus:ring-4 focus:ring-purple-300"
+            className="mt-4 flex items-center gap-2 rounded-full border border-keppel px-6 py-3 text-sm font-medium text-keppel transition-all hover:bg-keppel hover:text-[#030504] focus:outline-none focus:ring-4 focus:ring-purple-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

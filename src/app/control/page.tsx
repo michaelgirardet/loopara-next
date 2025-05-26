@@ -1,14 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import type { GenerateProps } from "@/types/types";
-import { WandSparkles } from "lucide-react";
+import { WandSparkles, FileDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Toast from "@/components/Toast";
 import MidiPlayerPreview from "@/components/MidiPlayerPreview";
 import SelectorGrid from "@/components/SelectorGrid";
 
 const Page = () => {
-  const [rootNote, setRootNote] = useState("Do");
+  const [rootNote, setRootNote] = useState("C");
   const [scaleType, setScaleType] = useState<"major" | "minor">("major");
   const [mode, setMode] = useState<"arpeggios" | "chords" | "melody" | "drums">("arpeggios");
   const [genre, setGenre] = useState("pop");
@@ -139,7 +139,6 @@ const Page = () => {
     },
     hover: {
       scale: 1.05,
-      backgroundColor: "#E6899A",
       transition: { duration: 0.2 },
     },
     tap: { scale: 0.95 },
@@ -147,7 +146,7 @@ const Page = () => {
 
   return (
   
-    <div className="flex w-full flex-col items-center justify-center text-2xl">
+    <div className="flex w-full flex-col items-center justify-center text-2xl gap-5">
       <SelectorGrid
         genre={genre}
         setGenre={setGenre}
@@ -166,14 +165,14 @@ const Page = () => {
         onChange={() => {}}
       />
   
-      <div className="my-14">
+      <div className="my-14 flex flex-col gap-5">
         <AnimatePresence mode="wait">
           {isLoading ? (
             <motion.button
               key="loading-button"
               disabled
               type="button"
-              className="inline-flex text-black items-center rounded-full bg-[#E2768A] px-6 py-3 text-lg font-semibold text-clack text-center"
+              className="inline-flex text-noir items-center rounded-full bg-keppel px-6 py-3 text-lg font-semibold text-clack text-center self-center"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
@@ -213,7 +212,7 @@ const Page = () => {
               animate="visible"
               whileHover="hover"
               whileTap="tap"
-              className="text-md mx-5 flex cursor-pointer items-center justify-center gap-4 rounded-full border bg-[#e2768a] px-6 py-3 text-lg font-semibold text-[#030504] shadow-lg hover:bg-[#E6899A]"
+              className="text-base mx-5 flex cursor-pointer items-center justify-center self-center gap-4 rounded-full bg-keppel px-8 py-4 font-semibold text-noir shadow-lg hover:bg-keppelhover"
             >
               <motion.div
                 animate={{
@@ -238,23 +237,24 @@ const Page = () => {
             <Toast key="toast-success" message="Fichier généré avec succès !" />
           )}
   
-          {midiData && midiBlob && (
-            <div className="mt-6 flex flex-col items-center justify-center gap-4">
-              <MidiPlayerPreview
-                key="midi-player"
-                midiData={midiData}
-                mode={mode}
-                genre={genre}
-              />
-              <a
-                href={URL.createObjectURL(midiBlob)}
-                download={`loopara-${mode}-${Date.now()}.mid`}
-                className="flex items-center gap-2 rounded-md border px-6 py-3 text-center font-medium text-[#E2768A] shadow-md transition-all duration-300 hover:bg-[#E2768A] hover:text-black"
-              >
-                Télécharger le fichier MIDI
-              </a>
-            </div>
-          )}
+  {midiData && midiBlob && (
+  <div className="mt-6 flex items-center justify-center gap-5">
+    <MidiPlayerPreview
+      key="midi-player"
+      midiData={midiData}
+      mode={mode}
+      genre={genre}
+    />
+    <a
+      href={URL.createObjectURL(midiBlob)}
+      download={`loopara-${mode}-${Date.now()}.mid`}
+      className="flex items-center text-base gap-2 rounded-md border border-keppel px-6 py-3 text-center font-medium text-keppel shadow-md transition-all duration-300 hover:bg-keppelhover hover:text-noir"
+    >
+      <FileDown className="h-5 w-5" />
+      Télécharger
+    </a>
+  </div>
+)}
         </AnimatePresence>
       </div>
     </div>

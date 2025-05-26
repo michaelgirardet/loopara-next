@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { X, Menu, Music, Info, Mail, Home } from "lucide-react";
 import Link from "next/link";
 
@@ -32,6 +32,8 @@ function Navbar() {
     open: { x: 0 },
   };
 
+
+  // Liens de navigation 
   const navLinks = [
     { name: "Accueil", to: "/", icon: <Home size={20} /> },
     { name: "À Propos", to: "/about", icon: <Info size={20} /> },
@@ -43,9 +45,9 @@ function Navbar() {
       <header className={navbarClasses}>
         <div className="container mx-auto flex items-center justify-between px-6">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-            <Music className="text-[#E2768A]" size={28} />
-            <span className="bg-[#D43552] bg-clip-text text-2xl font-bold text-transparent">
+          <Link href="/" className="flex items-center gap-5" onClick={() => setMenuOpen(false)}>
+            <Music className="text-keppel" size={28} />
+            <span className="bg-misty bg-clip-text font-manrope text-2xl font-semibold">
               Loopara
             </span>
           </Link>
@@ -56,7 +58,7 @@ function Navbar() {
               <Link
                 key={link.name}
                 href={link.to}
-                className="flex items-center gap-2 font-semibold text-[#FEFEFE] underline-offset-4 transition-colors hover:underline"
+                className="flex items-center  gap-2 font-semibold text-white transition-colors hover:text-keppelhover"
               >
                 {link.name}
               </Link>
@@ -65,7 +67,7 @@ function Navbar() {
             {/* Bouton demo/CTA */}
             <Link
               href="/control"
-              className="rounded-full bg-[#E2768A] px-5 py-2 font-semibold text-black transition-all duration-300 hover:bg-[#E6899A] hover:shadow-lg hover:shadow-pink-500/20"
+              className="rounded-full bg-keppel px-5 py-2 font-semibold text-noir transition-all duration-300 hover:bg-keppelhover hover:shadow-lg hover:shadow-keppel/10"
             >
               Essayer maintenant
             </Link>
@@ -75,13 +77,13 @@ function Navbar() {
           <button
             type="button"
             onClick={toggleMenu}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#fefefe] md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white md:hidden"
             aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             {menuOpen ? (
-              <X size={24} className="text-[#fefefe]" />
+              <X size={24} className="text-white" />
             ) : (
-              <Menu size={24} className="text-[#fefefe]" />
+              <Menu size={24} className="text-white" />
             )}
           </button>
         </div>
@@ -90,7 +92,7 @@ function Navbar() {
 
       {/* Menu mobile */}
       <motion.div
-        className="font-hind fixed right-0 top-0 z-50 h-full w-full bg-[#0F1012] p-8 shadow-xl md:hidden"
+        className="font-hind fixed right-0 top-0 z-50 h-full w-full bg-noir p-8 shadow-xl md:hidden"
         variants={menuVariants}
         initial="closed"
         animate={menuOpen ? "open" : "closed"}
@@ -100,19 +102,19 @@ function Navbar() {
           <button
             type="button"
             onClick={toggleMenu}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#fefefe]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white"
             aria-label="Fermer le menu"
           >
-            <X size={20} className="text-[#fefefe]" />
+            <X size={20} className="text-white" />
           </button>
         </div>
 
-        <div className="mb-6 border-b border-pink-500/20 pb-6">
+        <div className="mb-6 border-b border-keppelhover/20 pb-6">
           <div className="mb-4 flex items-center gap-2">
-            <Music className="text-[#E2768A]" size={24} />
-            <span className="text-3xl font-bold text-[#D43552]">Loopara</span>
+            <Music className="text-keppel" size={24} />
+            <span className="text-3xl font-bold text-white">Loopara</span>
           </div>
-          <p className="text-lg text-gray-300">
+          <p className="text-lg text-misty">
             Générateur de motifs MIDI rapide et intuitif pour votre créativité musicale
           </p>
         </div>
@@ -122,10 +124,10 @@ function Navbar() {
             <Link
               key={link.name}
               href={link.to}
-              className="flex items-center gap-4 text-xl font-medium text-gray-200 transition-colors hover:text-pink-500"
+              className="flex items-center gap-4 text-xl font-medium text-white transition-colors hover:text-misty"
               onClick={toggleMenu}
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E2768A] text-[#030504]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/70 text-noir">
                 {link.icon}
               </div>
               {link.name}
@@ -136,7 +138,7 @@ function Navbar() {
           <Link href={"/control"} onClick={toggleMenu}>
             <button
               type="button"
-              className="flex w-full max-w-xs self-center items-center justify-center rounded-lg bg-[#E2768A] px-5 py-3 font-medium text-[#030504] transition-all duration-300 hover:shadow-lg"
+              className="flex w-full max-w-xs self-center items-center justify-center rounded-lg bg-keppel px-5 py-3 font-semibold text-noir transition-all duration-300 hover:shadow-lg hover:shadow-keppel hover:bg-keppelhover"
               >
               Essayer maintenant
             </button>

@@ -16,10 +16,10 @@ const NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
 export default function RootNoteSelect({ value, onChange }: RootNoteSelectProps) {
   return (
-    <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-xl bg-[#121417] p-6 text-sm shadow-lg sm:text-base">
-      <div className="flex items-center gap-2 text-white">
+    <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-xl bg-eerie/80 p-6 shadow-xl backdrop-blur-xl">
+      <div className="flex items-center gap-2 text-misty">
         <Music2 className="h-5 w-5" />
-        <label htmlFor="note-select" className="text-base font-semibold">
+        <label htmlFor="note-select" className="text-base font-semibold tracking-wide">
           Note racine
         </label>
       </div>
@@ -27,13 +27,13 @@ export default function RootNoteSelect({ value, onChange }: RootNoteSelectProps)
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger
           id="note-select"
-          className="w-full rounded-md border border-zinc-700 bg-[#1c1d21] px-4 py-3 text-white focus:ring-2 focus:ring-[#E2768A]"
+          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
         >
           <SelectValue placeholder="Sélectionner une note" />
         </SelectTrigger>
-        <SelectContent className="bg-[#1c1d21] text-white">
+        <SelectContent className="z-50 w-full rounded-md border border-misty/20 bg-eerie/60 backdrop-blur-xl text-white shadow-lg placeholder:white">
           {NOTES.map((note) => (
-            <SelectItem key={note} value={note} className="uppercase">
+            <SelectItem key={note} value={note} className="uppercase cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-misty">
               {note}
             </SelectItem>
           ))}
