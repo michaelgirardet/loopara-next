@@ -20,26 +20,26 @@ const RHYTHM_OPTIONS = [
 
 export default function RhythmMultiSelect({ value, onChange }: RhythmMultiSelectProps) {
   return (
-    <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-xl bg-[#121417] p-6 text-sm shadow-lg sm:text-base">
-      <div className="flex items-center gap-2 text-white">
+    <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-xl bg-eerie/80 p-6 shadow-xl backdrop-blur-xl">
+      <div className="flex items-center gap-2 text-misty">
         <Guitar className="h-5 w-5" />
-        <label htmlFor="rhythm-select" className="text-base font-semibold">
+        <label htmlFor="rhythm-select" className="text-base font-semibold tracking-wide">
           Durées rythmiques
         </label>
       </div>
       <MultiSelect value={value} onValueChange={onChange}>
         <MultiSelectTrigger
           id="rhythm-select"
-          className="w-full rounded-md border border-zinc-700 bg-[#1c1d21] px-4 py-3 text-white focus:ring-2 focus:ring-[#E2768A]"
+          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald"
         >
           <MultiSelectValue placeholder="Choisir des durées..." />
         </MultiSelectTrigger>
-        <MultiSelectContent className="z-50 w-full rounded-md border border-zinc-700 bg-[#1c1d21] text-white">
+        <MultiSelectContent className="z-50 w-full rounded-md border border-misty/20 bg-eerie/60 backdrop-blur-xl text-white shadow-lg">
           {RHYTHM_OPTIONS.map((option) => (
             <MultiSelectItem
-              key={option.value}
+              key={option.label}
               value={option.value}
-              className="cursor-pointer px-4 py-2 text-sm hover:bg-[#E2768A]/20"
+                  className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-emerald/20 hover:text-misty"
             >
               {option.label}
             </MultiSelectItem>

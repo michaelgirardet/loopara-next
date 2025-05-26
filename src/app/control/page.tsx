@@ -8,7 +8,7 @@ import MidiPlayerPreview from "@/components/MidiPlayerPreview";
 import SelectorGrid from "@/components/SelectorGrid";
 
 const Page = () => {
-  const [rootNote, setRootNote] = useState("Do");
+  const [rootNote, setRootNote] = useState("C");
   const [scaleType, setScaleType] = useState<"major" | "minor">("major");
   const [mode, setMode] = useState<"arpeggios" | "chords" | "melody" | "drums">("arpeggios");
   const [genre, setGenre] = useState("pop");
@@ -139,7 +139,6 @@ const Page = () => {
     },
     hover: {
       scale: 1.05,
-      backgroundColor: "#E6899A",
       transition: { duration: 0.2 },
     },
     tap: { scale: 0.95 },
@@ -173,7 +172,7 @@ const Page = () => {
               key="loading-button"
               disabled
               type="button"
-              className="inline-flex text-black items-center rounded-full bg-[#E2768A] px-6 py-3 text-lg font-semibold text-clack text-center"
+              className="inline-flex text-noir items-center rounded-full bg-emerald px-6 py-3 text-lg font-semibold text-clack text-center"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
@@ -213,7 +212,7 @@ const Page = () => {
               animate="visible"
               whileHover="hover"
               whileTap="tap"
-              className="text-md mx-5 flex cursor-pointer items-center justify-center gap-4 rounded-full border bg-[#e2768a] px-6 py-3 text-lg font-semibold text-[#030504] shadow-lg hover:bg-[#E6899A]"
+              className="text-md mx-5 flex cursor-pointer items-center justify-center gap-4 rounded-full border bg-emerald px-6 py-3 text-lg font-semibold text-noir shadow-lg hover:bg-emeraldhover"
             >
               <motion.div
                 animate={{
@@ -249,7 +248,7 @@ const Page = () => {
               <a
                 href={URL.createObjectURL(midiBlob)}
                 download={`loopara-${mode}-${Date.now()}.mid`}
-                className="flex items-center gap-2 rounded-md border px-6 py-3 text-center font-medium text-[#E2768A] shadow-md transition-all duration-300 hover:bg-[#E2768A] hover:text-black"
+                className="flex items-center gap-2 rounded-md border px-6 py-3 text-center font-medium text-emerald shadow-md transition-all duration-300 hover:bg-emeraldhover hover:text-noir"
               >
                 Télécharger le fichier MIDI
               </a>

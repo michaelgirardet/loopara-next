@@ -13,7 +13,7 @@ export default function Page() {
     >
       {/* Header */}
       <header className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-[#E2768A]">Centre de support Loopara</h1>
+        <h1 className="text-4xl font-bold text-emerald">Centre de support Loopara</h1>
         <p className="mt-4 text-lg text-gray-300">
           Besoin d’aide ? Tu es au bon endroit. Explore les ressources ou contacte-nous.
         </p>
@@ -29,7 +29,7 @@ export default function Page() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-[#E2768A]">
+          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-emerald">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E2768A]/20 backdrop-blur-sm">
               <HelpCircle size={24} />
             </div>
@@ -38,7 +38,7 @@ export default function Page() {
           <p className="mb-4 text-gray-300">
             La majorité des questions courantes sont déjà répondues ici.
           </p>
-          <Link href="/faq" className="text-sm font-medium text-[#E2768A] hover:underline">
+          <Link href="/faq" className="text-sm font-medium text-emerald hover:underline">
             Lire la FAQ →
           </Link>
         </motion.div>
@@ -51,7 +51,7 @@ export default function Page() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-[#E2768A]">
+          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-emerald">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E2768A]/20 backdrop-blur-sm">
               <BookOpen size={24} />
             </div>
@@ -60,7 +60,7 @@ export default function Page() {
           <p className="mb-4 text-gray-300">
             Apprends à utiliser Loopara avec nos tutoriels pratiques.
           </p>
-          <Link href="/tutoriel" className="text-sm font-medium text-[#E2768A] hover:underline">
+          <Link href="/tutoriel" className="text-sm font-medium text-emerald hover:underline">
             Accéder aux tutoriels →
           </Link>
         </motion.div>
@@ -73,7 +73,7 @@ export default function Page() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-[#E2768A]">
+          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-emerald">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E2768A]/20 backdrop-blur-sm">
               <Mail size={24} />
             </div>
@@ -82,7 +82,7 @@ export default function Page() {
           <p className="mb-4 text-gray-300">
             Tu n’as pas trouvé ce que tu cherchais ? Tu peux nous écrire directement.
           </p>
-          <Link href="/contact" className="text-sm font-medium text-[#E2768A] hover:underline">
+          <Link href="/contact" className="text-sm font-medium text-emerald hover:underline">
             Contacter l’équipe Loopara →
           </Link>
         </motion.div>

@@ -56,8 +56,8 @@ export default function Page() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <MessageCircle size={32} className="text-[#E2768A]" />
-        <h1 className="text-5xl font-bold text-[#E2768A]">FAQ – Questions fréquentes</h1>
+        <MessageCircle size={32} className="text-emerald" />
+        <h1 className="text-5xl font-bold text-emerald">FAQ – Questions fréquentes</h1>
       </motion.header>
 
       <section className="space-y-4">
@@ -71,7 +71,7 @@ export default function Page() {
             transition={{ delay: i * 0.1 }}
           >
             <div className="flex items-center justify-between">
-              <h2 className="flex items-center gap-2 text-lg font-semibold text-[#E2768A]">
+              <h2 className="flex items-center gap-2 text-lg font-semibold text-emerald">
                 {item.icon}
                 {item.question}
               </h2>

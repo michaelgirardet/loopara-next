@@ -9,7 +9,6 @@ import {
   ArrowRight,
   ChevronDown,
 } from "lucide-react";
-import type { GenerateProps } from "@/types/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { homeFaq, homeHowItWorks } from "./home/home.data";
 import TestimonialsCarousel from "@/app/home/TestimonialsCarousel";
@@ -34,14 +33,14 @@ function page() {
   };
 
   return (
-    <div className="font-hind text-powder pt-40 sm:pt-42 lg:pt-58 flex min-h-screen w-screen flex-col bg-[#030504] pb-16 md:pb-24 md:pt-56 lg:pb-36">
+    <div className="font-hind text-powder pt-40 sm:pt-42 lg:pt-58 flex min-h-screen w-screen flex-col bg-noir pb-16 md:pb-24 md:pt-56 lg:pb-36">
       {/* Hero Section */}
-      <div className="mb-16 flex flex-col items-center justify-center text-center">
+      <div className="mb-16 flex flex-col items-center justify-center text-center ">
         <div className="relative">
-          <h1 className="mb-2 bg-clip-text text-5xl font-bold text-[#E2768A] md:text-6xl lg:text-7xl">
+          <h1 className="mb-2 bg-clip-text text-5xl font-bold text-misty md:text-6xl lg:text-7xl">
             Inspire ta prochaine boucle.
           </h1>
-          <h2 className="bg-[#E2768A] bg-clip-text text-5xl font-bold text-transparent md:text-6xl lg:text-7xl">
+          <h2 className="bg-misty bg-clip-text text-5xl font-bold text-transparent md:text-6xl lg:text-7xl">
             En une seconde.
           </h2>
         </div>
@@ -50,58 +49,40 @@ function page() {
           Laisse-toi surprendre - chaque clic est une nouvelle idée musicale !
         </h2>
 
-        <p className="mx-5 mt-6 max-w-2xl text-lg text-gray-200">
+        <p className="mx-5 mt-6 max-w-2xl text-lg text-white">
           Loopara est un générateur de fichiers MIDI simple et rapide. Crée en quelques secondes des
           motifs personnalisés, choisis ta gamme, ton tempo, et télécharge un fichier prêt à
           l'emploi pour Ableton, FL Studio ou Logic.
         </p>
       </div>
 
-      {/* Preview Section
-      {midiData && (
-        <div className="flex w-full items-center justify-center gap-4">
-          <h3 className="sr-only">Aperçu du motif et téléchargement</h3>
-          <MidiPlayerPreview midiData={midiData} mode={mode} genre={genre} />
-          {midiBlob && (
-            <a
-              href={URL.createObjectURL(midiBlob)}
-              download={`loopara-arrangement-${Date.now()}.mid`}
-              className="flex items-center gap-2 rounded-md border px-6 py-3 text-center font-medium text-[#E2768A] shadow-md transition-all duration-300 hover:bg-[#E2768A] hover:text-black"
-            >
-              <Download />
-              Télécharger
-            </a>
-          )}
-        </div>
-      )} */}
-
       {/* Grille de features */}
-      <div className="mx-10 grid w-[70%] grid-cols-1 self-center py-10 md:grid-cols-3">
+      <div className="mx-10 grid w-[70%] grid-cols-1 self-center py-10 md:grid-cols-3 text-center">
         <div className="mx-5 flex flex-col items-center">
-          <div className="mb-4 inline-block rounded-lg bg-[#E2768A] bg-opacity-20 p-3">
+          <div className="mb-4 inline-block rounded-lg bg-emerald bg-opacity-20 p-3">
             <Zap className="text-white" size={24} />
           </div>
-          <h2 className="mb-2 text-2xl font-bold text-[#E2768A]">Rapide & Intuitif</h2>
-          <p className="text-lg text-gray-200">
+          <h2 className="mb-2 text-2xl font-bold text-misty">Rapide & Intuitif</h2>
+          <p className="text-lg text-white ">
             Génère des patterns MIDI en quelques secondes, sans complexité inutile.
           </p>
         </div>
         <div className="mx-5 flex flex-col items-center">
-          <div className="mb-4 inline-block rounded-lg bg-[#E2768A] bg-opacity-20 p-3">
+          <div className="mb-4 inline-block rounded-lg bg-emerald bg-opacity-20 p-3">
             <Music className="text-white" size={24} />
           </div>
-          <h2 className="mb-2 text-2xl font-bold text-[#E2768A]">Musicalement pertinent</h2>
-          <p className="text-lg text-gray-200">
+          <h2 className="mb-2 text-2xl font-bold text-misty">Musicalement pertinent</h2>
+          <p className="text-lg text-white">
             Des patterns qui respectent les règles musicales, parfaits pour démarrer tes
             compositions.
           </p>
         </div>
         <div className="mx-5 flex flex-col items-center">
-          <div className="mb-4 inline-block rounded-lg bg-[#E2768A] bg-opacity-20 p-3">
+          <div className="mb-4 inline-block rounded-lg bg-emerald bg-opacity-20 p-3">
             <Download className="text-white" size={24} />
           </div>
-          <h2 className="mb-2 text-2xl font-bold text-[#E2768A]">Compatible</h2>
-          <p className="text-lg text-gray-200">
+          <h2 className="mb-2 text-2xl font-bold text-misty">Compatible</h2>
+          <p className="text-lg text-white">
             Fichiers MIDI universels, prêts à l'emploi dans ton DAW favori.
           </p>
         </div>
@@ -117,8 +98,8 @@ function page() {
           variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
         >
           <motion.div className="mb-10 flex items-center justify-center gap-3" variants={fadeInUp}>
-            <BookOpen className="text-[#E2768A]" size={24} />
-            <h2 className="text-4xl font-bold text-[#E2768A]">Comment ça marche ?</h2>
+            <BookOpen className="text-misty" size={24} />
+            <h2 className="text-4xl font-bold text-misty">Comment ça marche ?</h2>
           </motion.div>
 
           <motion.ul
@@ -131,13 +112,13 @@ function page() {
             {homeHowItWorks.map((item, index) => (
               <motion.li
                 key={item.id}
-                className="flex items-start gap-4 rounded-lg border border-[#E2768A]/30 bg-[#1c1d21] p-6 shadow-lg"
+                className="flex items-start gap-4 rounded-lg border border-emerald/30 bg-eerie p-6 shadow-lg"
                 variants={fadeInUp}
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#E2768A] font-bold text-white">
+                <span className="flex w-8 h-8 items-center justify-center rounded-full bg-noir font-bold text-white">
                   {index + 1}
                 </span>
-                <span className="text-lg text-gray-200">{item.text}</span>
+                <span className="text-lg text-misty">{item.text}</span>
               </motion.li>
             ))}
           </motion.ul>
@@ -154,11 +135,11 @@ function page() {
           variants={fadeInUp}
         >
           <motion.div className="mb-6 flex items-center justify-center gap-3" variants={fadeInUp}>
-            <Music className="text-[#E2768A]" size={24} />
-            <h3 className="text-4xl font-bold text-[#E2768A]">À propos de Loopara</h3>
+            <Music className="text-misty" size={24} />
+            <h3 className="text-4xl font-bold text-misty">À propos de Loopara</h3>
           </motion.div>
           <motion.div
-            className="rounded-xl border border-[#E2768A]/30 bg-[#1c1d21] p-6 text-lg leading-relaxed text-gray-200 shadow-lg"
+            className="rounded-xl border border-emerald/30 bg-eerie p-6 text-lg leading-relaxed text-gray-200 shadow-lg"
             variants={fadeInUp}
           >
             Loopara est né de la passion pour la MAO et du désir de simplifier la phase de création
@@ -179,11 +160,11 @@ function page() {
           variants={fadeInUp}
         >
           <motion.div className="mb-6 flex items-center justify-center gap-3" variants={fadeInUp}>
-            <Zap className="text-[#E2768A]" size={24} />
-            <h3 className="text-4xl font-bold text-[#E2768A]">Pourquoi choisir Loopara ?</h3>
+            <Zap className="text-misty" size={24} />
+            <h3 className="text-4xl font-bold text-misty">Pourquoi choisir Loopara ?</h3>
           </motion.div>
           <motion.div
-            className="space-y-4 rounded-xl border border-[#E2768A]/30 bg-[#1c1d21] p-6 text-lg text-gray-200 shadow-lg"
+            className="space-y-4 rounded-xl border border-emerald/30 bg-eerie p-6 text-lg text-white shadow-lg"
             variants={fadeInUp}
           >
             <p>
@@ -220,16 +201,16 @@ function page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <MessageCircle className="text-[#E2768A]" size={24} />
-            <h3 className="text-4xl font-bold text-[#E2768A]">FAQ – Questions fréquentes</h3>
+            <MessageCircle className="text-misty" size={24} />
+            <h3 className="text-4xl font-bold text-misty">FAQ – Questions fréquentes</h3>
           </motion.div>
 
-          <div className="space-y-4 rounded-xl border border-[#E2768A]/30 bg-[#1c1d21] p-6 shadow-lg">
+          <div className="space-y-4 rounded-xl border border-emerald/30 bg-eerie p-6 shadow-lg">
             {homeFaq.map((item, index) => (
               <motion.div
                 key={item.id}
                 onClick={() => toggle(index)}
-                className="cursor-pointer border-b border-[#E2768A]/10 pb-4"
+                className="cursor-pointer border-b border-emerald/10 pb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -276,14 +257,14 @@ function page() {
         variants={fadeInUp}
       >
         <motion.div className="mb-6 flex items-center gap-3" variants={fadeInUp}>
-          <ArrowRight size={24} className="text-[#E2768A]" />
-          <h4 className="text-3xl font-bold text-[#E2768A]">À lire aussi</h4>
+          <ArrowRight size={24} className="text-misty" />
+          <h4 className="text-3xl font-bold text-misty">À lire aussi</h4>
         </motion.div>
         <motion.div
-          className="rounded-xl border border-[#E2768A]/30 bg-[#1c1d21] p-6 shadow-lg"
+          className="rounded-xl border border-emerald/30 bg-eerie p-6 shadow-lg"
           variants={fadeInUp}
         >
-          <p className="text-lg font-medium text-gray-200">
+          <p className="text-lg font-medium text-white">
             Tu veux aller plus loin ? Consulte nos articles sur la théorie musicale, la production
             assistée par ordinateur ou les astuces pour enrichir tes arrangements.
           </p>
@@ -292,7 +273,7 @@ function page() {
           <Link href={"/control"}>
           <button
             type="button"
-            className="flex w-full items-center justify-center rounded-lg bg-[#E2768A] px-5 py-3 font-medium text-[#030504] transition-all duration-300 hover:shadow-lg"
+            className="flex w-full items-center justify-center rounded-lg bg-emerald px-5 py-3 font-semibold text-noir transition-all duration-300 hover:shadow-lg hover:shadow-emerald/10 hover:bg-emeraldhover"
             >
             Essayer maintenant
           </button>

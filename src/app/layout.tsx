@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className="h-full">
-      <body className={`${hind.className} flex min-h-screen flex-col bg-[#030504] text-white`}>
+      <body className={`${hind.className} flex min-h-screen flex-col bg-noir text-white`}>
         <Popover>
         <Navbar />
         <main className="flex flex-1">{children}</main>
