@@ -1,67 +1,9 @@
-import React, { useMemo } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { motion } from "framer-motion";
 
 const AnimatedHeroSection = () => {
-  // Animation variants pour les éléments musicaux
-  const waveVariants = {
-    animate: {
-      scaleY: [1, 1.5, 0.8, 1.2, 1],
-      transition: {
-        duration: 2,
-        repeat: Number.POSITIVE_INFINITY,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const noteVariants = {
-    float: {
-      y: [-20, -40, -20],
-      x: [0, 10, -5, 0],
-      rotate: [0, 5, -3, 0],
-      transition: {
-        duration: 4,
-        repeat: Number.POSITIVE_INFINITY,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  // ✅ Générer les notes une seule fois au montage du composant
-  const notes = useMemo(() => {
-    return [...Array(8)].map(() => ({
-      id: uuidv4(),
-      symbol: ["♪", "♫", "♬", "♩"][Math.floor(Math.random() * 4)],
-      left: `${10 + Math.random() * 80}%`,
-      top: `${20 + Math.random() * 60}%`,
-      delay: Math.random() * 4,
-      duration: 4 + Math.random() * 2,
-    }));
-  }, []);
-
   return (
     <>
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gray-900 px-4 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-24">
-        {/* 🎶 Floating musical notes */}
-        <div className="pointer-events-none absolute inset-0">
-          {notes.map((note) => (
-            <motion.div
-              key={uuidv4()}
-              className="absolute text-2xl text-teal-400 opacity-20"
-              style={{ left: note.left, top: note.top }}
-              variants={noteVariants}
-              animate="float"
-              transition={{
-                delay: note.delay,
-                duration: note.duration,
-              }}
-            >
-              {note.symbol}
-            </motion.div>
-          ))}
-        </div>
-
         <motion.div
           className="relative z-10 mx-auto flex max-w-6xl flex-col items-center justify-center text-center"
           initial={{ opacity: 0, y: 30 }}

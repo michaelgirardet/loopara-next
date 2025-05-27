@@ -8,13 +8,14 @@ type TempoSelectProps = {
 
 export default function TempoSelect({ value, onChange }: TempoSelectProps) {
   return (
-    <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-xl bg-eerie/80 p-6 shadow-xl backdrop-blur-xl">
-      <div className="flex items-center gap-2 text-white">
-        <Drum className="h-5 w-5" />
-        <label htmlFor="tempo-input" className="text-base font-semibold tracking-wide">
-          Tempo (BPM)
-        </label>
-      </div>
+    <div className="flex w-full max-w-sm flex-col items-start gap-4 rounded-xl bg-gunmetal p-6 backdrop-blur-xl">
+      <label
+        htmlFor="tempo-input"
+        className="flex items-center gap-2 text-base font-semibold tracking-wide text-white"
+      >
+        <Drum className="h-5 w-5 text-turquoise" />
+        Tempo (BPM)
+      </label>
 
       <motion.input
         id="tempo-input"
@@ -23,10 +24,8 @@ export default function TempoSelect({ value, onChange }: TempoSelectProps) {
         max={240}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full rounded-md border border-misty/30 bg-gunmetal px-3 py-2 text-center text-lg font-medium text-white shadow-none focus:outline-none focus:ring-2 focus:ring-turquoise"
-        whileFocus={{
-          scale: 1.02,
-        }}
+        whileFocus={{ scale: 1.02 }}
+        className="w-full rounded-md border-2 border-turquoise/30 bg-gunmetal px-4 py-3 text-center text-lg font-medium text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-turquoise"
       />
 
       <motion.input
@@ -36,9 +35,9 @@ export default function TempoSelect({ value, onChange }: TempoSelectProps) {
         max={240}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-turquoisehover shadow-none"
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.99 }}
+        className="w-full accent-turquoise transition-all duration-200"
       />
     </div>
   );

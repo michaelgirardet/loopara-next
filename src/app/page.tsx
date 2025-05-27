@@ -76,13 +76,13 @@ function Page() {
       <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
-            className="mb-12 flex items-center justify-center gap-3 lg:mb-16"
+            className="flex items-center justify-center gap-3 lg:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <BookOpen className="text-teal-400" size={24} />
+            <BookOpen className="mb-1 text-teal-400" size={24} />
             <h2 className="text-center text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
               Comment ça marche ?
             </h2>
@@ -177,7 +177,7 @@ function Page() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="mb-8 flex items-center justify-center gap-3 lg:mb-12">
-            <MessageCircle className="text-teal-400" size={24} />
+            <MessageCircle className="mb-1 text-teal-400" size={24} />
             <h3 className="text-center text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
               FAQ – Questions fréquentes
             </h3>
