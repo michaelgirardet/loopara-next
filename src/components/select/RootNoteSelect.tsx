@@ -27,7 +27,7 @@ export default function RootNoteSelect({ value, onChange }: RootNoteSelectProps)
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger
           id="note-select"
-          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
+          className="w-full rounded-md border border-misty/30 bg-gunmetal px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-turquoise"
         >
           <SelectValue placeholder="Sélectionner une note" />
         </SelectTrigger>
@@ -36,7 +36,7 @@ export default function RootNoteSelect({ value, onChange }: RootNoteSelectProps)
             <SelectItem
               key={note}
               value={note}
-              className="cursor-pointer px-4 py-2 text-sm uppercase transition-colors duration-150 hover:bg-keppel/20 hover:text-white"
+              className="cursor-pointer px-4 py-2 text-sm uppercase transition-colors duration-150 hover:bg-turquoise/20 hover:text-white"
             >
               {note}
             </SelectItem>

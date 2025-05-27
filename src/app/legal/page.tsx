@@ -17,7 +17,7 @@ export default function Page() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="mb-4 inline-flex items-center gap-2 self-start rounded-full border border-keppel bg-keppel/10 px-4 py-2 text-sm font-medium text-keppel">
+        <div className="mb-4 inline-flex items-center gap-2 self-start rounded-full border border-turquoise bg-turquoise/10 px-4 py-2 text-sm font-medium text-turquoise">
           <BookOpen size={18} />
           Mentions Légales
         </div>
@@ -29,35 +29,35 @@ export default function Page() {
 
       {/* Card-style Legal Notice */}
       <motion.section
-        className="space-y-8 rounded-xl border border-keppel/20 bg-eerie p-8 text-sm leading-relaxed text-gray-300 shadow-md"
+        className="space-y-8 rounded-xl border border-turquoise/20 bg-eerie p-8 text-sm leading-relaxed text-gray-300 shadow-md"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
         <div>
-          <h2 className="mb-1 font-semibold text-keppel">Éditeur du site</h2>
+          <h2 className="mb-1 font-semibold text-turquoise">Éditeur du site</h2>
           <p>Ce site est édité par Michaël, créateur de Loopara.</p>
         </div>
 
         <div>
-          <h2 className="mb-1 font-semibold text-keppel">Responsable de la publication</h2>
+          <h2 className="mb-1 font-semibold text-turquoise">Responsable de la publication</h2>
           <p>
             Michaël –{" "}
-            <a href="mailto:contact@loopara.app" className="text-keppel hover:underline">
+            <a href="mailto:contact@loopara.app" className="text-turquoise hover:underline">
               contact@loopara.io
             </a>
           </p>
         </div>
 
         <div>
-          <h2 className="mb-1 font-semibold text-keppel">Hébergement</h2>
+          <h2 className="mb-1 font-semibold text-turquoise">Hébergement</h2>
           <p>
             Le site est hébergé par <strong>Hostinger</strong>.
           </p>
         </div>
 
         <div>
-          <h2 className="mb-1 font-semibold text-keppel">Propriété intellectuelle</h2>
+          <h2 className="mb-1 font-semibold text-turquoise">Propriété intellectuelle</h2>
           <p>
             Tous les éléments du site (textes, visuels, code) sont la propriété exclusive de
             Loopara, sauf indication contraire.
@@ -65,7 +65,7 @@ export default function Page() {
         </div>
 
         <div>
-          <h2 className="mb-1 font-semibold text-keppel">Conditions d’utilisation</h2>
+          <h2 className="mb-1 font-semibold text-turquoise">Conditions d’utilisation</h2>
           <p>
             En naviguant sur ce site, tu acceptes les présentes conditions. Celles-ci peuvent
             évoluer à tout moment.

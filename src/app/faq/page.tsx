@@ -64,7 +64,7 @@ export default function Page() {
         {faqItems.map((item, i) => (
           <motion.div
             key={item.id}
-            className="cursor-pointer rounded-lg border border-keppel/30 bg-eerie p-4 shadow-md"
+            className="cursor-pointer rounded-lg border border-turquoise/30 bg-eerie p-4 shadow-md"
             onClick={() => toggle(i)}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

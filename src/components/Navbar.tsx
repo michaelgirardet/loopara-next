@@ -45,7 +45,7 @@ function Navbar() {
         <div className="container mx-auto flex items-center justify-between px-6">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-5" onClick={() => setMenuOpen(false)}>
-            <Music className="text-keppel" size={28} />
+            <Music className="text-turquoise" size={28} />
             <span className="bg-misty bg-clip-text font-manrope text-2xl font-semibold hover:brightness-150">
               Loopara
             </span>
@@ -57,7 +57,7 @@ function Navbar() {
               <Link
                 key={link.name}
                 href={link.to}
-                className="flex items-center gap-2 font-semibold text-white transition-colors hover:text-keppelhover"
+                className="flex items-center gap-2 font-semibold text-white transition-colors hover:text-turquoisehover"
               >
                 {link.name}
               </Link>
@@ -66,7 +66,7 @@ function Navbar() {
             {/* Bouton demo/CTA */}
             <Link
               href="/control"
-              className="rounded-full bg-keppel px-5 py-2 font-semibold text-noir transition-all duration-300 hover:bg-keppelhover hover:shadow-lg hover:shadow-keppel/10"
+              className="rounded-full bg-turquoise px-5 py-2 font-semibold text-rich transition-all duration-300 hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise/10"
             >
               Essayer maintenant
             </Link>
@@ -90,7 +90,7 @@ function Navbar() {
 
       {/* Menu mobile */}
       <motion.div
-        className="fixed right-0 top-0 z-50 h-full w-full bg-noir p-8 font-hind shadow-xl md:hidden"
+        className="fixed right-0 top-0 z-50 h-full w-full bg-gunmetal p-8 font-hind shadow-xl md:hidden"
         variants={menuVariants}
         initial="closed"
         animate={menuOpen ? "open" : "closed"}
@@ -107,9 +107,9 @@ function Navbar() {
           </button>
         </div>
 
-        <div className="mb-6 border-b border-keppelhover/20 pb-6">
+        <div className="mb-6 border-b border-turquoisehover/20 pb-6">
           <div className="mb-4 flex items-center gap-2">
-            <Music className="text-keppel" size={24} />
+            <Music className="text-turquoise" size={24} />
             <span className="text-3xl font-bold text-white font-manrope">Loopara</span>
           </div>
           <p className="text-lg text-white">
@@ -125,7 +125,7 @@ function Navbar() {
               className="flex items-center gap-4 text-xl font-medium text-white transition-colors hover:text-white"
               onClick={toggleMenu}
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/70 text-noir">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/70 text-rich">
                 {link.icon}
               </div>
               {link.name}
@@ -136,7 +136,7 @@ function Navbar() {
             <Link href={"/control"} onClick={toggleMenu}>
               <button
                 type="button"
-                className="flex w-full max-w-xs items-center justify-center self-center rounded-lg bg-keppel px-5 py-3 font-semibold text-noir transition-all duration-300 hover:bg-keppelhover hover:shadow-lg hover:shadow-keppel"
+                className="flex w-full max-w-xs items-center justify-center self-center rounded-lg bg-turquoise px-5 py-3 font-semibold text-rich transition-all duration-300 hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise"
               >
                 Essayer maintenant
               </button>

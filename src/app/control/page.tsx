@@ -172,7 +172,7 @@ const Page = () => {
               key="loading-button"
               disabled
               type="button"
-              className="text-clack inline-flex items-center self-center rounded-full bg-keppel px-6 py-3 text-center text-lg font-semibold text-noir"
+              className="text-clack inline-flex items-center self-center rounded-full bg-turquoise px-6 py-3 text-center text-lg font-semibold text-rich"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
@@ -212,7 +212,7 @@ const Page = () => {
               animate="visible"
               whileHover="hover"
               whileTap="tap"
-              className="mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full bg-keppel px-8 py-4 text-base font-semibold text-noir shadow-lg hover:bg-keppelhover"
+              className="mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full bg-turquoise px-8 py-4 text-base font-semibold text-rich shadow-lg hover:bg-turquoisehover"
             >
               <motion.div
                 animate={{
@@ -241,7 +241,7 @@ const Page = () => {
               <a
                 href={URL.createObjectURL(midiBlob)}
                 download={`loopara-${mode}-${Date.now()}.mid`}
-                className="flex items-center gap-2 rounded-md border border-keppel px-6 py-3 text-center text-base font-medium text-keppel shadow-md transition-all duration-300 hover:bg-keppelhover hover:text-noir"
+                className="flex items-center gap-2 rounded-md border border-turquoise px-6 py-3 text-center text-base font-medium text-turquoise shadow-md transition-all duration-300 hover:bg-turquoisehover hover:text-rich"
               >
                 <FileDown className="h-5 w-5" />
                 Télécharger

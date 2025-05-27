@@ -23,7 +23,7 @@ export default function TempoSelect({ value, onChange }: TempoSelectProps) {
         max={240}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full rounded-md border border-misty/30 bg-noir px-3 py-2 text-center text-lg font-medium text-white shadow-none focus:outline-none focus:ring-2 focus:ring-keppel"
+        className="w-full rounded-md border border-misty/30 bg-gunmetal px-3 py-2 text-center text-lg font-medium text-white shadow-none focus:outline-none focus:ring-2 focus:ring-turquoise"
         whileFocus={{
           scale: 1.02,
         }}
@@ -36,7 +36,7 @@ export default function TempoSelect({ value, onChange }: TempoSelectProps) {
         max={240}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-keppelhover shadow-none"
+        className="w-full accent-turquoisehover shadow-none"
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 0.99 }}
       />

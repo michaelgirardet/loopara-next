@@ -61,7 +61,7 @@ export default function Page() {
         },
       }}
     >
-      <motion.h1 className="text-5xl font-bold text-keppel" variants={fadeUp} custom={0}>
+      <motion.h1 className="text-5xl font-bold text-turquoise" variants={fadeUp} custom={0}>
         À propos de Loopara
       </motion.h1>
 
@@ -80,7 +80,7 @@ export default function Page() {
               variants={fadeUp}
               custom={i + 3}
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/20 text-keppel">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/20 text-turquoise">
                 {item.icon}
               </div>
               <span className="text-lg">{item.text}</span>
@@ -108,7 +108,7 @@ export default function Page() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-keppel px-5 py-3 font-semibold text-noir transition-all hover:bg-keppelhover hover:shadow-lg hover:shadow-keppel/10"
+            className="inline-flex items-center gap-2 rounded-full bg-turquoise px-5 py-3 font-semibold text-rich transition-all hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise/10"
           >
             <Heart size={20} />
             Nous contacter
@@ -119,7 +119,7 @@ export default function Page() {
       <motion.section className="mt-28 text-center" variants={fadeUp} custom={features.length + 5}>
         <Link
           href="/"
-          className="inline-flex items-center gap-3 rounded-full border border-keppel px-6 py-3 text-lg font-semibold text-keppel transition-all hover:bg-keppel hover:text-noir hover:shadow-lg hover:shadow-keppel/10"
+          className="inline-flex items-center gap-3 rounded-full border border-turquoise px-6 py-3 text-lg font-semibold text-turquoise transition-all hover:bg-turquoise hover:text-rich hover:shadow-lg hover:shadow-turquoise/10"
         >
           Retour à l&apos;accueil <Home size={18} />
         </Link>

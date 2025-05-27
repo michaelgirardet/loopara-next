@@ -35,7 +35,7 @@ export default function EmotionSelect({ value, onChange }: EmotionSelectProps) {
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger
           id="emotion-select"
-          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
+          className="w-full rounded-md border border-misty/30 bg-gunmetal px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-turquoise"
         >
           <SelectValue placeholder="Choisir une émotion..." />
         </SelectTrigger>
@@ -44,7 +44,7 @@ export default function EmotionSelect({ value, onChange }: EmotionSelectProps) {
             <SelectItem
               key={option.value}
               value={option.value}
-              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-white"
+              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-turquoise/20 hover:text-white"
             >
               {option.label}
             </SelectItem>

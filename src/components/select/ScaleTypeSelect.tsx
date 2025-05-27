@@ -30,7 +30,7 @@ export default function ScaleTypeSelect({ value, onChange }: ScaleTypeSelectProp
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger
           id="scale-type-select"
-          className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
+          className="w-full rounded-md border border-misty/30 bg-gunmetal px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-turquoise"
         >
           <SelectValue placeholder="Choisir un type" />
         </SelectTrigger>
@@ -39,7 +39,7 @@ export default function ScaleTypeSelect({ value, onChange }: ScaleTypeSelectProp
             <SelectItem
               key={type.value}
               value={type.value}
-              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-white"
+              className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-turquoise/20 hover:text-white"
             >
               {type.label}
             </SelectItem>

@@ -20,7 +20,7 @@ export default function TestimonialsCarousel() {
         <AnimatePresence mode="wait">
           <motion.blockquote
             key={homeTestimonials[index].id}
-            className="rounded-xl border border-keppel/30 bg-gradient-to-br from-eerie/10 to-eerie p-8 shadow-lg"
+            className="rounded-xl border border-turquoise/30 bg-gradient-to-br from-eerie/10 to-eerie p-8 shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
@@ -28,7 +28,7 @@ export default function TestimonialsCarousel() {
           >
             <p className="text-lg font-thin italic text-white">“{homeTestimonials[index].quote}”</p>
             <div className="mt-4 flex items-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-noir font-bold text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gunmetal font-bold text-white">
                 {homeTestimonials[index].initial}
               </div>
               <div className="ml-3">
@@ -44,7 +44,7 @@ export default function TestimonialsCarousel() {
           <button
             type="button"
             onClick={handlePrev}
-            className="rounded-full border border-keppel/30 p-2 text-white transition hover:bg-keppelhover/20"
+            className="rounded-full border border-turquoise/30 p-2 text-white transition hover:bg-turquoisehover/20"
             aria-label="Témoignage précédent"
           >
             <ArrowLeft size={20} />
@@ -52,7 +52,7 @@ export default function TestimonialsCarousel() {
           <button
             type="button"
             onClick={handleNext}
-            className="rounded-full border border-keppel/30 p-2 text-white transition hover:bg-keppelhover/20"
+            className="rounded-full border border-turquoise/30 p-2 text-white transition hover:bg-turquoisehover/20"
             aria-label="Témoignage suivant"
           >
             <ArrowRight size={20} />

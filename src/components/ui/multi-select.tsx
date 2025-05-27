@@ -81,7 +81,7 @@ const MultiSelectItem = ({
       )}
     >
       <span>{children}</span>
-      {selected && <Check className="h-4 w-4 text-keppel" />}
+      {selected && <Check className="h-4 w-4 text-turquoise" />}
     </button>
   );
 };

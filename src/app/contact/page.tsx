@@ -61,7 +61,7 @@ export default function Page() {
       <motion.h1
         variants={fadeIn}
         custom={0}
-        className="text-center text-5xl font-bold text-keppel sm:text-5xl lg:text-6xl"
+        className="text-center text-5xl font-bold text-turquoise sm:text-5xl lg:text-6xl"
       >
         Contacte-nous
       </motion.h1>
@@ -79,7 +79,7 @@ export default function Page() {
         onSubmit={handleSubmit}
         variants={fadeIn}
         custom={2}
-        className="mt-10 w-full max-w-2xl space-y-6 rounded-2xl bg-eerie p-8 shadow-xl"
+        className="mt-10 w-full max-w-2xl space-y-6 rounded-2xl p-8"
       >
         {[
           {
@@ -107,7 +107,7 @@ export default function Page() {
               value={form[name as keyof typeof form]}
               onChange={handleChange}
               placeholder={placeholder}
-              className="rounded-md border border-eerie bg-noir px-4 py-3 text-white placeholder-misty/70 outline-none focus:border-keppel focus:ring-2 focus:ring-keppelhover"
+              className="rounded-md border border-gunmetal bg-gunmetal px-4 py-3 text-white placeholder-misty/70 outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise"
             />
           </div>
         ))}
@@ -124,14 +124,14 @@ export default function Page() {
             value={form.message}
             onChange={handleChange}
             placeholder="Dis-nous tout !"
-            className="rounded-md border border-eerie bg-noir px-4 py-3 text-white placeholder-misty/70 outline-none focus:border-keppel focus:ring-2 focus:ring-keppel"
+            className="rounded-md border border-gunmetal bg-gunmetal px-4 py-3 text-white placeholder-misty/70 outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise"
           />
         </div>
 
         <div className="flex justify-center">
           <motion.button
             type="submit"
-            className="mt-4 flex items-center gap-2 rounded-full border border-keppel px-6 py-3 text-sm font-medium text-keppel transition-all hover:bg-keppel hover:text-[#030504] focus:outline-none focus:ring-4 focus:ring-purple-300"
+            className="mt-4 flex items-center gap-2 rounded-full border border-turquoise px-6 py-3 text-sm font-medium text-turquoise transition-all hover:bg-turquoise hover:text-[#030504] focus:outline-none focus:ring-4 focus:turquoise"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
