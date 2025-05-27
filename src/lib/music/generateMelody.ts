@@ -1,6 +1,7 @@
 import MidiWriter from "midi-writer-js";
 import { buildChord } from "@/lib/modes/chords";
 import { applyHumanization } from "@/lib/music/applyHumanization";
+import { humanizationPresets } from "../config/humanization-presets";
 
 type NoteEvent = InstanceType<typeof MidiWriter.NoteEvent>;
 
@@ -13,75 +14,91 @@ const DURATION_TICKS: Record<string, number> = {
   "32": 60,
 };
 
-/**
- * Convertit une durée MIDI (ex: "4") en nombre de ticks.
- */
 function durationToTicks(duration: string): number {
-  return DURATION_TICKS[duration] ?? 480; // défaut : noire
+  return DURATION_TICKS[duration] ?? 480;
 }
 
-/**
- * Génère une piste de mélodie avec une durée minimale garantie (en ticks).
- */
-export function generateMelody(
-  scale: string[],
-  _noteCount: number, // Ignoré ici
-  rhythms: string[],
-  progression?: number[]
-): NoteEvent[] {
-  const MIN_OCTAVE = 4;
-  const MAX_OCTAVE = 5;
-  const MIN_TICKS = 1920 * 2; // 🕐 minimum 2 mesures
-  let totalTicks = 0;
+const MIN_OCTAVE = 4;
+const MAX_OCTAVE = 5;
+const MIN_TICKS = 1920 * 2;
 
-  const shiftedScale: string[] = [];
+function getShiftedScale(scale: string[]): string[] {
+  const shifted: string[] = [];
   for (let octave = MIN_OCTAVE; octave <= MAX_OCTAVE; octave++) {
     for (const note of scale) {
-      shiftedScale.push(note.replace(/\d/, `${octave}`));
+      shifted.push(note.replace(/\d/, `${octave}`));
     }
   }
+  return shifted;
+}
 
-  const generateMotif = (chordNotes: string[]): string[] => {
-    const motif: string[] = [];
-    for (let i = 0; i < 3; i++) {
-      const note = chordNotes[Math.floor(Math.random() * chordNotes.length)];
-      const octaveNote = note.replace(
-        /\d/,
-        () => `${Math.floor(Math.random() * (MAX_OCTAVE - MIN_OCTAVE + 1)) + MIN_OCTAVE}`
-      );
-      motif.push(octaveNote);
-    }
-    return motif;
-  };
+function generateMotif(chordNotes: string[], motifLength = 4): string[] {
+  const motif: string[] = [];
 
+  // 1. Choisir une note de départ dans l'accord
+  let index = Math.floor(Math.random() * chordNotes.length);
+  const direction = Math.random() > 0.5 ? 1 : -1;
+
+  for (let i = 0; i < motifLength; i++) {
+    const note = chordNotes[Math.max(0, Math.min(index, chordNotes.length - 1))];
+    const octave = Math.floor(Math.random() * (MAX_OCTAVE - MIN_OCTAVE + 1)) + MIN_OCTAVE;
+    motif.push(note.replace(/\d/, `${octave}`));
+
+    // Mouvement mélodique : monter ou descendre dans l'accord
+    index += direction;
+  }
+
+  return motif;
+}
+
+export function generateMelody(
+  scale: string[],
+  _noteCount: number,
+  rhythms: string[],
+  genre: string,
+  progression?: number[]
+): NoteEvent[] {
+  let totalTicks = 0;
+  const shiftedScale = getShiftedScale(scale);
   const baseProgression =
     progression ?? Array.from({ length: 4 }, () => Math.floor(Math.random() * scale.length));
 
   const events: NoteEvent[] = [];
 
   while (totalTicks < MIN_TICKS) {
-    for (const degree of baseProgression) {
+    for (let i = 0; i < baseProgression.length; i++) {
+      const degree = baseProgression[i];
       const chord = buildChord(scale, degree);
-      const motif = generateMotif(chord);
+      const motif = generateMotif(chord, 4);
 
-      for (const note of motif) {
+      for (let j = 0; j < motif.length; j++) {
+        const note = motif[j];
+        const isLastNote = (i === baseProgression.length - 1) && (j === motif.length - 1);
+
         const duration = rhythms[Math.floor(Math.random() * rhythms.length)];
         const ticks = durationToTicks(duration);
         totalTicks += ticks;
 
+        // Résolution : termine sur la tonique ou dominante
+        const pitch = isLastNote
+          ? [shiftedScale[0], shiftedScale[4]][Math.floor(Math.random() * 2)]
+          : note;
+
         events.push(
           new MidiWriter.NoteEvent({
-            pitch: [note],
+            pitch: [pitch],
             duration,
-            velocity: Math.floor(Math.random() * 20 + 70),
+            velocity: Math.floor(Math.random() * 15 + 75),
           })
         );
 
         if (totalTicks >= MIN_TICKS) break;
       }
+
       if (totalTicks >= MIN_TICKS) break;
     }
   }
 
-  return applyHumanization(events);
+  const preset = genre ? humanizationPresets[genre] : undefined;
+  return applyHumanization(events, preset);
 }

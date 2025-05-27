@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import { BookOpen, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { articles } from "./blog.data";
 export default function Blog() {
   return (
     <motion.div
-      className="font-hind mx-auto max-w-6xl px-6 pb-32 pt-40 text-white"
+      className="mx-auto max-w-6xl px-6 pb-32 pt-40 font-hind text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -19,10 +19,10 @@ export default function Blog() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <span className="mb-3 inline-flex items-center self-start gap-2 rounded-full border border-keppel bg-keppel/10 px-4 py-2 text-sm font-semibold text-keppel">
+        <span className="mb-3 inline-flex items-center gap-2 self-start rounded-full border border-keppel bg-keppel/10 px-4 py-2 text-sm font-semibold text-keppel">
           <BookOpen size={18} /> Blog officiel
         </span>
-        <h1 className="text-5xl font-bold text-misty">Le Blog Loopara</h1>
+        <h1 className="text-5xl font-bold text-white">Le Blog Loopara</h1>
         <p className="mt-4 max-w-xl text-white">
           Conseils créatifs, tutoriels MAO, et actus autour de la génération MIDI.
         </p>
@@ -44,7 +44,7 @@ export default function Blog() {
         {articles.map((article) => (
           <motion.article
             key={article.id}
-            className="group relative flex flex-col justify-between rounded-xl border border-keppel/20 bg-gradient-to-br from-eerie/20 to-eerie p-6 shadow-md transition duration-300 hover:-trankeppel-y-1 hover:shadow-lg"
+            className="hover:-trankeppel-y-1 group relative flex flex-col justify-between rounded-xl border border-keppel/20 bg-gradient-to-br from-eerie/20 to-eerie p-6 shadow-md transition duration-300 hover:shadow-lg"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
@@ -54,7 +54,7 @@ export default function Blog() {
               <h2 className="text-xl font-semibold text-keppel group-hover:underline">
                 {article.title}
               </h2>
-              <p className="mt-2 text-sm text-misty">{article.description}</p>
+              <p className="mt-2 text-sm text-white">{article.description}</p>
             </div>
             <footer className="mt-4 flex items-center justify-between text-sm text-gray-500">
               <time>{new Date(article.date).toLocaleDateString("fr-FR")}</time>

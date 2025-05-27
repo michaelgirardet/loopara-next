@@ -3,7 +3,7 @@ import { Mail, Music } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="white bg-eerie text-misty">
+    <footer className="white bg-eerie text-white">
       <div className="container mx-auto px-6 py-12">
         {/* Top section with logo and navigation */}
         <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-3">
@@ -11,22 +11,21 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Music className="text-keppel" size={24} />
-              <h3 className="text-xl font-bold text-misty">Loopara</h3>
+              <h3 className="font-manrope text-xl font-bold text-white">Loopara</h3>
             </div>
-            <p className="max-w-xs text-start text-sm text-misty">
+            <p className="max-w-xs text-start text-sm text-white">
               Générez rapidement des patterns MIDI inspirants pour votre prochain projet musical. Un
               outil gratuit et intuitif pour tous les compositeurs.
             </p>
             <div className="flex items-center justify-center gap-4 pt-2 sm:justify-start">
               <Link href={"/contact"}>
-              <button
-         type="button"
-                className="rounded-full bg-keppel p-2 transition-colors hover:bg-keppelhover"
+                <button
+                  type="button"
+                  className="rounded-full bg-keppel p-2 transition-colors hover:bg-keppelhover"
                 >
-                <Mail size={18} className="text-[#030504]" />
-              </button>
-                </Link>
-      
+                  <Mail size={18} className="text-[#030504]" />
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -39,7 +38,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="flex items-center gap-2 text-misty underline-offset-4 transition-colors hover:underline"
+                  className="flex items-center gap-2 text-white decoration-keppel underline-offset-4 transition-colors hover:underline"
                 >
                   Accueil
                 </Link>
@@ -47,7 +46,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="flex items-center gap-2 text-misty underline-offset-4 transition-colors hover:underline"
+                  className="flex items-center gap-2 text-white decoration-keppel underline-offset-4 transition-colors hover:underline"
                 >
                   À Propos
                 </Link>
@@ -55,7 +54,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="flex items-center gap-2 text-misty underline-offset-4 transition-colors hover:underline"
+                  className="flex items-center gap-2 text-white decoration-keppel underline-offset-4 transition-colors hover:underline"
                 >
                   Contact
                 </Link>
@@ -72,7 +71,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/tutorial"
-                  className="flex items-center gap-2 text-misty underline-offset-4 transition-colors hover:underline"
+                  className="flex items-center gap-2 text-white decoration-keppel underline-offset-4 transition-colors hover:underline"
                 >
                   Tutoriels
                 </Link>
@@ -80,7 +79,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/faq"
-                  className="flex items-center gap-2 text-misty underline-offset-4 transition-colors hover:underline"
+                  className="flex items-center gap-2 text-white decoration-keppel underline-offset-4 transition-colors hover:underline"
                 >
                   FAQ
                 </Link>
@@ -88,14 +87,14 @@ export default function Footer() {
               <li>
                 <Link
                   href={"/support"}
-                  className="flex items-center gap-2 text-misty underline-offset-4 transition-colors hover:underline"
+                  className="flex items-center gap-2 text-white decoration-keppel underline-offset-4 transition-colors hover:underline"
                 >
                   Support
                 </Link>
               </li>
               <Link
                 href={"/blog"}
-                className="flex items-center gap-2 text-misty underline-offset-4 transition-colors hover:underline"
+                className="flex items-center gap-2 text-white decoration-keppel underline-offset-4 transition-colors hover:underline"
               >
                 <li>Blog</li>
               </Link>
@@ -108,21 +107,21 @@ export default function Footer() {
 
         {/* Bottom section with copyright */}
         <div className="flex flex-col items-center justify-between gap-4 pt-4 md:flex-row">
-          <p className="text-xs text-misty/70">
+          <p className="text-xs text-white/70">
             Loopara © {new Date().getFullYear()}. Tous droits réservés.
           </p>
 
           <div className="flex items-center gap-3">
             <Link
               href="/legal"
-              className="text-xs text-misty/70 transition-colors hover:text-misty"
+              className="text-xs text-white/70 transition-colors hover:text-white"
             >
               Mentions légales
             </Link>
-            <span className="text-keppel ">•</span>
+            <span className="text-keppel">•</span>
             <Link
               href="/privacy"
-              className="text-xs text-misty/70  transition-colors hover:text-misty"
+              className="text-xs text-white/70 transition-colors hover:text-white"
             >
               Confidentialité
             </Link>

@@ -1,29 +1,29 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import { ShieldCheck, Info, Mail } from "lucide-react";
 
 export default function Page() {
   return (
     <motion.main
-      className="font-hind pt-38 sm:pt-42 mx-auto max-w-4xl px-6 pb-20 text-white md:pb-24 md:pt-48 lg:pb-36 lg:pt-52"
+      className="pt-38 sm:pt-42 mx-auto max-w-4xl px-6 pb-20 font-hind text-white md:pb-24 md:pt-48 lg:pb-36 lg:pt-52"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
       {/* Header */}
       <header className="mb-12 flex items-center gap-3">
-        <ShieldCheck size={32} className="text-[#E2546E]" />
-        <h1 className="text-4xl font-bold text-[#E2546E]">Politique de Confidentialité</h1>
+        <ShieldCheck size={32} className="text-keppel" />
+        <h1 className="text-center text-4xl font-bold text-keppel">Politique de Confidentialité</h1>
       </header>
 
       {/* Intro */}
       <motion.section
-        className="mb-10 rounded-lg border border-[#E2546E]/20 bg-[#2A2D34]/40 p-6 shadow-sm"
+        className="mb-10 rounded-lg border border-keppel/20 bg-eerie p-6 shadow-sm"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <p className="text-gray-300">
+        <p className="text-white">
           La confidentialité est au cœur de Loopara. Nous avons conçu notre outil pour qu’il
           fonctionne sans pisteurs, ni collecte de données inutiles.
         </p>
@@ -31,7 +31,7 @@ export default function Page() {
 
       {/* Sections */}
       <motion.section
-        className="space-y-8 text-sm leading-relaxed text-gray-300"
+        className="space-y-8 text-sm leading-relaxed text-white"
         initial="hidden"
         animate="visible"
         variants={{
@@ -77,12 +77,12 @@ export default function Page() {
         ].map((item, index) => (
           <motion.div
             key={item.id}
-            className="rounded-lg border border-[#E2546E]/20 bg-[#1E1F24]/60 p-5"
+            className="rounded-lg border border-keppel/20 bg-eerie p-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.4 }}
           >
-            <h2 className="mb-2 flex items-center gap-2 text-base font-semibold text-[#E2546E]">
+            <h2 className="mb-2 flex items-center gap-2 text-base font-semibold text-keppel">
               {item.icon}
               {item.title}
             </h2>

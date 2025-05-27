@@ -1,50 +1,52 @@
-import { Music3, Piano } from "lucide-react";
+"use client";
+
+import { Heart } from "lucide-react";
 import {
   Select,
-  SelectContent,
-  SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectContent,
+  SelectItem,
 } from "@/components/ui/select";
 
-interface ModeSelectProps {
-  value: "arpeggios" | "chords" | "melody" | "drums";
-  onChange: (value: "arpeggios" | "chords" | "melody" | "drums") => void;
-}
-
-const MODES = [
-  { label: "Arpèges", value: "arpeggios" },
-  { label: "Accords", value: "chords" },
-  { label: "Mélodie", value: "melody" },
-  { label: "Batterie", value: "drums" },
+const EMOTION_OPTIONS = [
+  { label: "Heureux", value: "happy" },
+  { label: "Triste", value: "sad" },
+  { label: "Rêveur", value: "dreamy" },
+  { label: "Tendu", value: "tense" },
+  { label: "Mélancolique", value: "melancholic" },
+  { label: "Énergique", value: "uplifting" },
 ];
 
-export default function ModeSelect({ value, onChange }: ModeSelectProps) {
-  const icon = value === "chords" ? <Piano className="h-5 w-5" /> : <Music3 className="h-5 w-5" />;
+interface EmotionSelectProps {
+  value: string;
+  onChange: (selected: string) => void;
+}
 
+export default function EmotionSelect({ value, onChange }: EmotionSelectProps) {
   return (
     <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-xl bg-eerie/80 p-6 shadow-xl backdrop-blur-xl">
       <div className="flex items-center gap-2 text-white">
-        {icon}
-        <label htmlFor="mode-select" className="text-base font-semibold tracking-wide">
-          Mode
+        <Heart className="h-5 w-5" />
+        <label htmlFor="emotion-select" className="text-base font-semibold tracking-wide">
+          Émotion musicale
         </label>
       </div>
       <Select value={value} onValueChange={onChange}>
         <SelectTrigger
-          id="mode-select"
+          id="emotion-select"
           className="w-full rounded-md border border-misty/30 bg-noir px-4 py-3 text-white shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-keppel"
         >
-          <SelectValue placeholder="Choisir un mode..." />
+          <SelectValue placeholder="Choisir une émotion..." />
         </SelectTrigger>
         <SelectContent className="z-50 w-full rounded-md border border-misty/20 bg-eerie/60 text-white shadow-lg backdrop-blur-xl">
-          {MODES.map((mode) => (
+          {EMOTION_OPTIONS.map((option) => (
             <SelectItem
-              key={mode.value}
-              value={mode.value}
+              key={option.value}
+              value={option.value}
               className="cursor-pointer px-4 py-2 text-sm transition-colors duration-150 hover:bg-keppel/20 hover:text-white"
             >
-              {mode.label}
+              {option.label}
             </SelectItem>
           ))}
         </SelectContent>

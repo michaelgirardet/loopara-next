@@ -32,8 +32,7 @@ function Navbar() {
     open: { x: 0 },
   };
 
-
-  // Liens de navigation 
+  // Liens de navigation
   const navLinks = [
     { name: "Accueil", to: "/", icon: <Home size={20} /> },
     { name: "À Propos", to: "/about", icon: <Info size={20} /> },
@@ -47,7 +46,7 @@ function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-5" onClick={() => setMenuOpen(false)}>
             <Music className="text-keppel" size={28} />
-            <span className="bg-misty bg-clip-text font-manrope text-2xl font-semibold">
+            <span className="bg-misty bg-clip-text font-manrope text-2xl font-semibold hover:brightness-150">
               Loopara
             </span>
           </Link>
@@ -58,7 +57,7 @@ function Navbar() {
               <Link
                 key={link.name}
                 href={link.to}
-                className="flex items-center  gap-2 font-semibold text-white transition-colors hover:text-keppelhover"
+                className="flex items-center gap-2 font-semibold text-white transition-colors hover:text-keppelhover"
               >
                 {link.name}
               </Link>
@@ -89,10 +88,9 @@ function Navbar() {
         </div>
       </header>
 
-
       {/* Menu mobile */}
       <motion.div
-        className="font-hind fixed right-0 top-0 z-50 h-full w-full bg-noir p-8 shadow-xl md:hidden"
+        className="fixed right-0 top-0 z-50 h-full w-full bg-noir p-8 font-hind shadow-xl md:hidden"
         variants={menuVariants}
         initial="closed"
         animate={menuOpen ? "open" : "closed"}
@@ -112,9 +110,9 @@ function Navbar() {
         <div className="mb-6 border-b border-keppelhover/20 pb-6">
           <div className="mb-4 flex items-center gap-2">
             <Music className="text-keppel" size={24} />
-            <span className="text-3xl font-bold text-white">Loopara</span>
+            <span className="text-3xl font-bold text-white font-manrope">Loopara</span>
           </div>
-          <p className="text-lg text-misty">
+          <p className="text-lg text-white">
             Générateur de motifs MIDI rapide et intuitif pour votre créativité musicale
           </p>
         </div>
@@ -124,7 +122,7 @@ function Navbar() {
             <Link
               key={link.name}
               href={link.to}
-              className="flex items-center gap-4 text-xl font-medium text-white transition-colors hover:text-misty"
+              className="flex items-center gap-4 text-xl font-medium text-white transition-colors hover:text-white"
               onClick={toggleMenu}
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/70 text-noir">
@@ -134,15 +132,15 @@ function Navbar() {
             </Link>
           ))}
 
-          <div className="mt-6 w-full flex justify-center items-center border-pink-500/20 pt-6">
-          <Link href={"/control"} onClick={toggleMenu}>
-            <button
-              type="button"
-              className="flex w-full max-w-xs self-center items-center justify-center rounded-lg bg-keppel px-5 py-3 font-semibold text-noir transition-all duration-300 hover:shadow-lg hover:shadow-keppel hover:bg-keppelhover"
+          <div className="mt-6 flex w-full items-center justify-center border-pink-500/20 pt-6">
+            <Link href={"/control"} onClick={toggleMenu}>
+              <button
+                type="button"
+                className="flex w-full max-w-xs items-center justify-center self-center rounded-lg bg-keppel px-5 py-3 font-semibold text-noir transition-all duration-300 hover:bg-keppelhover hover:shadow-lg hover:shadow-keppel"
               >
-              Essayer maintenant
-            </button>
-              </Link>
+                Essayer maintenant
+              </button>
+            </Link>
           </div>
         </nav>
       </motion.div>

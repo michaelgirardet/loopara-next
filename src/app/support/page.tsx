@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import { HelpCircle, BookOpen, Mail, AlertCircle } from "lucide-react";
 import Link from "next/link";
@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <motion.main
-      className="font-hind pt-38 pb-18 sm:pt-42 md:pb-18 lg:pt-50 mx-auto max-w-4xl px-6 text-white md:pt-48 lg:pb-36"
+      className="pt-38 pb-18 sm:pt-42 md:pb-18 lg:pt-50 mx-auto max-w-4xl px-6 font-hind text-white md:pt-48 lg:pb-36"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -14,7 +14,7 @@ export default function Page() {
       {/* Header */}
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-bold text-white">Centre de support Loopara</h1>
-        <p className="mt-4 text-lg text-misty">
+        <p className="mt-4 text-lg text-white">
           Besoin d’aide ? Tu es au bon endroit. Explore les ressources ou contacte-nous.
         </p>
       </header>
@@ -35,7 +35,7 @@ export default function Page() {
             </div>
             <h2 className="text-white">Consulte la FAQ</h2>
           </div>
-          <p className="mb-4 text-misty">
+          <p className="mb-4 text-white">
             La majorité des questions courantes sont déjà répondues ici.
           </p>
           <Link href="/faq" className="text-sm font-medium text-keppel hover:underline">
@@ -52,12 +52,12 @@ export default function Page() {
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-white">
-            <div className="flex h-10 w-10 items-center text-keppel justify-center rounded-full bg-keppel/20 backdrop-blur-sm">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/20 text-keppel backdrop-blur-sm">
               <BookOpen size={24} />
             </div>
             <h2>Tutoriels pas à pas</h2>
           </div>
-          <p className="mb-4 text-misty">
+          <p className="mb-4 text-white">
             Apprends à utiliser Loopara avec nos tutoriels pratiques.
           </p>
           <Link href="/tutoriel" className="text-sm font-medium text-keppel hover:underline">
@@ -79,7 +79,7 @@ export default function Page() {
             </div>
             <h2 className="text-white">Besoin d’aide personnalisée ?</h2>
           </div>
-          <p className="mb-4 text-misty">
+          <p className="mb-4 text-white">
             Tu n’as pas trouvé ce que tu cherchais ? Tu peux nous écrire directement.
           </p>
           <Link href="/contact" className="text-sm font-medium text-keppel hover:underline">

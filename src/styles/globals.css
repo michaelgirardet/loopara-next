@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500;600;700&family=Manrope:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500;600;700&family=Manrope:wght@200..800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --misty: #FFD9DA;
-  --keppel: #33CA7F;
-  --keppel-hover: #4BD28F;
-  --eerie: #1B2021;
-  --noir: #090B0B;
+  --misty: #ffd9da;
+  --keppel: #33ca7f;
+  --keppel-hover: #4bd28f;
+  --eerie: #1b2021;
+  --noir: #090b0b;
   --hind: "Hind Vadadora", sans-serif;
   --manrope: "Manrope", sans-serif;
 }
@@ -89,4 +89,3 @@
     --chart-5: 340 75% 55%;
   }
 }
-

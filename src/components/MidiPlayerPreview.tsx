@@ -35,10 +35,8 @@ function MidiPlayerPreview({ midiData }: MidiPlayerPreviewProps) {
 
     const midi = new Midi(midiData);
     const ctx = audioContextRef.current;
-    const now = ctx.currentTime;
 
     for (const note of midi.tracks[0].notes) {
-      const when = now + note.time;
       const duration = note.duration;
       const timeout = window.setTimeout(() => {
         instrumentRef.current?.play(note.name, ctx.currentTime, {
@@ -72,7 +70,7 @@ function MidiPlayerPreview({ midiData }: MidiPlayerPreviewProps) {
       <button
         type="button"
         onClick={handlePlayPause}
-        className="flex cursor-pointer items-center gap-2 rounded-full border border-misty px-6 py-3 text-center text-base font-semibold text-misty hover:bg-misty hover:text-noir"
+        className="flex cursor-pointer items-center gap-2 rounded-full border border-misty px-6 py-3 text-center text-base font-semibold text-white hover:bg-misty hover:text-noir"
       >
         {isPlaying ? (
           <>
@@ -81,7 +79,7 @@ function MidiPlayerPreview({ midiData }: MidiPlayerPreviewProps) {
           </>
         ) : (
           <>
-          <CirclePlay />
+            <CirclePlay />
             <span>Écouter</span>
           </>
         )}

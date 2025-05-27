@@ -7,9 +7,7 @@ import { useState } from "react";
 export default function Page() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -58,7 +56,7 @@ export default function Page() {
       variants={{
         visible: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
       }}
-      className="font-hind flex min-h-screen w-full flex-col items-center justify-center bg-purple px-5 pb-16 pt-28 text-powder sm:px-8 md:pt-48 lg:pt-40"
+      className="bg-purple text-powder flex min-h-screen w-full flex-col items-center justify-center px-5 pb-16 pt-28 font-hind sm:px-8 md:pt-48 lg:pt-40"
     >
       <motion.h1
         variants={fadeIn}
@@ -96,12 +94,9 @@ export default function Page() {
             type: "email",
             placeholder: "Ex: sarah@loopara.com",
           },
-        ].map(({ label, name, type, placeholder }, i) => (
+        ].map(({ label, name, type, placeholder }) => (
           <div key={name} className="flex flex-col space-y-2">
-            <label
-              htmlFor={name}
-              className="text-sm font-semibold text-white"
-            >
+            <label htmlFor={name} className="text-sm font-semibold text-white">
               {label}
             </label>
             <input
@@ -118,10 +113,7 @@ export default function Page() {
         ))}
 
         <div className="flex flex-col space-y-2">
-          <label
-            htmlFor="message"
-            className="text-sm font-semibold text-white"
-          >
+          <label htmlFor="message" className="text-sm font-semibold text-white">
             Ton message
           </label>
           <textarea

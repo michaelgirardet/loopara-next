@@ -1,6 +1,13 @@
+type BuildChordOptions = {
+  extensions?: string[];
+  inversion?: number;
+  voicing?: "drop2" | "drop3" | "close" | "open";
+};
+
 export function buildChord(
   scale: string[],
   degree: number,
+  options?: { extensions?: string[]; octaveShift?: number; inversion?: number; voicing?: string },
   _p0?: {
     extensions?: string[];
     octaveShift?: number;
