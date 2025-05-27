@@ -2,7 +2,7 @@ export interface GenerateProps {
   rootNote: string;
   scaleType: "major" | "minor";
   mode: "melody" | "chords" | "arpeggios" | "drums";
-  rhythm:string[],
+  rhythms:string[],
   tempo: number;
   genre: string;
   emotion?: string;
@@ -15,6 +15,7 @@ export interface ControlProps {
     scaleType: "major" | "minor";
     mode: "melody" | "chords" | "arpeggios" | "drums";
     genre: string;
+    rhythms: string[];
     emotion: string,
     tempo: number;
   }) => void;

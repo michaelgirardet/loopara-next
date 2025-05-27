@@ -52,7 +52,7 @@ function Page() {
           <Link href={"/control"}>
             <button
               type="button"
-              className="mt-6 cursor-pointer rounded-full border bg-misty px-10 py-5 font-semibold text-keppel text-noir transition-all hover:bg-keppel hover:text-noir"
+              className="mt-6 cursor-pointer rounded-full border bg-misty px-10 py-5 font-semibold text-noir transition-all hover:bg-keppel hover:text-noir"
             >
               Démarrer
             </button>

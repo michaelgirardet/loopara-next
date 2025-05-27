@@ -58,6 +58,7 @@ export function generateMelody(
   genre: string,
   progression?: number[]
 ): NoteEvent[] {
+  const safeRhythms = rhythms && rhythms.length > 0 ? rhythms : ["4"];
   let totalTicks = 0;
   const shiftedScale = getShiftedScale(scale);
   const baseProgression =
@@ -75,7 +76,7 @@ export function generateMelody(
         const note = motif[j];
         const isLastNote = (i === baseProgression.length - 1) && (j === motif.length - 1);
 
-        const duration = rhythms[Math.floor(Math.random() * rhythms.length)];
+        const duration = safeRhythms[i % safeRhythms.length];
         const ticks = durationToTicks(duration);
         totalTicks += ticks;
 

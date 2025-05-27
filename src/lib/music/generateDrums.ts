@@ -63,38 +63,38 @@ export function generateDrumsTrack(
       }
     }
 
-    const duration = rhythms[stepIndex % rhythms.length];
-    const ticks = DURATION_TICKS[duration] ?? 240;
+    
+  const duration = rhythms[stepIndex % rhythms.length]; // ✅ Ajouté
+  const ticks = DURATION_TICKS[duration] ?? 240;
 
-    for (const note of modified.filter(Boolean) as string[]) {
-      let velocity = Math.floor(Math.random() * (velocityRange[1] - velocityRange[0]) + velocityRange[0]);
+  for (const note of modified.filter(Boolean) as string[]) {
+    let velocity = Math.floor(Math.random() * (velocityRange[1] - velocityRange[0]) + velocityRange[0]);
 
-      if (note === "F#2") {
-        velocity = Math.floor(Math.random() * 10 + 40);
-      }
-
-      if (note === "D1") {
-        velocity = Math.floor(Math.random() * 10 + 30); // ghost snare
-      }
-
-      const isSwung = rhythms[0] === "16" && stepIndex % 2 === 1;
-      const swingOffset = isSwung ? stepLength * (swing - 0.5) : 0;
-
-      events.push(
-        new MidiWriter.NoteEvent({
-          pitch: [note],
-          duration,
-          velocity,
-          channel: 10,
-          startTick: totalTicks + swingOffset,
-        })
-      );
+    if (note === "F#2") {
+      velocity = Math.floor(Math.random() * 10 + 40);
     }
 
-    totalTicks += stepLength;
-    stepIndex++;
+    if (note === "D1") {
+      velocity = Math.floor(Math.random() * 10 + 30);
+    }
+
+    const isSwung = duration === "16" && stepIndex % 2 === 1;
+    const swingOffset = isSwung ? stepLength * (swing - 0.5) : 0;
+
+    events.push(
+      new MidiWriter.NoteEvent({
+        pitch: [note],
+        duration,
+        velocity,
+        channel: 10,
+        startTick: totalTicks + swingOffset,
+      })
+    );
   }
 
+  totalTicks += stepLength;
+  stepIndex++;
+}
   // ✅ Humanisation après génération complète
   return applyHumanization(events, humanizationPresets[style] ?? {});
 }
