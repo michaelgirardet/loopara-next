@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { X, Menu, Music, Info, Mail, Home } from "lucide-react";
+import { X, Menu, Music, Info, Mail, Home, LogIn } from "lucide-react";
 import Link from "next/link";
 
 function Navbar() {
@@ -70,6 +70,7 @@ function Navbar() {
             >
               Essayer maintenant
             </Link>
+            <LogIn size={24} className="h-7 w-7 cursor-pointer" />
           </nav>
 
           {/* Bouton menu mobile */}
