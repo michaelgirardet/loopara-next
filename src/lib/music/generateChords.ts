@@ -58,7 +58,6 @@ export function generateChords(
     const chord = buildChord(playableScale, degree, {
       extensions: ["7"],
       inversion,
-      voicing: "drop2",
     });
 
     // Transposition pour adoucir les sauts

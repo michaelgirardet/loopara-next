@@ -32,7 +32,7 @@ const MultiSelectTrigger = React.forwardRef<
           <ChevronDown className="ml-2 h-4 w-4 text-white" />
         </button>
       </PopoverTrigger>
-      {props.children}
+      {children}
     </Popover>
   );
 });
