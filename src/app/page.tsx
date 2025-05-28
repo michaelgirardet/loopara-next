@@ -65,7 +65,7 @@ function Page() {
               </div>
               <h2 className="mb-4 text-xl font-bold text-white lg:text-2xl">Compatible</h2>
               <p className="text-base leading-relaxed text-gray-300 lg:text-lg">
-                Fichiers MIDI universels, prêts à l'emploi dans ton DAW favori.
+                Fichiers MIDI universels, prêts à l&apos;emploi dans ton DAW favori.
               </p>
             </div>
           </motion.div>
@@ -127,7 +127,7 @@ function Page() {
           </div>
           <div className="rounded-xl border border-teal-400/30 bg-gray-800 p-6 text-base leading-relaxed text-gray-200 shadow-lg lg:p-8 lg:text-lg">
             Loopara est né de la passion pour la MAO et du désir de simplifier la phase de création
-            musicale. Cet outil s'adresse aux beatmakers, musiciens, enseignants ou curieux
+            musicale. Cet outil s&apos;adresse aux beatmakers, musiciens, enseignants ou curieux
             souhaitant créer des idées rapidement. Aucune inscription, aucune friction – juste de la
             créativité immédiate.
           </div>
@@ -151,12 +151,12 @@ function Page() {
           </div>
           <div className="space-y-6 rounded-xl border border-teal-400/30 bg-gray-800 p-6 text-base text-white shadow-lg lg:p-8 lg:text-lg">
             <p className="leading-relaxed">
-              Loopara place la créativité au cœur de l'expérience. Notre algorithme intègre des
+              Loopara place la créativité au cœur de l&apos;expérience. Notre algorithme intègre des
               logiques musicales avancées pour produire des résultats cohérents et inspirants, même
               sans connaissances théoriques.
             </p>
             <p className="leading-relaxed">
-              Que tu sois beatmaker, compositeur ou passionné, tu bénéficies d'un outil rapide,
+              Que tu sois beatmaker, compositeur ou passionné, tu bénéficies d&apos;un outil rapide,
               efficace, sans compromis sur la qualité musicale.
             </p>
             <p className="leading-relaxed">

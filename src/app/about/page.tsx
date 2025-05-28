@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Music, Clock, Download, Heart, Command, Sparkles, Home, Cpu } from "lucide-react";
+import { Music, Clock, Download, Command, Sparkles, Home } from "lucide-react";
 
 export default function Page() {
   const fadeUp = {
@@ -124,8 +124,8 @@ export default function Page() {
           variants={fadeUp}
           custom={features.length + 3.1}
         >
-          “L'inspiration musicale ne devrait jamais être freinée par la technique. Loopara est là
-          pour te faire gagner du temps, sans sacrifier la qualité.”
+          “L&apos;inspiration musicale ne devrait jamais être freinée par la technique. Loopara est
+          là pour te faire gagner du temps, sans sacrifier la qualité.”
         </motion.blockquote>
 
         <motion.div
@@ -134,13 +134,13 @@ export default function Page() {
           custom={features.length + 3.2}
         >
           <p>
-            Chez Loopara, on croit que l'expérimentation et la spontanéité sont au cœur de la
-            création musicale. C'est pourquoi on t'aide à générer, écouter et exporter des idées en
-            quelques clics.
+            Chez Loopara, on croit que l&apos;expérimentation et la spontanéité sont au cœur de la
+            création musicale. C&apos;est pourquoi on t&apos;aide à générer, écouter et exporter des
+            idées en quelques clics.
           </p>
           <p>
             Que tu sois beatmaker, compositeur ou simplement curieux, notre outil est conçu pour
-            t'accompagner sans te bloquer.
+            t&apos;accompagner sans te bloquer.
           </p>
         </motion.div>
       </motion.section>
@@ -199,7 +199,7 @@ export default function Page() {
           </p>
           <Link
             href="/contact"
-            className="hover:bg-turquoisehover flex items-center gap-2 self-center rounded-full bg-turquoise px-5 py-3 text-left text-sm font-medium text-rich transition-all hover:scale-105"
+            className="flex items-center gap-2 self-center rounded-full bg-turquoise px-5 py-3 text-left text-sm font-medium text-rich transition-all hover:scale-105 hover:bg-turquoisehover"
           >
             Nous contacter
           </Link>
