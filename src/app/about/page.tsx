@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Music, Clock, Download, Heart, Command, Sparkles, Home } from "lucide-react";
+import { Music, Clock, Download, Heart, Command, Sparkles, Home, Cpu } from "lucide-react";
 
 export default function Page() {
   const fadeUp = {
@@ -18,7 +18,6 @@ export default function Page() {
     }),
   };
 
-  // Tableau de features
   const features = [
     {
       id: 1,
@@ -28,12 +27,12 @@ export default function Page() {
     {
       id: 2,
       icon: <Command size={20} />,
-      text: "Contrôle total du tempo, style, instruments",
+      text: "Contrôle du tempo, style, instruments",
     },
     {
       id: 3,
       icon: <Sparkles size={20} />,
-      text: "Génération intuitive d'accords, arpèges, mélodies",
+      text: "Accords, arpèges, mélodies générés automatiquement",
     },
     {
       id: 4,
@@ -48,39 +47,55 @@ export default function Page() {
   ];
 
   return (
-    <motion.main
-      className="mx-auto flex w-screen max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-36 font-hind text-white"
-      initial="hidden"
-      animate="visible"
-      variants={{
-        visible: {
-          transition: {
-            staggerChildren: 0.15,
-            delayChildren: 0.2,
-          },
-        },
-      }}
-    >
-      <motion.h1 className="text-5xl font-bold text-keppel" variants={fadeUp} custom={0}>
+    <motion.main className="mx-auto flex w-screen max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-36 font-hind text-white">
+      {/* Titre */}
+      <motion.h1
+        className="text-center text-5xl font-bold text-turquoise"
+        initial="hidden"
+        whileInView="visible"
+        custom={0}
+        viewport={{ once: true }}
+        variants={fadeUp}
+      >
         À propos de Loopara
       </motion.h1>
 
-      <motion.p className="mt-6 text-xl text-white/90" variants={fadeUp} custom={1}>
+      {/* Intro */}
+      <motion.p
+        className="mt-6 max-w-2xl text-center text-xl text-white/90"
+        initial="hidden"
+        whileInView="visible"
+        custom={1}
+        viewport={{ once: true }}
+        variants={fadeUp}
+      >
         Loopara est un générateur de motifs MIDI rapide et créatif. Conçu pour les producteurs,
         beatmakers, enseignants et curieux, il rend la composition ludique, intuitive et musicale.
       </motion.p>
 
-      <motion.section className="mt-14 space-y-6" variants={fadeUp} custom={2}>
-        <h2 className="text-center text-3xl font-bold text-white/80">Fonctionnalités clés</h2>
-        <ul className="space-y-4">
+      {/* Fonctionnalités */}
+      <motion.section
+        className="mt-14 w-full space-y-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.h2
+          className="text-center text-3xl font-bold text-white/80"
+          variants={fadeUp}
+          custom={2}
+        >
+          Fonctionnalités clés
+        </motion.h2>
+        <ul className="grid grid-cols-2 space-y-4">
           {features.map((item, i) => (
             <motion.li
               key={item.id}
-              className="flex items-center gap-4 rounded-xl bg-eerie p-4 shadow-md"
+              className="bg-eerie flex flex-col items-center gap-4 rounded-xl p-4 text-center sm:flex-row sm:text-left"
               variants={fadeUp}
               custom={i + 3}
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/20 text-keppel">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/20 text-turquoise">
                 {item.icon}
               </div>
               <span className="text-lg">{item.text}</span>
@@ -89,37 +104,120 @@ export default function Page() {
         </ul>
       </motion.section>
 
-      <motion.section className="mt-20" variants={fadeUp} custom={features.length + 3}>
-        <h2 className="text-center text-3xl font-bold text-white/80">Notre vision</h2>
-        <div className="mt-4 rounded-lg bg-eerie p-6 shadow-lg">
-          <p className="text-xl text-white">
-            Notre mission est simple : rendre la composition musicale instantanée, accessible et
-            inspirante. Grâce à des algorithmes intelligents, Loopara te permet de créer, tester et
-            exporter des idées en quelques clics.
+      {/* Vision */}
+      <motion.section
+        className="mt-20 w-full"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.h2
+          className="mb-6 text-center text-4xl font-bold text-white"
+          variants={fadeUp}
+          custom={features.length + 3}
+        >
+          Notre vision
+        </motion.h2>
+
+        <motion.blockquote
+          className="rounded-xl border-l-4 border-turquoise bg-gray-800/70 px-6 py-8 text-center text-xl italic text-white/90"
+          variants={fadeUp}
+          custom={features.length + 3.1}
+        >
+          “L'inspiration musicale ne devrait jamais être freinée par la technique. Loopara est là
+          pour te faire gagner du temps, sans sacrifier la qualité.”
+        </motion.blockquote>
+
+        <motion.div
+          className="bg-eerie mt-10 space-y-4 rounded-xl p-6 text-lg leading-relaxed text-white/90"
+          variants={fadeUp}
+          custom={features.length + 3.2}
+        >
+          <p>
+            Chez Loopara, on croit que l'expérimentation et la spontanéité sont au cœur de la
+            création musicale. C'est pourquoi on t'aide à générer, écouter et exporter des idées en
+            quelques clics.
           </p>
-        </div>
+          <p>
+            Que tu sois beatmaker, compositeur ou simplement curieux, notre outil est conçu pour
+            t'accompagner sans te bloquer.
+          </p>
+        </motion.div>
       </motion.section>
 
-      <motion.section className="mt-20" variants={fadeUp} custom={features.length + 4}>
-        <h2 className="text-center text-3xl font-bold text-white/80">Contribue à Loopara</h2>
-        <div className="mt-4 flex flex-col items-start gap-4 rounded-lg bg-eerie p-6 shadow-md sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-lg text-white">
+      {/* Derrière Loopara */}
+      <motion.section
+        className="mt-20 w-full"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <motion.h2
+          className="mb-4 text-center text-3xl font-bold text-white/80"
+          variants={fadeUp}
+          custom={features.length + 4}
+        >
+          Derrière Loopara
+        </motion.h2>
+        <motion.div
+          className="bg-eerie space-y-3 rounded-lg p-6 text-lg leading-relaxed text-white/90"
+          variants={fadeUp}
+          custom={features.length + 4.1}
+        >
+          <p>
+            Loopara combine la théorie musicale et des algorithmes intelligents pour générer des
+            motifs MIDI logiques, harmonieux et variés.
+          </p>
+          <p>
+            Chaque motif est généré en fonction de ta gamme, ton tempo, et ton type de motif
+            préféré. Le tout est prêt à être exporté pour ton DAW favori.
+          </p>
+        </motion.div>
+      </motion.section>
+
+      {/* Contribuer */}
+      <motion.section
+        className="mt-20 w-full"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
+        <motion.h2
+          className="mb-4 text-center text-3xl font-bold text-white/80"
+          variants={fadeUp}
+          custom={features.length + 5}
+        >
+          Contribue à Loopara
+        </motion.h2>
+        <motion.div
+          className="bg-eerie mt-4 flex flex-col items-start gap-4 rounded-lg p-6 sm:flex-row sm:items-center sm:justify-between"
+          variants={fadeUp}
+          custom={features.length + 5.1}
+        >
+          <p className="text-center text-lg text-white sm:text-left">
             Tu veux proposer une fonctionnalité ou faire un retour ? Ton avis nous intéresse !
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-keppel px-5 py-3 font-semibold text-noir transition-all hover:bg-keppelhover hover:shadow-lg hover:shadow-keppel/10"
+            className="hover:bg-turquoisehover flex items-center gap-2 self-center rounded-full bg-turquoise px-5 py-3 text-left text-sm font-medium text-rich transition-all hover:scale-105"
           >
-            <Heart size={20} />
             Nous contacter
           </Link>
-        </div>
+        </motion.div>
       </motion.section>
 
-      <motion.section className="mt-28 text-center" variants={fadeUp} custom={features.length + 5}>
+      {/* CTA retour */}
+      <motion.section
+        className="mt-28 text-center"
+        variants={fadeUp}
+        custom={features.length + 6}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <Link
           href="/"
-          className="inline-flex items-center gap-3 rounded-full border border-keppel px-6 py-3 text-lg font-semibold text-keppel transition-all hover:bg-keppel hover:text-noir hover:shadow-lg hover:shadow-keppel/10"
+          className="inline-flex items-center gap-3 rounded-full border border-turquoise px-6 py-3 text-lg font-semibold text-turquoise transition-all hover:bg-turquoise hover:text-rich"
         >
           Retour à l&apos;accueil <Home size={18} />
         </Link>

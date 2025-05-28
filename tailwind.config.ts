@@ -10,12 +10,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        misty: "#FFD9DA",
-        keppel: "#44BBA4",
-        keppelhover: "#78CEBD",
-        payne: "#606980",
-        eerie: "#1B2021",
-        noir: "#090B0B",
+        turquoise: "#47E0CA",
+        turquoisehover: "#73E7D6",
+        grey: "#d1d5db",
+        gunmetal: "#1F2937",
+        rich: "#101827",
       },
       fontFamily: {
         hind: ['"Hind Vadadora"', "sans-serif"],

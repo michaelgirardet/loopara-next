@@ -12,13 +12,13 @@ export default function Page() {
     >
       {/* Header */}
       <header className="mb-12 flex items-center gap-3">
-        <ShieldCheck size={32} className="text-keppel" />
-        <h1 className="text-center text-4xl font-bold text-keppel">Politique de Confidentialité</h1>
+        <ShieldCheck size={32} className="text-turquoise" />
+        <h1 className="text-center text-4xl font-bold text-turquoise">Politique de Confidentialité</h1>
       </header>
 
       {/* Intro */}
       <motion.section
-        className="mb-10 rounded-lg border border-keppel/20 bg-eerie p-6 shadow-sm"
+        className="mb-10 rounded-lg border border-turquoise/20 bg-eerie p-6 shadow-sm"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
@@ -77,12 +77,12 @@ export default function Page() {
         ].map((item, index) => (
           <motion.div
             key={item.id}
-            className="rounded-lg border border-keppel/20 bg-eerie p-5"
+            className="rounded-lg border border-turquoise/20 bg-eerie p-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.4 }}
           >
-            <h2 className="mb-2 flex items-center gap-2 text-base font-semibold text-keppel">
+            <h2 className="mb-2 flex items-center gap-2 text-base font-semibold text-turquoise">
               {item.icon}
               {item.title}
             </h2>

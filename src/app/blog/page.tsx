@@ -7,7 +7,7 @@ import { articles } from "./blog.data";
 export default function Blog() {
   return (
     <motion.div
-      className="mx-auto max-w-6xl px-6 pb-32 pt-40 font-hind text-white"
+      className="f mx-auto max-w-6xl px-6 pb-24 pt-36 font-hind text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -19,7 +19,7 @@ export default function Blog() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <span className="mb-3 inline-flex items-center gap-2 self-start rounded-full border border-keppel bg-keppel/10 px-4 py-2 text-sm font-semibold text-keppel">
+        <span className="mb-10 inline-flex items-center gap-2 self-center rounded-full border border-turquoise bg-turquoise/10 px-4 py-2 text-sm font-semibold text-turquoise sm:self-start">
           <BookOpen size={18} /> Blog officiel
         </span>
         <h1 className="text-5xl font-bold text-white">Le Blog Loopara</h1>
@@ -44,14 +44,14 @@ export default function Blog() {
         {articles.map((article) => (
           <motion.article
             key={article.id}
-            className="hover:-trankeppel-y-1 group relative flex flex-col justify-between rounded-xl border border-keppel/20 bg-gradient-to-br from-eerie/20 to-eerie p-6 shadow-md transition duration-300 hover:shadow-lg"
+            className="hover:-tranturquoise-y-1 from-eerie/20 to-eerie group relative flex flex-col justify-between rounded-xl border border-turquoise/20 bg-gradient-to-br p-6 shadow-md transition duration-300 hover:shadow-lg"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
           >
             <div className="mb-4">
-              <h2 className="text-xl font-semibold text-keppel group-hover:underline">
+              <h2 className="text-xl font-semibold text-turquoise group-hover:underline">
                 {article.title}
               </h2>
               <p className="mt-2 text-sm text-white">{article.description}</p>
@@ -60,7 +60,7 @@ export default function Blog() {
               <time>{new Date(article.date).toLocaleDateString("fr-FR")}</time>
               <Link
                 href={`/blog/${article.slug}`}
-                className="flex items-center gap-1 text-keppel hover:underline"
+                className="flex items-center gap-1 text-turquoise hover:underline"
               >
                 Lire <ArrowRight size={16} />
               </Link>

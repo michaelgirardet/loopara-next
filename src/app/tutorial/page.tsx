@@ -6,7 +6,7 @@ import Link from "next/link";
 const steps = [
   {
     id: 1,
-    icon: <SlidersHorizontal size={24} className="text-keppel" />,
+    icon: <SlidersHorizontal size={24} className="text-turquoise" />,
     title: "1. Paramètre ta boucle",
     description:
       "Choisis une note racine, une gamme et un mode. Ces éléments définissent la tonalité de ta boucle MIDI.",
@@ -14,7 +14,7 @@ const steps = [
   },
   {
     id: 2,
-    icon: <Wand2 size={24} className="text-keppel" />,
+    icon: <Wand2 size={24} className="text-turquoise" />,
     title: "2. Personnalise ton motif",
     description:
       "Ajoute du rythme, ajuste le tempo, explore les genres : chaque détail façonne ta création.",
@@ -22,7 +22,7 @@ const steps = [
   },
   {
     id: 3,
-    icon: <Music size={24} className="text-keppel" />,
+    icon: <Music size={24} className="text-turquoise" />,
     title: "3. Écoute et ajuste",
     description:
       "Joue le rendu généré pour tester l’ambiance. Modifie les paramètres à volonté, c’est instantané.",
@@ -30,7 +30,7 @@ const steps = [
   },
   {
     id: 4,
-    icon: <Download size={24} className="text-keppel" />,
+    icon: <Download size={24} className="text-turquoise" />,
     title: "4. Télécharge ton fichier MIDI",
     description:
       "Export prêt à l’emploi pour tous les DAWs : Ableton, FL Studio, Logic, Cubase, etc.",
@@ -66,11 +66,11 @@ export default function Page() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
           >
-            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-keppel bg-noir">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full border border-turquoise bg-gunmetal">
               {step.icon}
             </div>
             <div className="max-w-md">
-              <h3 className="mb-2 text-2xl font-bold text-keppel">{step.title}</h3>
+              <h3 className="mb-2 text-2xl font-bold text-turquoise">{step.title}</h3>
               <p className="text-white">{step.description}</p>
               <p className="mt-1 text-sm italic text-white/70">{step.hint}</p>
             </div>
@@ -86,7 +86,7 @@ export default function Page() {
         <Link href={"/control"}>
           <button
             type="button"
-            className="mt-6 rounded-full bg-keppel px-6 py-3 font-bold text-black hover:bg-keppelhover"
+            className="mt-6 rounded-full bg-turquoise px-6 py-3 font-bold text-black hover:bg-turquoisehover"
           >
             Lancer Loopara
           </button>

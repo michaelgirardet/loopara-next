@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Midi } from "@tonejs/midi";
 import Soundfont from "soundfont-player";
 import { Pause, CirclePlay } from "lucide-react";
+import { loadDrumSamples, playDrum } from "@/lib/audio/drum-sampler";
 
 interface MidiPlayerPreviewProps {
   midiData: Uint8Array;
@@ -10,7 +11,7 @@ interface MidiPlayerPreviewProps {
   genre: string;
 }
 
-function MidiPlayerPreview({ midiData }: MidiPlayerPreviewProps) {
+function MidiPlayerPreview({ midiData, mode, genre }: MidiPlayerPreviewProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioContextRef = useRef<AudioContext | null>(null);
   const instrumentRef = useRef<Soundfont.Player | null>(null);
@@ -24,25 +25,33 @@ function MidiPlayerPreview({ midiData }: MidiPlayerPreviewProps) {
       }
 
       const ctx = audioContextRef.current;
-      instrumentRef.current = await Soundfont.instrument(ctx, "acoustic_grand_piano");
+
+      if (mode === "drums") {
+        await loadDrumSamples(genre, ctx);
+      } else {
+        instrumentRef.current = await Soundfont.instrument(ctx, "acoustic_grand_piano");
+      }
     };
 
     init();
-  }, []);
+  }, [mode, genre]);
 
   const playMidi = async () => {
-    if (!audioContextRef.current || !instrumentRef.current) return;
+    if (!audioContextRef.current) return;
 
     const midi = new Midi(midiData);
     const ctx = audioContextRef.current;
 
     for (const note of midi.tracks[0].notes) {
-      const duration = note.duration;
       const timeout = window.setTimeout(() => {
-        instrumentRef.current?.play(note.name, ctx.currentTime, {
-          gain: note.velocity,
-          duration,
-        });
+        if (mode === "drums") {
+          playDrum(note.midi, ctx, note.velocity);
+        } else {
+          instrumentRef.current?.play(note.name, ctx.currentTime, {
+            gain: note.velocity,
+            duration: note.duration,
+          });
+        }
       }, note.time * 1000);
 
       timeoutRefs.current.push(timeout);
@@ -70,7 +79,7 @@ function MidiPlayerPreview({ midiData }: MidiPlayerPreviewProps) {
       <button
         type="button"
         onClick={handlePlayPause}
-        className="flex cursor-pointer items-center gap-2 rounded-full border border-misty px-6 py-3 text-center text-base font-semibold text-white hover:bg-misty hover:text-noir"
+        className="flex cursor-pointer items-center gap-2 rounded-full border border-misty px-6 py-3 text-base font-semibold text-white hover:bg-misty hover:text-rich"
       >
         {isPlaying ? (
           <>

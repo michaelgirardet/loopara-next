@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <motion.main
-      className="pt-38 pb-18 sm:pt-42 md:pb-18 lg:pt-50 mx-auto max-w-4xl px-6 font-hind text-white md:pt-48 lg:pb-36"
+      className="pt-38 f mx-auto max-w-4xl px-6 pb-24 pt-36 font-hind text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -23,14 +23,14 @@ export default function Page() {
       <section className="grid gap-6 md:grid-cols-2">
         {/* FAQ */}
         <motion.div
-          className="rounded-lg border border-keppel/30 bg-eerie p-6 shadow-md"
+          className="bg-eerie rounded-lg border border-turquoise/30 p-6 shadow-md"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.4 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-keppel">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/20 backdrop-blur-sm">
+          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-turquoise">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/20 backdrop-blur-sm">
               <HelpCircle size={24} />
             </div>
             <h2 className="text-white">Consulte la FAQ</h2>
@@ -38,21 +38,21 @@ export default function Page() {
           <p className="mb-4 text-white">
             La majorité des questions courantes sont déjà répondues ici.
           </p>
-          <Link href="/faq" className="text-sm font-medium text-keppel hover:underline">
+          <Link href="/faq" className="text-sm font-medium text-turquoise hover:underline">
             Lire la FAQ →
           </Link>
         </motion.div>
 
         {/* Tutoriels */}
         <motion.div
-          className="rounded-lg border border-keppel/30 bg-eerie p-6 shadow-md"
+          className="bg-eerie rounded-lg border border-turquoise/30 p-6 shadow-md"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.4 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-white">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/20 text-keppel backdrop-blur-sm">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/20 text-turquoise backdrop-blur-sm">
               <BookOpen size={24} />
             </div>
             <h2>Tutoriels pas à pas</h2>
@@ -60,21 +60,21 @@ export default function Page() {
           <p className="mb-4 text-white">
             Apprends à utiliser Loopara avec nos tutoriels pratiques.
           </p>
-          <Link href="/tutoriel" className="text-sm font-medium text-keppel hover:underline">
+          <Link href="/tutoriel" className="text-sm font-medium text-turquoise hover:underline">
             Accéder aux tutoriels →
           </Link>
         </motion.div>
 
         {/* Contact direct */}
         <motion.div
-          className="rounded-lg border border-keppel/30 bg-eerie p-6 shadow-md md:col-span-2"
+          className="bg-eerie rounded-lg border border-turquoise/30 p-6 shadow-md md:col-span-2"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.4 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-keppel">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-keppel/20 backdrop-blur-sm">
+          <div className="mb-4 flex items-center gap-3 text-xl font-semibold text-turquoise">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/20 backdrop-blur-sm">
               <Mail size={24} />
             </div>
             <h2 className="text-white">Besoin d’aide personnalisée ?</h2>
@@ -82,14 +82,14 @@ export default function Page() {
           <p className="mb-4 text-white">
             Tu n’as pas trouvé ce que tu cherchais ? Tu peux nous écrire directement.
           </p>
-          <Link href="/contact" className="text-sm font-medium text-keppel hover:underline">
+          <Link href="/contact" className="text-sm font-medium text-turquoise hover:underline">
             Contacter l’équipe Loopara →
           </Link>
         </motion.div>
       </section>
 
       {/* Alerte info maintenance */}
-      <div className="mt-12 flex items-center gap-3 rounded-lg bg-keppel/10 p-4 text-sm text-white">
+      <div className="mt-12 flex items-center gap-3 rounded-lg bg-turquoise/10 p-4 text-sm text-white">
         <AlertCircle size={18} />
         <span>
           Info : La plateforme est accessible 24/7, mais les réponses peuvent prendre 24-48h les
