@@ -20,7 +20,7 @@ export default function TestimonialsCarousel() {
         <AnimatePresence mode="wait">
           <motion.blockquote
             key={homeTestimonials[index].id}
-            className="rounded-xl border border-turquoise/30 bg-gradient-to-br from-eerie/10 to-eerie p-8 shadow-lg"
+            className="from-eerie/10 to-eerie rounded-xl border border-turquoise/30 bg-gradient-to-br p-8 shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}

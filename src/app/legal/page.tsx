@@ -29,7 +29,7 @@ export default function Page() {
 
       {/* Card-style Legal Notice */}
       <motion.section
-        className="space-y-8 rounded-xl border border-turquoise/20 bg-eerie p-8 text-sm leading-relaxed text-gray-300 shadow-md"
+        className="bg-eerie space-y-8 rounded-xl border border-turquoise/20 p-8 text-sm leading-relaxed text-gray-300 shadow-md"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}

@@ -79,7 +79,7 @@ function MidiPlayerPreview({ midiData, mode, genre }: MidiPlayerPreviewProps) {
       <button
         type="button"
         onClick={handlePlayPause}
-        className="flex cursor-pointer items-center gap-2 rounded-full border border-misty px-6 py-3 text-base font-semibold text-white hover:bg-misty hover:text-rich"
+        className="border-misty hover:bg-misty flex cursor-pointer items-center gap-2 rounded-full border px-6 py-3 text-base font-semibold text-white hover:text-rich"
       >
         {isPlaying ? (
           <>

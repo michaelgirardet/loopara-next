@@ -219,7 +219,7 @@ const Page = () => {
                 animate="visible"
                 whileHover="hover"
                 whileTap="tap"
-                className="hover:bg-turquoisehover mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full bg-turquoise px-8 py-4 text-base font-semibold text-rich"
+                className="mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full bg-turquoise px-8 py-4 text-base font-semibold text-rich hover:bg-turquoisehover"
               >
                 <motion.div
                   animate={{
@@ -253,7 +253,7 @@ const Page = () => {
                 <a
                   href={URL.createObjectURL(midiBlob)}
                   download={`loopara-${mode}-${Date.now()}.mid`}
-                  className="hover:bg-turquoisehover flex items-center gap-2 rounded-md border border-turquoise px-6 py-3 text-center text-base font-medium text-turquoise shadow-md transition-all duration-300 hover:text-rich"
+                  className="flex items-center gap-2 rounded-md border border-turquoise px-6 py-3 text-center text-base font-medium text-turquoise shadow-md transition-all duration-300 hover:bg-turquoisehover hover:text-rich"
                 >
                   <FileDown className="h-5 w-5" />
                   Télécharger

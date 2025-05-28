@@ -57,7 +57,7 @@ function Navbar() {
               <Link
                 key={link.name}
                 href={link.to}
-                className="hover:text-turquoisehover flex items-center gap-2 font-semibold text-white transition-colors"
+                className="flex items-center gap-2 font-semibold text-white transition-colors hover:text-turquoisehover"
               >
                 {link.name}
               </Link>
@@ -107,7 +107,7 @@ function Navbar() {
           </button>
         </div>
 
-        <div className="border-turquoisehover/20 mb-6 border-b pb-6">
+        <div className="mb-6 border-b border-turquoisehover/20 pb-6">
           <div className="mb-4 flex items-center gap-2">
             <Music className="text-turquoise" size={24} />
             <span className="font-manrope text-3xl font-bold text-white">Loopara</span>
@@ -136,7 +136,7 @@ function Navbar() {
             <Link href={"/control"} onClick={toggleMenu}>
               <button
                 type="button"
-                className="hover:bg-turquoisehover flex w-full max-w-xs items-center justify-center self-center rounded-lg bg-turquoise px-5 py-3 text-sm font-medium text-rich transition-all duration-300 hover:shadow-lg hover:shadow-turquoise"
+                className="flex w-full max-w-xs items-center justify-center self-center rounded-lg bg-turquoise px-5 py-3 text-sm font-medium text-rich transition-all duration-300 hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise"
               >
                 Essayer maintenant
               </button>
