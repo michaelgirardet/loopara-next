@@ -36,7 +36,7 @@ const AnimatedHeroSection = () => {
           >
             Loopara est un générateur de fichiers MIDI simple et rapide. Crée en quelques secondes
             des motifs personnalisés, choisis ta gamme, ton tempo, et télécharge un fichier prêt à
-            l'emploi pour Ableton, FL Studio ou Logic.
+            l&apos;emploi pour Ableton, FL Studio ou Logic.
           </motion.p>
 
           <motion.button

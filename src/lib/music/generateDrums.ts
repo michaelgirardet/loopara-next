@@ -64,7 +64,6 @@ export function generateDrumsTrack(
     }
 
     const duration = rhythm[stepIndex % rhythm.length]; // ✅ Ajouté
-    const ticks = DURATION_TICKS[duration] ?? 240;
 
     for (const note of modified.filter(Boolean) as string[]) {
       let velocity = Math.floor(
