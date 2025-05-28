@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <motion.main
-      className="pt-38 pb-18 sm:pt-42 md:pb-18 lg:pt-50 mx-auto max-w-4xl px-6 font-hind text-white md:pt-48 lg:pb-36"
+      className="pt-38 f mx-auto max-w-4xl px-6 pb-24 pt-36 font-hind text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -23,7 +23,7 @@ export default function Page() {
       <section className="grid gap-6 md:grid-cols-2">
         {/* FAQ */}
         <motion.div
-          className="rounded-lg border border-turquoise/30 bg-eerie p-6 shadow-md"
+          className="bg-eerie rounded-lg border border-turquoise/30 p-6 shadow-md"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.4 }}
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ export default function Page() {
 
         {/* Tutoriels */}
         <motion.div
-          className="rounded-lg border border-turquoise/30 bg-eerie p-6 shadow-md"
+          className="bg-eerie rounded-lg border border-turquoise/30 p-6 shadow-md"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.4 }}
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ export default function Page() {
 
         {/* Contact direct */}
         <motion.div
-          className="rounded-lg border border-turquoise/30 bg-eerie p-6 shadow-md md:col-span-2"
+          className="bg-eerie rounded-lg border border-turquoise/30 p-6 shadow-md md:col-span-2"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.4 }}
           initial={{ opacity: 0, y: 20 }}

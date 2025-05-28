@@ -146,7 +146,9 @@ export default function Page() {
         className="mt-12 flex flex-col items-center gap-2 text-sm text-white sm:flex-row"
       >
         <Mail size={16} className="text-[#fefefe]" />
-        <span>Votre message peut faire groover la prochaine version.</span>
+        <span className="text-center sm:text-left">
+          Votre message peut faire groover la prochaine version.
+        </span>
       </motion.div>
     </motion.div>
   );

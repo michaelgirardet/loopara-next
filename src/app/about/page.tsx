@@ -50,7 +50,7 @@ export default function Page() {
     <motion.main className="mx-auto flex w-screen max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-36 font-hind text-white">
       {/* Titre */}
       <motion.h1
-        className="text-5xl font-bold text-turquoise"
+        className="text-center text-5xl font-bold text-turquoise"
         initial="hidden"
         whileInView="visible"
         custom={0}
@@ -91,7 +91,7 @@ export default function Page() {
           {features.map((item, i) => (
             <motion.li
               key={item.id}
-              className="bg-eerie flex items-center gap-4 rounded-xl p-4"
+              className="bg-eerie flex flex-col items-center gap-4 rounded-xl p-4 text-center sm:flex-row sm:text-left"
               variants={fadeUp}
               custom={i + 3}
             >
@@ -194,14 +194,13 @@ export default function Page() {
           variants={fadeUp}
           custom={features.length + 5.1}
         >
-          <p className="text-lg text-white">
+          <p className="text-center text-lg text-white sm:text-left">
             Tu veux proposer une fonctionnalité ou faire un retour ? Ton avis nous intéresse !
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-turquoise px-5 py-3 font-semibold text-rich transition-all hover:scale-105 hover:bg-turquoise/80"
+            className="hover:bg-turquoisehover flex items-center gap-2 self-center rounded-full bg-turquoise px-5 py-3 text-left text-sm font-medium text-rich transition-all hover:scale-105"
           >
-            <Heart size={20} />
             Nous contacter
           </Link>
         </motion.div>

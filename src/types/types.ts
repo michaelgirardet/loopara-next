@@ -2,11 +2,10 @@ export interface GenerateProps {
   rootNote: string;
   scaleType: "major" | "minor";
   mode: "melody" | "chords" | "arpeggios" | "drums";
-  rhythms:string[],
+  rhythm: string[];
   tempo: number;
   genre: string;
   emotion?: string;
-
 }
 
 export interface ControlProps {
@@ -15,8 +14,8 @@ export interface ControlProps {
     scaleType: "major" | "minor";
     mode: "melody" | "chords" | "arpeggios" | "drums";
     genre: string;
-    rhythms: string[];
-    emotion: string,
+    rhythm: string[];
+    emotion: string;
     tempo: number;
   }) => void;
 }
@@ -39,8 +38,7 @@ export type DrumPreset = {
 
 export type HumanizationOptions = {
   velocityRange?: [number, number]; // plage autorisée
-  velocityVariation?: number;       // ex: ±6
-  timingVariationTicks?: number;    // ex: ±15 ticks
-  accentPattern?: number[];         // ex: [100, 80, 90, 80]
+  velocityVariation?: number; // ex: ±6
+  timingVariationTicks?: number; // ex: ±15 ticks
+  accentPattern?: number[]; // ex: [100, 80, 90, 80]
 };
-

@@ -57,7 +57,7 @@ function Navbar() {
               <Link
                 key={link.name}
                 href={link.to}
-                className="flex items-center gap-2 font-semibold text-white transition-colors hover:text-turquoisehover"
+                className="hover:text-turquoisehover flex items-center gap-2 font-semibold text-white transition-colors"
               >
                 {link.name}
               </Link>
@@ -66,7 +66,7 @@ function Navbar() {
             {/* Bouton demo/CTA */}
             <Link
               href="/control"
-              className="rounded-full bg-turquoise px-5 py-2 font-semibold text-rich transition-all duration-300 hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise/10"
+              className="hover text-md rounded-full bg-turquoise px-5 py-2 font-semibold text-rich transition-all duration-300 hover:bg-turquoise hover:shadow-lg hover:shadow-turquoise/10"
             >
               Essayer maintenant
             </Link>
@@ -107,12 +107,12 @@ function Navbar() {
           </button>
         </div>
 
-        <div className="mb-6 border-b border-turquoisehover/20 pb-6">
+        <div className="border-turquoisehover/20 mb-6 border-b pb-6">
           <div className="mb-4 flex items-center gap-2">
             <Music className="text-turquoise" size={24} />
-            <span className="text-3xl font-bold text-white font-manrope">Loopara</span>
+            <span className="font-manrope text-3xl font-bold text-white">Loopara</span>
           </div>
-          <p className="text-lg text-white">
+          <p className="text-md text-white">
             Générateur de motifs MIDI rapide et intuitif pour votre créativité musicale
           </p>
         </div>
@@ -122,10 +122,10 @@ function Navbar() {
             <Link
               key={link.name}
               href={link.to}
-              className="flex items-center gap-4 text-xl font-medium text-white transition-colors hover:text-white"
+              className="text-md flex items-center gap-4 font-medium text-white transition-colors hover:text-white"
               onClick={toggleMenu}
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/70 text-rich">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/30 text-turquoise">
                 {link.icon}
               </div>
               {link.name}
@@ -136,7 +136,7 @@ function Navbar() {
             <Link href={"/control"} onClick={toggleMenu}>
               <button
                 type="button"
-                className="flex w-full max-w-xs items-center justify-center self-center rounded-lg bg-turquoise px-5 py-3 font-semibold text-rich transition-all duration-300 hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise"
+                className="hover:bg-turquoisehover flex w-full max-w-xs items-center justify-center self-center rounded-lg bg-turquoise px-5 py-3 text-sm font-medium text-rich transition-all duration-300 hover:shadow-lg hover:shadow-turquoise"
               >
                 Essayer maintenant
               </button>

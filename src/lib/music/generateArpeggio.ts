@@ -1,4 +1,4 @@
-import { sanitizeRhythms } from "@/lib/music/sanitizeRhythms";
+import { sanitizerhythm } from "@/lib/music/sanitizerhythm";
 import { applyHumanization } from "./applyHumanization";
 import { getArpeggioPattern } from "../modes/arpeggios";
 import { buildChord } from "../modes/chords";
@@ -18,9 +18,9 @@ const DURATION_TICKS: Record<string, number> = {
 export const generateArpeggio = (
   scale: string[],
   progression: number[] | null,
-  rhythms: string[],
+  rhythm: string[],
   pattern: "up" | "down" | "updown" | "broken" | "auto" = "up",
-  genre?: string 
+  genre?: string
 ): NoteEvent[] => {
   if (!progression) return [];
 
@@ -37,7 +37,7 @@ export const generateArpeggio = (
     effectivePattern = patterns[Math.floor(Math.random() * patterns.length)] as typeof pattern;
   }
 
-  const safeRhythms = sanitizeRhythms(rhythms);
+  const saferhythm = sanitizerhythm(rhythm);
 
   while (totalTicks < MIN_TICKS) {
     const degree = progression[progressionIndex % progression.length];
@@ -65,7 +65,7 @@ export const generateArpeggio = (
     let localTicks = 0;
     for (let i = 0; i < motif.length; i++) {
       const note = motif[i];
-      const duration = safeRhythms[i % safeRhythms.length];
+      const duration = saferhythm[i % saferhythm.length];
       const ticks = DURATION_TICKS[duration] ?? 480;
 
       const velocity = 60 + Math.floor(20 * Math.sin((Math.PI * i) / motif.length));

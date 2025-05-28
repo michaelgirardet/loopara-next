@@ -15,7 +15,7 @@ export const generateTrack = ({
   rootNote,
   scaleType,
   mode,
-  rhythms,
+  rhythm,
   tempo,
   genre,
   emotion,
@@ -44,16 +44,16 @@ export const generateTrack = ({
 
   switch (mode) {
     case "chords":
-      events = generateChords(scale, noteCount, rhythms, progression, genre);
+      events = generateChords(scale, noteCount, rhythm, progression, genre);
       break;
     case "melody":
-      events = generateMelody(scale, noteCount, rhythms, genre, undefined);
+      events = generateMelody(scale, noteCount, rhythm, genre, undefined);
       break;
     case "arpeggios":
-      events = generateArpeggio(scale, progression, rhythms, pattern, genre);
+      events = generateArpeggio(scale, progression, rhythm, pattern, genre);
       break;
     case "drums":
-      events = generateDrumsTrack(genre, rhythms);
+      events = generateDrumsTrack(genre, rhythm);
       break;
   }
 

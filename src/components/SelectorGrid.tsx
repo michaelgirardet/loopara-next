@@ -71,14 +71,14 @@ export default function SelectorGrid({
         Frais, unique, prêt à jouer — chaque boucle est ta signature.
       </h2>
 
-      <div className="from-eerie to-noir grid grid-cols-1 gap-6 rounded-2xl border border-turquoise/20 bg-gradient-to-br p-8 shadow-2xl sm:grid-cols-2 lg:grid-cols-3">
+      <div className="from-eerie to-noir grid grid-cols-1 gap-6 rounded-2xl border border-turquoise/20 bg-gradient-to-br p-8 sm:grid-cols-2 lg:grid-cols-3">
         {selectors.map((child) => (
           <motion.div
             key={child.key}
             variants={itemVariants}
             whileHover="hover"
             whileTap="tap"
-            className="flex flex-col items-center justify-center rounded-xl border border-turquoise/30 bg-gunmetal p-6 shadow-lg backdrop-blur-md transition hover:shadow-xl"
+            className="flex flex-col items-center justify-center rounded-xl border border-turquoise/30 bg-gunmetal p-6 backdrop-blur-md transition"
           >
             {child}
           </motion.div>

@@ -227,7 +227,7 @@ function Page() {
       <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <motion.div className="mx-auto max-w-5xl">
           <div className="mb-8 flex items-center justify-center gap-3 lg:mb-12">
-            <ArrowRight size={24} className="text-teal-400" />
+            <ArrowRight size={24} className="mb-2 text-teal-400" />
             <h4 className="text-center text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
               À lire aussi
             </h4>

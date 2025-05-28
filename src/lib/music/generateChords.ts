@@ -23,12 +23,12 @@ const MAX_OCTAVE = 5;
 export function generateChords(
   scale: string[],
   noteCount: number,
-  rhythms: string[],
+  rhythm: string[],
   progression: number[] | null,
   genre: string
 ): NoteEvent[] {
   const events: NoteEvent[] = [];
-  const safeRhythms = rhythms && rhythms.length > 0 ? rhythms : ["4"];
+  const saferhythm = rhythm && rhythm.length > 0 ? rhythm : ["4"];
   let totalTicks = 0;
 
   // Étendre la gamme
@@ -80,7 +80,7 @@ export function generateChords(
       }
     }
 
-    const duration = safeRhythms[progressionIndex % safeRhythms.length];
+    const duration = saferhythm[progressionIndex % saferhythm.length];
     const ticks = DURATION_TICKS[duration] ?? 480;
 
     events.push(

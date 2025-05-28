@@ -16,7 +16,7 @@ const DURATION_TICKS: Record<string, number> = {
 
 export function generateDrumsTrack(
   style: keyof typeof drumPresets = "pop",
-  rhythms: string[] = ["16"]
+  rhythm: string[] = ["16"]
 ): NoteEvent[] {
   const events: NoteEvent[] = [];
   const preset = drumPresets[style];
@@ -34,7 +34,7 @@ export function generateDrumsTrack(
   const MIN_TICKS = 1920 * 2;
   let totalTicks = 0;
   let stepIndex = 0;
-  const stepLength = DURATION_TICKS[rhythms[0]] ?? 120;
+  const stepLength = DURATION_TICKS[rhythm[0]] ?? 120;
 
   while (totalTicks < MIN_TICKS) {
     const step = grid[stepIndex % grid.length];
@@ -63,38 +63,39 @@ export function generateDrumsTrack(
       }
     }
 
-    
-  const duration = rhythms[stepIndex % rhythms.length]; // ✅ Ajouté
-  const ticks = DURATION_TICKS[duration] ?? 240;
+    const duration = rhythm[stepIndex % rhythm.length]; // ✅ Ajouté
+    const ticks = DURATION_TICKS[duration] ?? 240;
 
-  for (const note of modified.filter(Boolean) as string[]) {
-    let velocity = Math.floor(Math.random() * (velocityRange[1] - velocityRange[0]) + velocityRange[0]);
+    for (const note of modified.filter(Boolean) as string[]) {
+      let velocity = Math.floor(
+        Math.random() * (velocityRange[1] - velocityRange[0]) + velocityRange[0]
+      );
 
-    if (note === "F#2") {
-      velocity = Math.floor(Math.random() * 10 + 40);
+      if (note === "F#2") {
+        velocity = Math.floor(Math.random() * 10 + 40);
+      }
+
+      if (note === "D1") {
+        velocity = Math.floor(Math.random() * 10 + 30);
+      }
+
+      const isSwung = duration === "16" && stepIndex % 2 === 1;
+      const swingOffset = isSwung ? stepLength * (swing - 0.5) : 0;
+
+      events.push(
+        new MidiWriter.NoteEvent({
+          pitch: [note],
+          duration,
+          velocity,
+          channel: 10,
+          startTick: totalTicks + swingOffset,
+        })
+      );
     }
 
-    if (note === "D1") {
-      velocity = Math.floor(Math.random() * 10 + 30);
-    }
-
-    const isSwung = duration === "16" && stepIndex % 2 === 1;
-    const swingOffset = isSwung ? stepLength * (swing - 0.5) : 0;
-
-    events.push(
-      new MidiWriter.NoteEvent({
-        pitch: [note],
-        duration,
-        velocity,
-        channel: 10,
-        startTick: totalTicks + swingOffset,
-      })
-    );
+    totalTicks += stepLength;
+    stepIndex++;
   }
-
-  totalTicks += stepLength;
-  stepIndex++;
-}
   // ✅ Humanisation après génération complète
   return applyHumanization(events, humanizationPresets[style] ?? {});
 }

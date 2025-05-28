@@ -54,11 +54,11 @@ function generateMotif(chordNotes: string[], motifLength = 4): string[] {
 export function generateMelody(
   scale: string[],
   _noteCount: number,
-  rhythms: string[],
+  rhythm: string[],
   genre: string,
   progression?: number[]
 ): NoteEvent[] {
-  const safeRhythms = rhythms && rhythms.length > 0 ? rhythms : ["4"];
+  const saferhythm = rhythm && rhythm.length > 0 ? rhythm : ["4"];
   let totalTicks = 0;
   const shiftedScale = getShiftedScale(scale);
   const baseProgression =
@@ -74,9 +74,9 @@ export function generateMelody(
 
       for (let j = 0; j < motif.length; j++) {
         const note = motif[j];
-        const isLastNote = (i === baseProgression.length - 1) && (j === motif.length - 1);
+        const isLastNote = i === baseProgression.length - 1 && j === motif.length - 1;
 
-        const duration = safeRhythms[i % safeRhythms.length];
+        const duration = saferhythm[i % saferhythm.length];
         const ticks = durationToTicks(duration);
         totalTicks += ticks;
 

@@ -13,7 +13,7 @@ const Page = () => {
   const [mode, setMode] = useState<"arpeggios" | "chords" | "melody" | "drums">("arpeggios");
   const [genre, setGenre] = useState("pop");
   const [emotion, setEmotion] = useState("");
-  const [rhythm, setRhythms] = useState([""]);
+  const [rhythm, setRhythm] = useState([""]);
   const [tempo, setTempo] = useState(120);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -26,31 +26,31 @@ const Page = () => {
       case "lofi":
         setScaleType("minor");
         setMode("melody");
-        setRhythms(["8", "4"]);
+        setRhythm(["8", "4"]);
         setTempo(70);
         break;
       case "house":
         setScaleType("major");
         setMode("chords");
-        setRhythms(["4"]);
+        setRhythm(["4"]);
         setTempo(125);
         break;
       case "trap":
         setScaleType("minor");
         setMode("melody");
-        setRhythms(["8", "16"]);
+        setRhythm(["8", "16"]);
         setTempo(140);
         break;
       case "funk":
         setScaleType("major");
         setMode("arpeggios");
-        setRhythms(["16", "8"]);
+        setRhythm(["16", "8"]);
         setTempo(100);
         break;
       default:
         setScaleType("major");
         setMode("chords");
-        setRhythms(["4", "8"]);
+        setRhythm(["4", "8"]);
         setTempo(110);
         break;
     }
@@ -219,7 +219,7 @@ const Page = () => {
                 animate="visible"
                 whileHover="hover"
                 whileTap="tap"
-                className="hover:bg-turquoisehover mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full bg-turquoise px-8 py-4 text-base font-semibold text-rich shadow-lg"
+                className="hover:bg-turquoisehover mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full bg-turquoise px-8 py-4 text-base font-semibold text-rich"
               >
                 <motion.div
                   animate={{
