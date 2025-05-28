@@ -1,4 +1,4 @@
-import { sanitizerhythm } from "@/lib/music/sanitizerhythm";
+import { sanitizerhythm } from "@/lib/music/sanitizeRhythms";
 import { applyHumanization } from "./applyHumanization";
 import { getArpeggioPattern } from "../modes/arpeggios";
 import { buildChord } from "../modes/chords";
@@ -46,7 +46,6 @@ export const generateArpeggio = (
     const chord = buildChord(scale, degree, {
       extensions: ["7"],
       inversion,
-      voicing: "open",
     });
 
     const motif = getArpeggioPattern(

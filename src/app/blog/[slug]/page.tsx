@@ -5,12 +5,13 @@ import { fr } from "date-fns/locale/fr";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-type Params = {
-  params: { slug: string };
+type Props = {
+  params: Promise<{ slug: string }>;
 };
 
-function Page({ params }: Params) {
-  const article = articles.find((a) => a.slug === params.slug);
+const Page = async ({ params }: Props) => {
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
 
   if (!article) return notFound();
 
@@ -29,13 +30,12 @@ function Page({ params }: Params) {
       </Link>
 
       <article>
-        <h1 className="text-4xl font-bold text-misty">{article.title}</h1>
+        <h1 className="text-misty text-4xl font-bold">{article.title}</h1>
         <p className="text-emerald mt-2 text-sm">{formattedDate}</p>
 
         <p className="mt-6 text-lg text-gray-300">{article.description}</p>
 
         <div className="mt-10 space-y-6 text-base leading-relaxed text-gray-200">
-          {/* Remplace cette partie par du markdown ou contenu enrichi si tu le souhaites */}
           <p>{article.excerpt}</p>
           <p>
             Cet article est en cours de rédaction complète. Reviens bientôt pour découvrir un guide
@@ -45,6 +45,17 @@ function Page({ params }: Params) {
       </article>
     </main>
   );
-}
+};
 
 export default Page;
+
+/**
+ * Next.js utilise cette fonction pour générer les pages de blog
+ * à la compilation (SSG - Static Site Generation).
+ * Elle retourne une liste de tous les slugs à pré-rendre.
+ */
+export async function generateStaticParams() {
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
