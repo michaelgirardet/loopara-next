@@ -1,20 +1,13 @@
 import { PrismaClient } from "@prisma/client";
-import type { Prisma } from "@prisma/client";
-
-interface userDataProps {
-  posts: {
-    title: string;
-    content: string;
-    published: boolean;
-  };
-}
+import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
-const userData: Prisma.UserCreateInput[] = [
+const userData = [
   {
     name: "Alice",
     email: "alice@prisma.io",
+    password: "alicepassword",
     posts: {
       create: [
         {
@@ -25,6 +18,7 @@ const userData: Prisma.UserCreateInput[] = [
         {
           title: "Prisma on YouTube",
           content: "https://pris.ly/youtube",
+          published: false,
         },
       ],
     },
@@ -32,6 +26,7 @@ const userData: Prisma.UserCreateInput[] = [
   {
     name: "Bob",
     email: "bob@prisma.io",
+    password: "bobpassword",
     posts: {
       create: [
         {
@@ -46,8 +41,25 @@ const userData: Prisma.UserCreateInput[] = [
 
 export async function main() {
   for (const u of userData) {
-    await prisma.user.create({ data: u });
+    // Hashage du mot de passe pour chaque utilisateur
+    const hashedPassword = await bcrypt.hash(u.password, 12);
+
+    await prisma.user.create({
+      data: {
+        name: u.name,
+        email: u.email,
+        password: hashedPassword,
+        posts: u.posts,
+      },
+    });
   }
 }
 
-main();
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

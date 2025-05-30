@@ -4,7 +4,7 @@ import { Mail, Music } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="white bg-[#1F2937] text-white">
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto min-h-[20vh] px-6 py-12">
         {/* Top section with logo and navigation */}
         <div className="mb-10 grid grid-cols-1 gap-10 md:grid-cols-3">
           {/* Brand section */}
@@ -29,12 +29,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links column */}
-          <div>
+          {/* Navigation */}
+          <div className="flex w-full flex-col items-center justify-center text-center sm:flex sm:items-center sm:justify-start sm:text-left">
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               Navigation
             </h4>
-            <ul className="ml-4 space-y-3">
+            <ul className="space-y-3">
               <li>
                 <Link
                   href="/"
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           {/* Resources column */}
-          <div>
+          <div className="flex w-full flex-col items-center justify-center text-center sm:flex sm:items-center sm:justify-start sm:text-left">
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white underline-offset-4">
               Ressources
             </h4>

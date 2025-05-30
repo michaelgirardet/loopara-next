@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { X, Menu, Music, Info, Mail, Home, LogIn } from "lucide-react";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { data: session, status } = useSession();
 
   // Détecte le défilement pour changer l'apparence de la navbar
   useEffect(() => {
@@ -70,7 +72,25 @@ function Navbar() {
             >
               Essayer maintenant
             </Link>
-            <LogIn size={24} className="h-7 w-7 cursor-pointer" />
+            <Link href={session ? "/profile" : "/login"}>
+              {!session ? (
+                <LogIn size={24} className="h-7 w-7 cursor-pointer" />
+              ) : (
+                <div className="flex items-center gap-2">
+                  {session.user?.image && (
+                    <img
+                      src={session.user.image}
+                      alt="Avatar"
+                      className="h-7 w-7 rounded-full border border-turquoise"
+                    />
+                  )}
+                  <span className="font-bold text-white">{session.user?.name || "Compte"}</span>
+                  <button type="button" onClick={() => signOut()}>
+                    logout
+                  </button>
+                </div>
+              )}
+            </Link>
           </nav>
 
           {/* Bouton menu mobile */}
