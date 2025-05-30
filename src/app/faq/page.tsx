@@ -49,7 +49,7 @@ export default function Page() {
   };
 
   return (
-    <motion.main className="mx-auto flex max-w-3xl flex-col items-center justify-start px-6 pb-24 pt-36 font-hind text-white">
+    <motion.main className="section-spacing mx-auto flex max-w-3xl flex-col items-center justify-start font-hind text-white">
       <motion.header
         className="mb-10 flex items-center gap-3"
         initial={{ opacity: 0, y: -20 }}

@@ -2,7 +2,7 @@ import MidiWriter from "midi-writer-js";
 import { chordProgressions } from "@/lib/music/progressions";
 import { genrePresets } from "@/lib/config/genre-presets";
 import { emotionChordPresets } from "@/lib/config/emotion-presets";
-import type { GenerateProps } from "@/types/types";
+import type { GenerateProps } from "../../../types/types";
 import { getScale } from "@/lib/music/getScale";
 import { generateArpeggio } from "@/lib/music/generateArpeggio";
 import { generateDrumsTrack } from "@/lib/music/generateDrums";

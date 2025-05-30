@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import type { GenerateProps } from "@/types/types";
+import type { GenerateProps } from "../../types/types";
 import { WandSparkles, FileDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Toast from "@/components/Toast";

@@ -40,7 +40,7 @@ const steps = [
 
 export default function Page() {
   return (
-    <div className="mx-auto max-w-5xl px-6 pb-24 pt-36 font-hind text-white">
+    <div className="section-spacing mx-auto max-w-5xl font-hind text-white">
       <motion.header
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}

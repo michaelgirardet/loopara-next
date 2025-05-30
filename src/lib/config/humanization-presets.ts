@@ -1,4 +1,4 @@
-import type { HumanizationOptions } from "@/types/types";
+import type { HumanizationOptions } from "../../types/types";
 
 export const humanizationPresets: Record<string, HumanizationOptions> = {
   pop: {

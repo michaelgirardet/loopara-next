@@ -1,61 +1,57 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { X, Menu, Music, Info, Mail, Home, LogIn } from "lucide-react";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
+import { X, Menu, Music, Info, Mail, Home, LogIn } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-function Navbar() {
+const NAV_LINKS = [
+  { name: "Accueil", to: "/", icon: <Home size={20} /> },
+  { name: "À Propos", to: "/about", icon: <Info size={20} /> },
+  { name: "Contact", to: "/contact", icon: <Mail size={20} /> },
+];
+
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
-  // Détecte le défilement pour changer l'apparence de la navbar
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrolled]);
-
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  }, []);
 
   const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     scrolled ? "py-3 bg-[#2A2D34]/25 backdrop-blur-md shadow-lg" : "py-6 bg-transparent"
   }`;
 
-  const menuVariants = {
-    closed: { x: "100%" },
-    open: { x: 0 },
-  };
-
-  // Liens de navigation
-  const navLinks = [
-    { name: "Accueil", to: "/", icon: <Home size={20} /> },
-    { name: "À Propos", to: "/about", icon: <Info size={20} /> },
-    { name: "Contact", to: "/contact", icon: <Mail size={20} /> },
-  ];
-
   return (
     <>
+      {/* Top navbar */}
       <header className={navbarClasses}>
         <div className="container mx-auto flex items-center justify-between px-6">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-5" onClick={() => setMenuOpen(false)}>
+          <Link href="/" className="flex items-center gap-3">
             <Music className="text-turquoise" size={28} />
             <span className="bg-misty bg-clip-text font-manrope text-2xl font-semibold hover:brightness-150">
               Loopara
             </span>
           </Link>
 
-          {/* Navigation sur desktop */}
+          {/* Desktop Nav */}
           <nav className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
                 href={link.to}
@@ -65,40 +61,54 @@ function Navbar() {
               </Link>
             ))}
 
-            {/* Bouton demo/CTA */}
             <Link
               href="/control"
-              className="hover text-md rounded-full bg-turquoise px-5 py-2 font-semibold text-rich transition-all duration-300 hover:bg-turquoise hover:shadow-lg hover:shadow-turquoise/10"
+              className="rounded-full bg-turquoise px-5 py-2 text-sm font-semibold text-rich transition hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise/20"
             >
               Essayer maintenant
             </Link>
-            <Link href={session ? "/profile" : "/login"}>
-              {!session ? (
-                <LogIn size={24} className="h-7 w-7 cursor-pointer" />
-              ) : (
-                <div className="flex items-center gap-2">
-                  {session.user?.image && (
-                    <img
-                      src={session.user.image}
-                      alt="Avatar"
-                      className="h-7 w-7 rounded-full border border-turquoise"
-                    />
-                  )}
-                  <span className="font-bold text-white">{session.user?.name || "Compte"}</span>
-                  <button type="button" onClick={() => signOut()}>
-                    logout
+
+            {!session ? (
+              <Link href="/login">
+                <LogIn size={24} className="text-white" />
+              </Link>
+            ) : (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center gap-2">
+                    {session.user?.image && (
+                      <img
+                        src={session.user.image}
+                        alt="Avatar"
+                        className="h-7 w-7 rounded-full border border-turquoise"
+                      />
+                    )}
+                    <span className="font-bold text-white">{session.user?.name || "Compte"}</span>
                   </button>
-                </div>
-              )}
-            </Link>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48 bg-rich text-white">
+                  <DropdownMenuLabel className="text-center text-sm text-gray-300">
+                    Mon compte
+                  </DropdownMenuLabel>
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard">Tableau de bord</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => signOut({ callbackUrl: "/" })}
+                    className="text-red-400 focus:text-red-500"
+                  >
+                    Se déconnecter
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </nav>
 
-          {/* Bouton menu mobile */}
+          {/* Mobile menu toggle */}
           <button
-            type="button"
-            onClick={toggleMenu}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white md:hidden"
-            aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="rounded-full border border-white p-2 md:hidden"
+            aria-label="Menu mobile"
           >
             {menuOpen ? (
               <X size={24} className="text-white" />
@@ -109,42 +119,40 @@ function Navbar() {
         </div>
       </header>
 
-      {/* Menu mobile */}
+      {/* Mobile Menu */}
       <motion.div
-        className="fixed right-0 top-0 z-50 h-full w-full bg-gunmetal p-8 font-hind shadow-xl md:hidden"
-        variants={menuVariants}
-        initial="closed"
-        animate={menuOpen ? "open" : "closed"}
+        className="fixed right-0 top-0 z-50 h-full w-full bg-gunmetal p-8 md:hidden"
+        initial={{ x: "100%" }}
+        animate={{ x: menuOpen ? 0 : "100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
         <div className="mb-8 flex justify-end">
           <button
-            type="button"
-            onClick={toggleMenu}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white"
-            aria-label="Fermer le menu"
+            onClick={() => setMenuOpen(false)}
+            className="rounded-full border border-white p-2"
+            aria-label="Fermer"
           >
             <X size={20} className="text-white" />
           </button>
         </div>
 
+        {/* Logo & Description */}
         <div className="mb-6 border-b border-turquoisehover/20 pb-6">
           <div className="mb-4 flex items-center gap-2">
             <Music className="text-turquoise" size={24} />
             <span className="font-manrope text-3xl font-bold text-white">Loopara</span>
           </div>
-          <p className="text-md text-white">
-            Générateur de motifs MIDI rapide et intuitif pour votre créativité musicale
-          </p>
+          <p className="text-sm text-white">Crée tes patterns MIDI simplement et rapidement.</p>
         </div>
 
+        {/* Mobile Links */}
         <nav className="space-y-6">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.name}
               href={link.to}
-              className="text-md flex items-center gap-4 font-medium text-white transition-colors hover:text-white"
-              onClick={toggleMenu}
+              onClick={() => setMenuOpen(false)}
+              className="text-md flex items-center gap-4 text-white"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/30 text-turquoise">
                 {link.icon}
@@ -153,12 +161,10 @@ function Navbar() {
             </Link>
           ))}
 
-          <div className="mt-6 flex w-full items-center justify-center border-pink-500/20 pt-6">
-            <Link href={"/control"} onClick={toggleMenu}>
-              <button
-                type="button"
-                className="flex w-full max-w-xs items-center justify-center self-center rounded-lg bg-turquoise px-5 py-3 text-sm font-medium text-rich transition-all duration-300 hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise"
-              >
+          {/* CTA mobile */}
+          <div className="mt-8 flex justify-center">
+            <Link href="/control" onClick={() => setMenuOpen(false)}>
+              <button className="w-full rounded-lg bg-turquoise px-5 py-3 text-sm font-medium text-rich transition hover:bg-turquoisehover hover:shadow-lg">
                 Essayer maintenant
               </button>
             </Link>
@@ -168,5 +174,3 @@ function Navbar() {
     </>
   );
 }
-
-export default Navbar;

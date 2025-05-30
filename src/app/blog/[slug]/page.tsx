@@ -20,7 +20,7 @@ const Page = async ({ params }: Props) => {
   });
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-20 font-hind text-white">
+    <main className="section-spacing mx-auto max-w-3xl px-4 py-20 font-hind text-white">
       <Link
         href="/blog"
         className="text-emerald hover:text-emeraldhover mb-6 inline-flex items-center gap-2"

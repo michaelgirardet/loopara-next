@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const AnimatedHeroSection = () => {
   return (
@@ -39,29 +40,31 @@ const AnimatedHeroSection = () => {
             l&apos;emploi pour Ableton, FL Studio ou Logic.
           </motion.p>
 
-          <motion.button
-            type="button"
-            className="group mt-8 cursor-pointer rounded-full border-2 border-teal-400 bg-transparent px-8 py-3 text-sm font-semibold text-teal-400 transition-all duration-300 hover:scale-105 hover:bg-teal-400 hover:text-gray-900 sm:px-10 sm:py-4 sm:text-base lg:mt-10 lg:px-12 lg:py-5 lg:text-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 10px 25px rgba(68, 187, 164, 0.3)",
-            }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="flex items-center gap-2">
-              Démarrer
-              <motion.span
-                className="text-lg"
-                animate={{ rotate: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-              >
-                ♪
-              </motion.span>
-            </span>
-          </motion.button>
+          <Link href="/control">
+            <motion.button
+              type="button"
+              className="group mt-8 cursor-pointer rounded-full border-2 border-teal-400 bg-transparent px-8 py-3 text-sm font-semibold text-teal-400 transition-all duration-300 hover:scale-105 hover:bg-teal-400 hover:text-gray-900 sm:px-10 sm:py-4 sm:text-base lg:mt-10 lg:px-12 lg:py-5 lg:text-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 25px rgba(68, 187, 164, 0.3)",
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="flex items-center gap-2">
+                Démarrer
+                <motion.span
+                  className="text-lg"
+                  animate={{ rotate: [0, 10, 0] }}
+                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                >
+                  ♪
+                </motion.span>
+              </span>
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Musical wave animation - représente les ondes sonores */}

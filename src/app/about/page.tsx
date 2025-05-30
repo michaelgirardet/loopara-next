@@ -47,7 +47,7 @@ export default function Page() {
   ];
 
   return (
-    <motion.main className="mx-auto flex w-screen max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-36 font-hind text-white">
+    <motion.main className="section-spacing mx-auto flex w-screen max-w-4xl flex-col items-center justify-center font-hind text-white">
       {/* Titre */}
       <motion.h1
         className="text-center text-5xl font-bold text-turquoise"
@@ -62,7 +62,7 @@ export default function Page() {
 
       {/* Intro */}
       <motion.p
-        className="mt-6 max-w-2xl text-center text-xl text-white/90"
+        className="mt-6 max-w-2xl text-center text-lg text-white/90"
         initial="hidden"
         whileInView="visible"
         custom={1}

@@ -1,5 +1,5 @@
 import MidiWriter from "midi-writer-js";
-import type { HumanizationOptions } from "@/types/types";
+import type { HumanizationOptions } from "../../types/types";
 
 type NoteEvent = InstanceType<typeof MidiWriter.NoteEvent> & {
   startTick?: number;

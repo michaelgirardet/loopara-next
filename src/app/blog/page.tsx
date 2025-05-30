@@ -7,7 +7,7 @@ import { articles } from "./blog.data";
 export default function Blog() {
   return (
     <motion.div
-      className="f mx-auto max-w-6xl px-6 pb-24 pt-36 font-hind text-white"
+      className="f section-spacing mx-auto max-w-6xl font-hind text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}

@@ -1,5 +1,5 @@
 // drumPresets.ts
-import type { DrumPreset } from "@/types/types";
+import type { DrumPreset } from "../../types/types";
 
 export const drumPresets: Record<string, DrumPreset> = {
   pop: {

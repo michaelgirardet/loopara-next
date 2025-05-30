@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <motion.main
-      className="pt-38 f mx-auto max-w-4xl px-6 pb-24 pt-36 font-hind text-white"
+      className="pt-38 f section-spacing mx-auto max-w-4xl font-hind text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
