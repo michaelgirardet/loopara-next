@@ -4,13 +4,14 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// 1 Définis la base de données 
+
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -37,6 +38,7 @@ model User {
   id      Int      @id @default(autoincrement())
   email   String   @unique
   name    String?
+  password String
   posts   Post[]
   profile Profile?
 }
