@@ -4,7 +4,20 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import { X, Menu, Music, Info, Mail, Home, LogIn } from "lucide-react";
+import {
+  X,
+  Menu,
+  Music,
+  Info,
+  Mail,
+  Home,
+  LogIn,
+  LayoutDashboard,
+  User,
+  Settings,
+  LogOut,
+  ChevronDown,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +25,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 
 const NAV_LINKS = [
   { name: "Accueil", to: "/", icon: <Home size={20} /> },
@@ -75,30 +89,104 @@ export default function Navbar() {
             ) : (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-gunmetal/20 focus:outline-none focus:ring-2 focus:ring-turquoise/50"
+                  >
                     {session.user?.image && (
-                      <img
-                        src={session.user.image}
-                        alt="Avatar"
-                        className="h-7 w-7 rounded-full border border-turquoise"
-                      />
+                      <div className="relative">
+                        <img
+                          src={session.user.image}
+                          alt="Avatar"
+                          className="h-8 w-8 rounded-full border-2 border-turquoise shadow-sm"
+                        />
+                        <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-green-400" />
+                      </div>
                     )}
-                    <span className="font-bold text-white">{session.user?.name || "Compte"}</span>
+                    <div className="flex flex-col items-start">
+                      <span className="text-sm font-semibold leading-tight text-white">
+                        {session.user?.name || "Compte"}
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        {session.user?.email?.split("@")[0] || "Utilisateur"}
+                      </span>
+                    </div>
+                    <ChevronDown className="h-4 w-4 text-gray-400 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48 bg-rich text-white">
-                  <DropdownMenuLabel className="text-center text-sm text-gray-300">
-                    Mon compte
-                  </DropdownMenuLabel>
-                  <DropdownMenuItem asChild>
-                    <Link href="/dashboard">Tableau de bord</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => signOut({ callbackUrl: "/" })}
-                    className="text-red-400 focus:text-red-500"
-                  >
-                    Se déconnecter
-                  </DropdownMenuItem>
+
+                <DropdownMenuContent
+                  align="end"
+                  sideOffset={8}
+                  className="w-56 rounded-lg border border-rich/50 bg-gunmetal p-1 shadow-xl duration-200 animate-in slide-in-from-top-2"
+                >
+                  {/* En-tête du menu */}
+                  <div className="border-b border-rich/30 px-3 py-3">
+                    <div className="flex items-center gap-3">
+                      {session.user?.image && (
+                        <img
+                          src={session.user.image}
+                          alt="Avatar"
+                          className="h-10 w-10 rounded-full border-2 border-turquoise"
+                        />
+                      )}
+                      <div className="flex flex-col">
+                        <span className="text-sm font-semibold text-white">
+                          {session.user?.name || "Utilisateur"}
+                        </span>
+                        <span className="max-w-32 truncate text-xs text-gray-400">
+                          {session.user?.email || "email@example.com"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Options du menu */}
+                  <div className="py-1">
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="/dashboard"
+                        className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-rich/30 hover:text-white"
+                      >
+                        <LayoutDashboard className="h-4 w-4 text-turquoise" />
+                        Tableau de bord
+                      </Link>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="/profile"
+                        className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-rich/30 hover:text-white"
+                      >
+                        <User className="h-4 w-4 text-turquoise" />
+                        Mon profil
+                      </Link>
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="/settings"
+                        className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-rich/30 hover:text-white"
+                      >
+                        <Settings className="h-4 w-4 text-turquoise" />
+                        Paramètres
+                      </Link>
+                    </DropdownMenuItem>
+                  </div>
+
+                  {/* Séparateur */}
+                  <DropdownMenuSeparator className="my-1 bg-rich/30" />
+
+                  {/* Option de déconnexion */}
+                  <div className="py-1">
+                    <DropdownMenuItem
+                      onClick={() => signOut({ callbackUrl: "/" })}
+                      className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-sm text-red-400 transition-colors hover:bg-red-500/10 hover:text-red-300"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Se déconnecter
+                    </DropdownMenuItem>
+                  </div>
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
@@ -106,6 +194,7 @@ export default function Navbar() {
 
           {/* Mobile menu toggle */}
           <button
+            type="button"
             onClick={() => setMenuOpen(!menuOpen)}
             className="rounded-full border border-white p-2 md:hidden"
             aria-label="Menu mobile"
@@ -128,6 +217,7 @@ export default function Navbar() {
       >
         <div className="mb-8 flex justify-end">
           <button
+            type="button"
             onClick={() => setMenuOpen(false)}
             className="rounded-full border border-white p-2"
             aria-label="Fermer"
@@ -164,7 +254,10 @@ export default function Navbar() {
           {/* CTA mobile */}
           <div className="mt-8 flex justify-center">
             <Link href="/control" onClick={() => setMenuOpen(false)}>
-              <button className="w-full rounded-lg bg-turquoise px-5 py-3 text-sm font-medium text-rich transition hover:bg-turquoisehover hover:shadow-lg">
+              <button
+                type="button"
+                className="w-full rounded-lg bg-turquoise px-5 py-3 text-sm font-medium text-rich transition hover:bg-turquoisehover hover:shadow-lg"
+              >
                 Essayer maintenant
               </button>
             </Link>

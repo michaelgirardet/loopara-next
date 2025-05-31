@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-// Import le singleton dans toutes les routes, actions...
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
 
