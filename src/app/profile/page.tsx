@@ -40,13 +40,10 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="section-spacing min-h-screen w-full bg-gunmetal text-white">
+    <div className="section-spacing min-h-screen w-full bg-rich text-white">
       <div className="mx-auto max-w-7xl space-y-10">
         {/* Profil Header */}
-        <Card className="relative overflow-hidden border border-turquoise/20 bg-rich p-8 backdrop-blur-sm sm:p-12">
-          <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br from-cyan-400/20 to-turquoise/20 blur-2xl" />
-          <div className="absolute -bottom-10 -left-10 h-24 w-24 rounded-full bg-gradient-to-br from-purple-400/20 to-pink-400/20 blur-2xl" />
-
+        <Card className="relative overflow-hidden border border-turquoise/20 bg-rich p-8 sm:p-12">
           <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
             {/* Avatar */}
             <div className="group relative mx-auto lg:mx-0">
@@ -57,7 +54,7 @@ export default function ProfilePage() {
               </div>
               <button
                 type="button"
-                className="absolute -bottom-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-turquoise to-cyan-400 text-slate-900 shadow-lg transition hover:scale-110"
+                className="text-tich absolute -bottom-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-turquoise font-semibold shadow-lg hover:bg-turquoisehover"
               >
                 <Camera className="h-4 w-4" />
               </button>

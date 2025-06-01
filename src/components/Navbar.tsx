@@ -123,11 +123,13 @@ export default function Navbar() {
                         <div className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-green-400" />
                       </div>
                     )}
+                    {/* Avatar de l'utilisateur en mode desktop  */}
                     <div className="flex flex-col items-start">
-                      <span className="bg-blue-300 text-xs text-gray-400">
-                        {profile.username || "Utilisateur"}
+                      <span className="text-lgrounded-full flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-semibold capitalize text-rich">
+                        {profile.username ? profile.username.charAt(0).toUpperCase() : "U"}
                       </span>
                     </div>
+
                     <ChevronDown className="h-4 w-4 text-gray-400 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                   </button>
                 </DropdownMenuTrigger>
@@ -267,6 +269,56 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+          {session && (
+            <div className="mt-6 space-y-4 border-t border-white/10 pt-6">
+              <Link
+                href="/dashboard"
+                onClick={() => setMenuOpen(false)}
+                className="text-md flex items-center gap-4 text-white"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/30 text-turquoise">
+                  <LayoutDashboard size={20} />
+                </div>
+                Tableau de bord
+              </Link>
+
+              <Link
+                href="/profile"
+                onClick={() => setMenuOpen(false)}
+                className="text-md flex items-center gap-4 text-white"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/30 text-turquoise">
+                  <User size={20} />
+                </div>
+                Mon profil
+              </Link>
+
+              <Link
+                href="/settings"
+                onClick={() => setMenuOpen(false)}
+                className="text-md flex items-center gap-4 text-white"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/30 text-turquoise">
+                  <Settings size={20} />
+                </div>
+                Paramètres
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false);
+                  signOut({ callbackUrl: "/" });
+                }}
+                className="text-md flex w-full items-center gap-4 text-red-400 transition-colors hover:text-red-300"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-400/20 text-red-400">
+                  <LogOut size={20} />
+                </div>
+                Se déconnecter
+              </button>
+            </div>
+          )}
 
           {/* CTA mobile */}
           <div className="mt-8 flex justify-center">

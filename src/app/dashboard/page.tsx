@@ -76,10 +76,12 @@ export default function DashboardPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="mb-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h1 className="mb-2 text-center text-3xl font-bold tracking-tight text-white sm:text-left sm:text-4xl">
                 Bonjour, {profile.username}
               </h1>
-              <p className="text-lg text-gray-400">Voici un aperçu de votre activité musicale</p>
+              <p className="text-center text-lg text-gray-400 sm:text-left">
+                Voici un aperçu de votre activité musicale
+              </p>
             </div>
             <div className="hidden items-center gap-3 sm:flex">
               <Badge variant="outline" className="border-turquoise text-turquoise">
@@ -95,7 +97,10 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <Tabs defaultValue="overview" className="space-y-6">
+        <Tabs
+          defaultValue="overview"
+          className="flex flex-col items-center justify-center space-y-6 sm:flex sm:items-start sm:justify-start"
+        >
           <TabsList className="rounded-lg border border-rich/50 bg-gunmetal p-1">
             <TabsTrigger
               value="overview"
@@ -130,7 +135,7 @@ export default function DashboardPage() {
                       <div className="rounded-lg bg-turquoise/10 p-2 transition-colors group-hover:bg-turquoise/20">
                         <Music className="h-4 w-4 text-turquoise" />
                       </div>
-                      <span className="text-sm font-medium">Motifs générés</span>
+                      <span className="text-sm">Motifs générés</span>
                     </div>
                   </CardTitle>
                 </CardHeader>
