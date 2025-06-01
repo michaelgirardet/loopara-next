@@ -219,7 +219,7 @@ const Page = () => {
                 animate="visible"
                 whileHover="hover"
                 whileTap="tap"
-                className="mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full bg-turquoise px-8 py-4 text-base font-semibold text-rich hover:bg-turquoisehover"
+                className="btn-primary btn-md mx-5 flex cursor-pointer items-center justify-center gap-4 self-center rounded-full text-base font-semibold"
               >
                 <motion.div
                   animate={{

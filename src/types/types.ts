@@ -42,3 +42,15 @@ export type HumanizationOptions = {
   timingVariationTicks?: number; // ex: ±15 ticks
   accentPattern?: number[]; // ex: [100, 80, 90, 80]
 };
+
+// Profil utilisateur
+export interface UserProfile {
+  bio?: string;
+  firstname?: string;
+  lastname?: string;
+  username?: string;
+  phone?: string;
+  website?: string;
+  location?: string;
+  joinDate?: string;
+}

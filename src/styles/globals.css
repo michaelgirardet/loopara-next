@@ -31,9 +31,39 @@
   background-color: #fefefe;
   border-radius: 8px;
 }
-
 @layer utilities {
   .section-spacing {
     @apply px-6 pb-24 pt-36;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full font-semibold transition-all duration-300 focus:outline-none;
+  }
+
+  .btn-primary {
+    @apply rounded-full bg-turquoise text-rich hover:bg-turquoisehover hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply rounded-full border border-turquoise bg-rich text-white hover:bg-slate-600 hover:shadow;
+  }
+
+  .btn-outline {
+    @apply border border-turquoise text-turquoise hover:bg-turquoise/10;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .btn-md {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  .btn-icon {
+    @apply rounded-full p-2 hover:bg-white/10;
   }
 }

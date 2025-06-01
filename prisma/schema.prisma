@@ -15,7 +15,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 enum Role {
   USER
   PREMIUM
@@ -23,17 +22,17 @@ enum Role {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String?
-  email     String   @unique
-  password  String
-  image     String?
-  createdAt DateTime @default(now())
-  role      Role     @default(USER)
-  posts     Post[]
-  profile   Profile?
-  midiPatterns MidiPattern[]
-  generationCount Int @default(0)
+  id              String        @id @default(uuid())
+  name            String?
+  email           String        @unique
+  password        String
+  image           String?
+  createdAt       DateTime      @default(now())
+  role            Role          @default(USER)
+  posts           Post[]
+  profile         Profile?
+  midiPatterns    MidiPattern[]
+  generationCount Int           @default(0)
 }
 
 model Post {
@@ -48,17 +47,22 @@ model Post {
 }
 
 model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId String  @unique
+  id        Int     @id @default(autoincrement())
+  bio       String?
+  firstname String?
+  lastname  String?
+  username  String?
+  website   String?
+  phone     String?
+  location  String?
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String  @unique
 }
-
 
 model MidiPattern {
   id        String   @id @default(uuid())
   title     String
-  data      Json     // ou String si base64
+  data      Json // ou String si base64
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
   userId    String

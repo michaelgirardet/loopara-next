@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { email, password } = body;
 
-    // 🔐 Validation de base
+    // 🔐 Validation
     if (!email || !password) {
       return NextResponse.json({ message: "Email et mot de passe requis." }, { status: 400 });
     }
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 🔎 Vérifie si l'utilisateur existe déjà
+    // 🔎 Vérifie l'existence
     const existingUser = await prisma.user.findUnique({
       where: { email },
     });
@@ -31,14 +31,17 @@ export async function POST(req: Request) {
       );
     }
 
-    // 🔐 Hashage sécurisé
+    // 🔐 Hash du mot de passe
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    // ✅ Création de l'utilisateur
+    // ✅ Création utilisateur + profil vide
     await prisma.user.create({
       data: {
         email,
         password: hashedPassword,
+        profile: {
+          create: {},
+        },
       },
     });
 

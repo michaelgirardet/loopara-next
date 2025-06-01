@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -31,10 +31,11 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
       setError("Email ou mot de passe incorrect.");
     } else if (result?.ok) {
       // Redirige vers la page d'accueil ou dashboard
-      window.location.href = "/";
+      router.push("/dashboard");
     }
   };
 
+  const router = useRouter();
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="w-full max-w-md rounded-2xl border border-gunmetal bg-rich shadow-xl">

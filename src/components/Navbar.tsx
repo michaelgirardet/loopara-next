@@ -26,6 +26,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
+import { fetchUserProfile, updateUserProfile } from "@/lib/api/user";
+import { useUserProfile } from "@/lib/api/useUserProfile";
+import toast from "react-hot-toast";
 
 const NAV_LINKS = [
   { name: "Accueil", to: "/", icon: <Home size={20} /> },
@@ -36,6 +39,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { profile, updateProfile } = useUserProfile();
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -49,6 +53,22 @@ export default function Navbar() {
   const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     scrolled ? "py-3 bg-[#2A2D34]/25 backdrop-blur-md shadow-lg" : "py-6 bg-transparent"
   }`;
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await fetchUserProfile();
+        updateProfile(data);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          toast.error(err.message);
+        } else {
+          toast.error("Erreur inconnue");
+        }
+      }
+    };
+    load();
+  }, [updateProfile]);
 
   return (
     <>
@@ -77,7 +97,7 @@ export default function Navbar() {
 
             <Link
               href="/control"
-              className="rounded-full bg-turquoise px-5 py-2 text-sm font-semibold text-rich transition hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise/20"
+              className="btn-primary btn-sm rounded-full text-sm font-semibold text-rich transition hover:bg-turquoisehover hover:shadow-lg hover:shadow-turquoise/20"
             >
               Essayer maintenant
             </Link>
@@ -104,11 +124,8 @@ export default function Navbar() {
                       </div>
                     )}
                     <div className="flex flex-col items-start">
-                      <span className="text-sm font-semibold leading-tight text-white">
-                        {session.user?.name || "Compte"}
-                      </span>
-                      <span className="text-xs text-gray-400">
-                        {session.user?.email?.split("@")[0] || "Utilisateur"}
+                      <span className="bg-blue-300 text-xs text-gray-400">
+                        {profile.username || "Utilisateur"}
                       </span>
                     </div>
                     <ChevronDown className="h-4 w-4 text-gray-400 transition-transform duration-200 group-data-[state=open]:rotate-180" />

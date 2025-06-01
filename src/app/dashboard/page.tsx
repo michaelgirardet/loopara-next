@@ -19,10 +19,15 @@ import {
   Activity,
   Headphones,
 } from "lucide-react";
+import Link from "next/link";
+import { useUserProfile } from "@/lib/api/useUserProfile";
+import { fetchUserProfile, updateUserProfile } from "@/lib/api/user";
+import toast from "react-hot-toast";
 
 export default function DashboardPage() {
   const [count, setCount] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const { profile, updateProfile } = useUserProfile();
 
   // Récupérer le nombre de patterns générés
   useEffect(() => {
@@ -48,6 +53,22 @@ export default function DashboardPage() {
     getCount();
   }, []);
 
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await fetchUserProfile();
+        updateProfile(data);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          toast.error(err.message);
+        } else {
+          toast.error("Erreur inconnue");
+        }
+      }
+    };
+    load();
+  }, [updateProfile]);
+
   return (
     <div className="section-spacing min-h-screen w-full bg-rich p-6 text-white">
       <div className="mx-auto max-w-7xl">
@@ -56,7 +77,7 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="mb-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Bonjour, Joe ! 👋
+                Bonjour, {profile.username}
               </h1>
               <p className="text-lg text-gray-400">Voici un aperçu de votre activité musicale</p>
             </div>
@@ -65,9 +86,11 @@ export default function DashboardPage() {
                 <Crown className="mr-1 h-3 w-3" />
                 Premium
               </Badge>
-              <Button size="sm" className="bg-turquoise text-black hover:bg-turquoise/80">
-                Nouveau projet
-              </Button>
+              <Link href={"/control"}>
+                <Button size="sm" className="bg-turquoise text-black hover:bg-turquoise/80">
+                  Nouveau projet
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -219,9 +242,11 @@ export default function DashboardPage() {
           <TabsContent value="projects" className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-white">Vos projets</h2>
-              <Button size="sm" className="bg-turquoise text-black hover:bg-turquoise/80">
-                Nouveau projet
-              </Button>
+              <Link href={"/control"}>
+                <Button size="sm" className="bg-turquoise text-black hover:bg-turquoise/80">
+                  Nouveau projet
+                </Button>
+              </Link>
             </div>
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">

@@ -243,7 +243,7 @@ function Page() {
           <div className="flex justify-center">
             <button
               type="button"
-              className="flex w-full items-center justify-center rounded-xl bg-turquoise px-8 py-4 text-base font-semibold text-gray-900 transition-all duration-300 hover:scale-105 hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-400/20 sm:w-auto sm:px-12 lg:px-16 lg:py-5 lg:text-lg"
+              className="btn-primary btn-lg flex w-full items-center justify-center text-base font-semibold transition-all duration-300 hover:scale-105 hover:bg-teal-300 hover:shadow-lg hover:shadow-teal-400/20 sm:w-auto sm:px-12 lg:px-16 lg:py-5 lg:text-lg"
             >
               Essayer maintenant
             </button>
