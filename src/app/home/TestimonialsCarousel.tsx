@@ -16,7 +16,7 @@ export default function TestimonialsCarousel() {
         <p className="text-3xl font-bold text-white">Témoignages</p>
       </div>
 
-      <div className="relative">
+      <div className="relative cursor-pointer transition-all duration-500 hover:scale-105 hover:text-turquoise">
         <AnimatePresence mode="wait">
           <motion.blockquote
             key={homeTestimonials[index].id}
@@ -44,7 +44,7 @@ export default function TestimonialsCarousel() {
           <button
             type="button"
             onClick={handlePrev}
-            className="rounded-full border border-turquoise/30 p-2 text-white transition hover:bg-turquoisehover/20"
+            className="rounded-full border border-turquoise/30 p-2 text-white transition hover:bg-turquoisehover/20 hover:text-turquoise"
             aria-label="Témoignage précédent"
           >
             <ArrowLeft size={20} />
@@ -52,7 +52,7 @@ export default function TestimonialsCarousel() {
           <button
             type="button"
             onClick={handleNext}
-            className="rounded-full border border-turquoise/30 p-2 text-white transition hover:bg-turquoisehover/20"
+            className="rounded-full border border-turquoise/30 p-2 text-white transition hover:bg-turquoisehover/20 hover:text-turquoise"
             aria-label="Témoignage suivant"
           >
             <ArrowRight size={20} />

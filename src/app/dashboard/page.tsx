@@ -84,10 +84,6 @@ export default function DashboardPage() {
               </p>
             </div>
             <div className="hidden items-center gap-3 sm:flex">
-              <Badge variant="outline" className="border-turquoise text-turquoise">
-                <Crown className="mr-1 h-3 w-3" />
-                Premium
-              </Badge>
               <Link href={"/control"}>
                 <Button size="sm" className="bg-turquoise text-black hover:bg-turquoise/80">
                   Nouveau projet
@@ -99,7 +95,7 @@ export default function DashboardPage() {
 
         <Tabs
           defaultValue="overview"
-          className="flex flex-col items-center justify-center space-y-6 sm:flex sm:items-start sm:justify-start"
+          className="flex flex-col items-center justify-center space-y-6"
         >
           <TabsList className="rounded-lg border border-rich/50 bg-gunmetal p-1">
             <TabsTrigger
@@ -198,15 +194,15 @@ export default function DashboardPage() {
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center justify-between text-white">
                     <div className="flex items-center gap-2">
-                      <div className="rounded-lg bg-green-500/10 p-2 transition-colors group-hover:bg-green-500/20">
-                        <Crown className="h-4 w-4 text-green-400" />
+                      <div className="rounded-lg bg-turquoise/10 p-2 transition-colors group-hover:bg-turquoise/20">
+                        <Crown className="h-4 w-4 text-turquoise" />
                       </div>
                       <span className="text-sm font-medium">Statut</span>
                     </div>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Badge className="border border-green-600/30 bg-green-600/20 text-green-400">
+                  <Badge className="border border-yellow-500/30 bg-yellow-500/10 text-yellow-400">
                     Premium
                   </Badge>
                   <p className="mt-2 text-xs text-gray-400">Expire le 12 juin</p>
@@ -224,18 +220,21 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                  <Button className="bg-turquoise font-medium text-black hover:bg-turquoise/80">
+                  <Link
+                    href={"/profile"}
+                    className="btn btn-sm bg-turquoise font-medium text-black hover:bg-turquoise/80"
+                  >
                     Modifier le profil
-                  </Button>
+                  </Link>
                   <Button
                     variant="outline"
-                    className="border-turquoise/30 text-turquoise hover:bg-turquoise/10"
+                    className="btn-secondary btn-sm bg-gunmetal text-turquoise hover:bg-turquoise/20"
                   >
                     Télécharger les projets
                   </Button>
                   <Button
                     variant="outline"
-                    className="border-turquoise/30 text-turquoise hover:bg-turquoise/10"
+                    className="btn-secondary btn-sm bg-gunmetal text-turquoise hover:bg-turquoise/20"
                   >
                     Paramètres avancés
                   </Button>

@@ -8,10 +8,23 @@ import toast from "react-hot-toast";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ProfileImageUploader } from "@/components/ProfileImageUploader";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
 export default function ProfilePage() {
   const { profile, updateProfile } = useUserProfile();
   const [activeTab, setActiveTab] = useState("info");
+  const { data: session } = useSession();
 
   useEffect(() => {
     const load = async () => {
@@ -39,25 +52,50 @@ export default function ProfilePage() {
     });
   };
 
+  console.log(session?.user?.image);
   return (
     <div className="section-spacing min-h-screen w-full bg-rich text-white">
       <div className="mx-auto max-w-7xl space-y-10">
         {/* Profil Header */}
-        <Card className="relative overflow-hidden border border-turquoise/20 bg-rich p-8 sm:p-12">
+        <Card className="relative flex items-center justify-center overflow-hidden border border-turquoise/20 bg-rich p-8 sm:p-12">
           <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center">
             {/* Avatar */}
             <div className="group relative mx-auto lg:mx-0">
               <div className="h-32 w-32 overflow-hidden rounded-full border-4 border-turquoise p-1 lg:h-40 lg:w-40">
                 <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-700">
-                  <User className="h-16 w-16 text-turquoise lg:h-20 lg:w-20" />
+                  {session?.user.image ? (
+                    <Image
+                      src={session?.user?.image}
+                      alt="illustration de profil utilisateur"
+                      width={500}
+                      height={500}
+                      className="rounded-full object-cover"
+                    />
+                  ) : (
+                    <span className="rounded-full bg-red-500"></span>
+                  )}
                 </div>
               </div>
-              <button
-                type="button"
-                className="text-tich absolute -bottom-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-turquoise font-semibold shadow-lg hover:bg-turquoisehover"
-              >
-                <Camera className="h-4 w-4" />
-              </button>
+              {/* Modale d'upload de photo  */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    type="button"
+                    className="absolute -bottom-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-turquoise text-black shadow-lg hover:bg-turquoise/80"
+                  >
+                    <Camera className="h-4 w-4" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent
+                  className="border border-turquoise/20 bg-rich text-white sm:max-w-md sm:rounded-2xl"
+                  aria-describedby="glisse ou chosis une photo sur ton ordinateur"
+                >
+                  <DialogHeader>
+                    <DialogTitle>Mettre à jour la photo</DialogTitle>
+                  </DialogHeader>
+                  <ProfileImageUploader onClose={() => {}} />
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Infos utilisateur */}
@@ -76,13 +114,17 @@ export default function ProfilePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
-                  Membre depuis {profile.joinDate}
+                  Membre depuis{" "}
+                  {session?.user?.createdAt &&
+                    format(new Date(session.user.createdAt), "d MMMM yyyy", {
+                      locale: fr,
+                    })}
                 </div>
               </div>
 
               {/* Badges */}
               <div className="mt-4 flex flex-wrap justify-center gap-3 lg:justify-start">
-                <Badge className="border border-green-500/30 bg-green-500/10 text-green-400">
+                <Badge className="border border-yellow-500/30 bg-yellow-500/10 text-yellow-400">
                   <Crown className="mr-1 h-4 w-4" />
                   Premium
                 </Badge>
@@ -96,7 +138,7 @@ export default function ProfilePage() {
               <div className="mt-6">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-turquoise to-cyan-400 text-slate-900 hover:shadow-lg hover:shadow-turquoise/25"
+                  className="btn-primary hover:shadow-lg hover:shadow-turquoise/25"
                   onClick={() => {
                     setActiveTab("info");
                     document.getElementById("tab-profile")?.scrollIntoView({ behavior: "smooth" });
@@ -170,7 +212,7 @@ export default function ProfilePage() {
               </CardContent>
               <CardFooter className="mt-8 flex justify-center">
                 <Button
-                  className="bg-gradient-to-r from-turquoise to-cyan-400 text-black hover:shadow-lg hover:shadow-turquoise/25"
+                  className="btn-primary btn-md hover:shadow-lg hover:shadow-turquoise/25"
                   onClick={handleSave}
                 >
                   <Save className="mr-2 h-5 w-5" />

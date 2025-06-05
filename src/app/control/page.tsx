@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Toast from "@/components/Toast";
 import MidiPlayerPreview from "@/components/MidiPlayerPreview";
 import SelectorGrid from "@/components/SelectorGrid";
+import toast from "react-hot-toast";
 
 const Page = () => {
   const [rootNote, setRootNote] = useState("C");
@@ -240,7 +241,7 @@ const Page = () => {
           </AnimatePresence>
 
           <AnimatePresence>
-            {isSuccess && <Toast key="toast-success" message="Fichier généré avec succès !" />}
+            {isSuccess && toast.success("Fichier généré avec succès !")}
 
             {midiData && midiBlob && (
               <div className="mt-6 flex items-center justify-center gap-5">

@@ -52,5 +52,6 @@ export interface UserProfile {
   phone?: string;
   website?: string;
   location?: string;
-  joinDate?: string;
+  createdAt?: string;
+  image?: string;
 }

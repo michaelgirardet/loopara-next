@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mon Savoir-Faire
 
-## Getting Started
+Plateforme B2B de mise en relation entre entreprises industrielles/BTP et indépendants techniques.
 
-First, run the development server:
+## Sommaire
+
+- [Fonctionnalités](#fonctionnalités)
+- [Stack technique](#stack-technique)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Scripts disponibles](#scripts-disponibles)
+- [Conventions](#conventions)
+- [Roadmap](#roadmap)
+- [Licence](#licence)
+
+## Fonctionnalités
+
+- Inscription (entreprise / indépendant)
+- Validation manuelle des comptes
+- Abonnements freemium/premium avec Stripe
+- Publication et consultation d’offres
+- Tableau de bord personnalisé
+- Interface d'administration
+
+## Stack technique
+
+- **Framework** : Next.js (App Router)
+- **Styling** : Tailwind CSS
+- **BDD** : PostgreSQL + Prisma
+- **Auth** : NextAuth.js
+- **Paiement** : Stripe
+- **Linting** : ESLint v9 (Flat config), Prettier
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ton-org/mon-savoir-faire.git
+cd mon-savoir-faire
+npm install
+npx prisma generate
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+DATABASE_URL=postgresql://USER:PASS@localhost:5432/mon_savoir_faire
+NEXTAUTH_SECRET=ton_secret
+STRIPE_SECRET_KEY=clef_stripe
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 7. **Utilisation / scripts disponibles**
 
-## Learn More
+Montre les commandes utiles du `package.json`.
 
-To learn more about Next.js, take a look at the following resources:
+```md
+## Scripts disponibles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Commande         | Description                    |
+| ---------------- | ------------------------------ |
+| `npm run dev`    | Démarrer le serveur de dev     |
+| `npm run build`  | Générer la version production  |
+| `npm run lint`   | Lancer ESLint (Flat config)    |
+| `npm run format` | Formater le code avec Prettier |
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Conventions
 
-## Deploy on Vercel
+### Branches
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `feature/nom-de-la-fonction`
+- `fix/nom-du-bug`
+- `chore/nom-technique`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Roadmap post-MVP
+
+- [ ] Intégration messagerie?
+- [ ] App mobile?
+- [ ] Système de notation?
+- [ ] Matching intelligent?
+
+## Licence
+
+Projet privé – tous droits réservés © Mon Savoir-Faire 2025

@@ -1,10 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MessageSquareHeart } from "lucide-react";
-import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import toast from "react-hot-toast";
 
-export default function Page() {
+export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -13,143 +18,106 @@ export default function Page() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
-      if (!response.ok) {
-        const { error } = await response.json();
-        alert(`❌ Erreur : ${error || "Envoi impossible"}`);
+      if (!res.ok) {
+        const { error } = await res.json();
+        toast.error(`❌ Erreur : ${error || "Envoi impossible"}`);
         return;
       }
 
-      alert("✅ Message envoyé avec succès !");
+      toast.success("✅ Message envoyé avec succès !");
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
-      console.error("Erreur réseau :", err);
-      alert("❌ Erreur réseau. Réessaie plus tard.");
+      console.error(err);
+      toast.error("❌ Erreur réseau. Réessaie plus tard.");
     }
   };
 
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.15,
-        type: "spring",
-        stiffness: 300,
-        damping: 24,
-      },
-    }),
-  };
-
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="bg-purple text-powder flex min-h-screen w-full flex-col items-center justify-center px-5 pb-16 pt-28 font-hind sm:px-8 md:pt-48 lg:pt-40"
+      className="mx-auto flex min-h-screen w-full max-w-2xl flex-col items-center justify-center px-6 pb-16 pt-28 font-hind"
     >
-      <motion.h1
-        variants={fadeIn}
-        custom={0}
-        className="text-center text-5xl font-bold text-turquoise sm:text-5xl lg:text-6xl"
-      >
-        Contacte-nous
-      </motion.h1>
-
-      <motion.p
-        variants={fadeIn}
-        custom={1}
-        className="mt-6 max-w-2xl text-center text-lg font-semibold text-white"
-      >
+      <h1 className="text-center text-5xl font-bold text-turquoise">Contacte-nous</h1>
+      <p className="mt-4 text-center text-lg text-white">
         Une idée, une suggestion ou juste envie de dire bonjour ?<br />
         Laisse-nous un message — on te répond vite !
-      </motion.p>
+      </p>
 
-      <motion.form
+      <form
         onSubmit={handleSubmit}
-        variants={fadeIn}
-        custom={2}
-        className="mt-10 w-full max-w-2xl space-y-6 rounded-2xl p-8"
+        className="mt-10 w-full space-y-6 rounded-2xl bg-rich/10 p-8 backdrop-blur-md"
       >
-        {[
-          {
-            label: "Ton prénom",
-            name: "name",
-            type: "text",
-            placeholder: "Ex: Sarah",
-          },
-          {
-            label: "Ton email",
-            name: "email",
-            type: "email",
-            placeholder: "Ex: sarah@loopara.com",
-          },
-        ].map(({ label, name, type, placeholder }) => (
-          <div key={name} className="flex flex-col space-y-2">
-            <label htmlFor={name} className="text-sm font-semibold text-white">
-              {label}
-            </label>
-            <input
-              id={name}
-              type={type}
-              name={name}
-              required
-              value={form[name as keyof typeof form]}
+        <div className="grid gap-4">
+          <div className="grid gap-2">
+            <Label htmlFor="name" className="text-white">
+              Ton prénom
+            </Label>
+            <Input
+              id="name"
+              name="name"
+              placeholder="Ex: Sarah"
+              value={form.name}
               onChange={handleChange}
-              placeholder={placeholder}
-              className="placeholder-misty/70 rounded-md border border-gunmetal bg-gunmetal px-4 py-3 text-white outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise"
+              required
+              className="border-turquoise/20 bg-gunmetal text-white"
             />
           </div>
-        ))}
 
-        <div className="flex flex-col space-y-2">
-          <label htmlFor="message" className="text-sm font-semibold text-white">
-            Ton message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            required
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Dis-nous tout !"
-            className="placeholder-misty/70 rounded-md border border-gunmetal bg-gunmetal px-4 py-3 text-white outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise"
-          />
+          <div className="grid gap-2">
+            <Label htmlFor="email" className="text-white">
+              Ton email
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Ex: sarah@loopara.com"
+              value={form.email}
+              onChange={handleChange}
+              required
+              className="border-turquoise/20 bg-gunmetal text-white"
+            />
+          </div>
+
+          <div className="grid gap-2">
+            <Label htmlFor="message" className="text-white">
+              Ton message
+            </Label>
+            <Textarea
+              id="message"
+              name="message"
+              rows={5}
+              placeholder="Dis-nous tout !"
+              value={form.message}
+              onChange={handleChange}
+              required
+              className="border-turquoise/20 bg-gunmetal text-white"
+            />
+          </div>
         </div>
 
         <div className="flex justify-center">
-          <motion.button
-            type="submit"
-            className="focus:turquoise mt-4 flex items-center gap-2 rounded-full border border-turquoise px-6 py-3 text-sm font-medium text-turquoise transition-all hover:bg-turquoise hover:text-[#030504] focus:outline-none focus:ring-4"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <MessageSquareHeart size={18} />
+          <Button type="submit" className="btn-primary btn-md rounded-full">
+            <MessageSquareHeart className="mr-2 h-4 w-4" />
             Envoyer le message
-          </motion.button>
+          </Button>
         </div>
-      </motion.form>
+      </form>
 
-      <motion.div
-        variants={fadeIn}
-        custom={3}
-        className="mt-12 flex flex-col items-center gap-2 text-sm text-white sm:flex-row"
-      >
-        <Mail size={16} className="text-[#fefefe]" />
-        <span className="text-center sm:text-left">
-          Votre message peut faire groover la prochaine version.
-        </span>
-      </motion.div>
-    </motion.div>
+      <div className="mt-8 flex items-center gap-2 text-sm text-white">
+        <Mail size={16} />
+        Votre message peut faire groover la prochaine version.
+      </div>
+    </motion.section>
   );
 }

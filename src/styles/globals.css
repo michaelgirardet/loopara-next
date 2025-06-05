@@ -36,7 +36,7 @@
     @apply px-6 pb-24 pt-36;
   }
   .btn {
-    @apply inline-flex items-center justify-center rounded-full font-semibold transition-all duration-300 focus:outline-none;
+    @apply inline-flex items-center justify-center rounded-lg transition-all duration-300 focus:outline-none;
   }
 
   .btn-primary {
@@ -44,7 +44,7 @@
   }
 
   .btn-secondary {
-    @apply rounded-full border border-turquoise bg-rich text-white hover:bg-slate-600 hover:shadow;
+    @apply rounded-lg border border-turquoise/20 bg-gunmetal hover:shadow;
   }
 
   .btn-outline {
@@ -60,7 +60,7 @@
   }
 
   .btn-lg {
-    @apply px-8 py-4 text-lg;
+    @apply px-8 py-8 text-lg;
   }
 
   .btn-icon {

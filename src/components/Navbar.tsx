@@ -17,6 +17,7 @@ import {
   Settings,
   LogOut,
   ChevronDown,
+  LogInIcon,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -26,14 +27,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
-import { fetchUserProfile, updateUserProfile } from "@/lib/api/user";
 import { useUserProfile } from "@/lib/api/useUserProfile";
 import toast from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
 
 const NAV_LINKS = [
-  { name: "Accueil", to: "/", icon: <Home size={20} /> },
-  { name: "À Propos", to: "/about", icon: <Info size={20} /> },
-  { name: "Contact", to: "/contact", icon: <Mail size={20} /> },
+  { name: "Accueil", id: 1, to: "/", icon: <Home size={20} /> },
+  { name: "À Propos", id: 2, to: "/about", icon: <Info size={20} /> },
+  { name: "Contact", id: 3, to: "/contact", icon: <Mail size={20} /> },
 ];
 
 export default function Navbar() {
@@ -54,21 +55,21 @@ export default function Navbar() {
     scrolled ? "py-3 bg-[#2A2D34]/25 backdrop-blur-md shadow-lg" : "py-6 bg-transparent"
   }`;
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const data = await fetchUserProfile();
-        updateProfile(data);
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          toast.error(err.message);
-        } else {
-          toast.error("Erreur inconnue");
-        }
-      }
-    };
-    load();
-  }, [updateProfile]);
+  // useEffect(() => {
+  //   const load = async () => {
+  //     try {
+  //       const data = await fetchUserProfile();
+  //       updateProfile(data);
+  //     } catch (err: unknown) {
+  //       if (err instanceof Error) {
+  //         toast.error(err.message);
+  //       } else {
+  //         toast.error("Erreur inconnue");
+  //       }
+  //     }
+  //   };
+  //   load();
+  // }, [updateProfile]);
 
   return (
     <>
@@ -89,7 +90,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.to}
-                className="flex items-center gap-2 font-semibold text-white transition-colors hover:text-turquoisehover"
+                className="flex items-center gap-2 text-base font-bold text-white transition-colors hover:text-turquoisehover"
               >
                 {link.name}
               </Link>
@@ -113,10 +114,10 @@ export default function Navbar() {
                     type="button"
                     className="flex items-center gap-3 rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-gunmetal/20 focus:outline-none focus:ring-2 focus:ring-turquoise/50"
                   >
-                    {session.user?.image && (
+                    {profile.image && (
                       <div className="relative">
                         <img
-                          src={session.user.image}
+                          src={profile.image}
                           alt="Avatar"
                           className="h-8 w-8 rounded-full border-2 border-turquoise shadow-sm"
                         />
@@ -142,9 +143,9 @@ export default function Navbar() {
                   {/* En-tête du menu */}
                   <div className="border-b border-rich/30 px-3 py-3">
                     <div className="flex items-center gap-3">
-                      {session.user?.image && (
+                      {profile.image && (
                         <img
-                          src={session.user.image}
+                          src={profile.image}
                           alt="Avatar"
                           className="h-10 w-10 rounded-full border-2 border-turquoise"
                         />
@@ -199,7 +200,9 @@ export default function Navbar() {
                   {/* Option de déconnexion */}
                   <div className="py-1">
                     <DropdownMenuItem
-                      onClick={() => signOut({ callbackUrl: "/" })}
+                      onClick={() => {
+                        signOut({ callbackUrl: "/?signedOut=true" });
+                      }}
                       className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 text-sm text-red-400 transition-colors hover:bg-red-500/10 hover:text-red-300"
                     >
                       <LogOut className="h-4 w-4" />
@@ -258,7 +261,7 @@ export default function Navbar() {
         <nav className="space-y-6">
           {NAV_LINKS.map((link) => (
             <Link
-              key={link.name}
+              key={link.id}
               href={link.to}
               onClick={() => setMenuOpen(false)}
               className="text-md flex items-center gap-4 text-white"
@@ -269,6 +272,17 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+          <Link
+            href={"/login"}
+            key={uuidv4()}
+            className="text-md flex items-center gap-4 text-white"
+            onClick={() => setMenuOpen(false)}
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/30 text-turquoise">
+              <LogInIcon />
+            </div>
+            Connexion
+          </Link>
           {session && (
             <div className="mt-6 space-y-4 border-t border-white/10 pt-6">
               <Link

@@ -24,6 +24,8 @@ export const updateUserProfile = async (payload: {
   phone?: string;
   website?: string;
   location?: string;
+  image?: string;
+  createdAt?: string;
 }) => {
   const res = await fetch("/api/user/profile", {
     method: "PUT",

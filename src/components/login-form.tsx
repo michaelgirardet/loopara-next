@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import toast from "react-hot-toast";
+import Toast from "./Toast";
 
 export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
   const [email, setEmail] = useState("");
@@ -29,9 +31,11 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
 
     if (result?.error) {
       setError("Email ou mot de passe incorrect.");
+      toast.error("Email ou mot de passe incorrect(s)");
     } else if (result?.ok) {
       // Redirige vers la page d'accueil ou dashboard
       router.push("/dashboard");
+      toast.success("Bienvenue sur votre espace !");
     }
   };
 

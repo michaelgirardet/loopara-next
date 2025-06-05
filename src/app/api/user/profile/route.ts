@@ -19,7 +19,16 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Profil non trouvé" }, { status: 404 });
   }
 
-  return NextResponse.json(user.profile);
+  // ⬇️ Fusionne les infos de profil et l'image utilisateur
+  const fullProfile = {
+    ...user.profile,
+    image: user.image,
+    name: user.name,
+    email: user.email,
+    createdAt: user.createdAt,
+  };
+
+  return NextResponse.json(fullProfile);
 }
 // ✏️ PUT : mettre à jour ou créer le profil
 export async function PUT(req: Request) {

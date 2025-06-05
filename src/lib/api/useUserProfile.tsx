@@ -10,7 +10,8 @@ export function useUserProfile() {
     location: "",
     website: "",
     phone: "",
-    joinDate: "",
+    createdAt: "",
+    image: "",
   });
 
   const updateProfile = useCallback((updates: Partial<UserProfile>) => {
